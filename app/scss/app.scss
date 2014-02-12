@@ -37,25 +37,29 @@ $fi-path: "/fonts";
 
   #title {
     > div {
-      background: url(/images/bg/firstBG.jpg) 50% 0 no-repeat;
+      background: url(/images/bg/title.jpg);
     }
   }
 
   #session-stats {
     > div {
-      background: url(/images/bg/secondBG.jpg) 50% 0 no-repeat;
+      background: url(/images/bg/fingers.jpg) 50% 0 no-repeat;
+      height: 400px;
     }
   }
 
   #recommendations {
     > div {
-      background: url(/images/bg/thirdBG.jpg) 50% 0 no-repeat;
+      background-image: url(/images/bg/recommendations.jpg);
+      background-size: 100%;
+      height: 400px;
     }
   }
 
   #about-us {
     > div {
-      background: url(/images/bg/secondBG.jpg) 50% 0 no-repeat;
+      background: url(/images/bg/crowd.jpg);
+      height: 400px;
     }
   }
 
