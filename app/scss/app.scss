@@ -10,13 +10,23 @@ $fi-path: "/bower_components/foundation-icon-fonts";
 
 #start-page {
 
-  .title {
+  section.light {
+
+  }
+
+  section.dark {
+    h1, h2, p {
+      color: lighten($body-font-color, 95%);
+    }
+    a {
+      color: lighten($primary-color, 50%);
+      text-decoration: underline;
+    }
+  }
+
+  #title {
     > div {
       background: url(/images/bg/firstBG.jpg) 50% 0 no-repeat;
-    }
-
-    h1, p {
-      color: white;
     }
   }
 
@@ -24,19 +34,11 @@ $fi-path: "/bower_components/foundation-icon-fonts";
     > div {
       background: url(/images/bg/secondBG.jpg) 50% 0 no-repeat;
     }
-
-    h2, p {
-      color: white;
-    }
   }
 
   #recommendations {
     > div {
       background: url(/images/bg/thirdBG.jpg) 50% 0 no-repeat;
-    }
-
-    h2, p {
-      color: white;
     }
   }
 
@@ -44,19 +46,11 @@ $fi-path: "/bower_components/foundation-icon-fonts";
     > div {
       background: url(/images/bg/secondBG.jpg) 50% 0 no-repeat;
     }
-
-    h2, p {
-      color: white;
-    }
   }
 
   .footer {
     background-color: #222;
     height: 100px;
-
-    p {
-      color: white;
-    }
   }
 
   h2 > i {
