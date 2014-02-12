@@ -1,0 +1,67 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,700);
+@import "normalize";
+@import "settings";
+@import "foundation";
+
+// TODO: does this work in production?
+$fi-path: "/bower_components/foundation-icon-fonts";
+@import "foundation-icons";
+
+
+#start-page {
+
+  .title {
+    > div {
+      background: url(/images/bg/firstBG.jpg) 50% 0 no-repeat;
+    }
+
+    h1, p {
+      color: white;
+    }
+  }
+
+  #session-stats {
+    > div {
+      background: url(/images/bg/secondBG.jpg) 50% 0 no-repeat;
+    }
+
+    h2, p {
+      color: white;
+    }
+  }
+
+  #recommendations {
+    > div {
+      background: url(/images/bg/thirdBG.jpg) 50% 0 no-repeat;
+    }
+
+    h2, p {
+      color: white;
+    }
+  }
+
+  #about-us {
+    > div {
+      background: url(/images/bg/secondBG.jpg) 50% 0 no-repeat;
+    }
+
+    h2, p {
+      color: white;
+    }
+  }
+
+  .footer {
+    background-color: #222;
+    height: 100px;
+
+    p {
+      color: white;
+    }
+  }
+
+  h2 > i {
+    opacity: 0.5;
+    font-size: 80%;
+  }
+
+}
