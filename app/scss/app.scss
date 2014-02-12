@@ -15,12 +15,23 @@ $fi-path: "/bower_components/foundation-icon-fonts";
   }
 
   section.dark {
-    h1, h2, p {
+    h1, h2, p, small {
       color: lighten($body-font-color, 95%);
     }
     a {
       color: lighten($primary-color, 50%);
       text-decoration: underline;
+    }
+  }
+
+  #notify {
+    position: relative;
+     > div {
+       background-color: rgba(0, 0, 0, 0.4);
+       border: none;
+     }
+    button {
+      border: none;
     }
   }
 
