@@ -7,7 +7,6 @@
 $fi-path: "/fonts";
 @import "foundation-icons";
 
-
 #start-page {
 
   section.light {
@@ -25,15 +24,19 @@ $fi-path: "/fonts";
   }
 
   #notify {
-    position: relative;
-     > div {
-       background-color: rgba(0, 0, 0, 0.4);
-       border: none;
+    > div {
+      background-color: rgba(0, 0, 0, 0.4);
+      border: none;
+    }
+    @media #{$large-up} {
+      position: relative;
+      > div {
+        position: absolute;
+        right: 0.9375rem;
+        bottom: 0;
+      }
+    }
 
-       position: absolute;
-       right: 0.9375rem;
-       bottom: 0;
-     }
     button {
       border: none;
     }
@@ -75,7 +78,7 @@ $fi-path: "/fonts";
   }
 
   h2 > i {
-    opacity: 0.5;
+    color: $primary-color;
     font-size: 80%;
   }
 
