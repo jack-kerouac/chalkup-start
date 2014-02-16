@@ -1,18 +1,25 @@
 'use strict';
 
 angular.module('chalkupStartApp')
-    .controller('MainCtrl', function ($scope) {
+    .controller('MainCtrl', function ($scope, $http) {
 
         $('.flexslider').flexslider({
             animation: "slide"
         });
 
-        $('#notify form').submit(function (event) {
-            var dimensionValue = 'signedUp';
+        $scope.registerNotification = function (email) {
+            $scope.error = null;
+            var data = { email: email };
+            $http.post('http://demo.chalkup.de/notifications', data).success(function () {
+                $scope.registered = true;
 
-            ga('set', 'dimension1', dimensionValue);
+                var dimensionValue = 'signedUp';
+                ga('set', 'dimension1', dimensionValue);
 
-            event.preventDefault();
-        });
+            }).error(function (data, status) {
+                $scope.error = {data: data, status: status };
+            });
+
+        }
 
     });
