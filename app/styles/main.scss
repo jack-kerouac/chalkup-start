@@ -85,3 +85,87 @@ body {
         border-bottom: 0;
     }
 }
+
+
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,700);
+@import "foundation/scss/normalize";
+@import "settings";
+@import "foundation/scss/foundation";
+
+$fi-path: "/fonts";
+@import "foundation-icon-fonts/foundation-icons";
+
+
+section.light {
+
+}
+
+section.dark {
+  h1, h2, p, small {
+    color: lighten($body-font-color, 95%);
+  }
+  a {
+    color: lighten($primary-color, 50%);
+    text-decoration: underline;
+  }
+}
+
+#notify {
+  > div {
+    background-color: rgba(0, 0, 0, 0.4);
+    border: none;
+  }
+  @media #{$large-up} {
+    position: relative;
+    > div {
+      position: absolute;
+      right: 0.9375rem;
+      bottom: 0;
+    }
+  }
+
+  button {
+    border: none;
+  }
+}
+
+#title {
+  > div {
+    background: url(/images/bg/title.jpg) #5e2a19 no-repeat;
+  }
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+#session-stats {
+  > div {
+    background: url(/images/bg/fingers.jpg) #060405 no-repeat;
+    height: 400px;
+  }
+}
+
+#recommendations {
+  > div {
+    background: url(/images/bg/recommendations.jpg) #020b12 no-repeat;
+    height: 400px;
+  }
+}
+
+#about-us {
+  > div {
+    background: url(/images/bg/crowd.jpg) no-repeat;
+    height: 400px;
+  }
+}
+
+.footer {
+  background-color: #222;
+  height: 100px;
+}
+
+h2 > i {
+  color: $primary-color;
+  font-size: 80%;
+}
