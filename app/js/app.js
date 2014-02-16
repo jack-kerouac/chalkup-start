@@ -1,28 +1,36 @@
-var app = (function() {
+var app = (function () {
 
-	'use strict';
-	var privateVariable = 'app fired!',
-		docElem = document.documentElement;
+    'use strict';
+    var docElem = document.documentElement;
 
-	return {
-		publicFunction: function() {
-			console.log(privateVariable);
-		},
-		userAgentInit: function() {
-			docElem.setAttribute('data-useragent', navigator.userAgent);
-		}
-	};
+    return {
+        userAgentInit: function () {
+            docElem.setAttribute('data-useragent', navigator.userAgent);
+        }
+    };
 
 })();
 
-(function() {
+(function () {
 
-	'use strict';
+    'use strict';
 
-	//foundation init
-	$(document).foundation();
+    //foundation init
+    $(document).foundation();
 
-	app.publicFunction();
-	app.userAgentInit();
+    app.userAgentInit();
+
+    $('.flexslider').flexslider({
+        animation: "slide"
+    });
+
+    $('#notify form').submit(function (event) {
+        var dimensionValue = 'signedUp';
+
+        ga('set', 'dimension1', dimensionValue);
+
+        event.preventDefault();
+    });
+
 
 })();
