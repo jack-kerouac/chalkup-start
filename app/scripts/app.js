@@ -1,26 +1,12 @@
 'use strict';
 
-angular.module('chalkupStartApp', []);
-
-
-
-// TODO: where to put the following?
-
-(function () {
-
-    //foundation init
-    $(document).foundation();
-
-    $('.flexslider').flexslider({
-        animation: "slide"
+angular.module('chalkupStartApp', [])
+    .run(function ($rootScope) {
+        // foundation init when displaying view/include
+        $rootScope.$on('$viewContentLoaded', function () {
+            $(document).foundation();
+        });
+        $rootScope.$on('$includeContentLoaded', function () {
+            $(document).foundation();
+        });
     });
-
-    $('#notify form').submit(function (event) {
-        var dimensionValue = 'signedUp';
-
-        ga('set', 'dimension1', dimensionValue);
-
-        event.preventDefault();
-    });
-
-})();
