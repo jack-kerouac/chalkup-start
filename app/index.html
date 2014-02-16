@@ -1,280 +1,56 @@
 <!doctype html>
-<!--[if IE 9]>
-<html class="no-js lt-ie10" lang="en"> <![endif]-->
-<!--[if gt IE 9]><!-->
-<html class="no-js" lang="en"> <!--<![endif]-->
-<head>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css({.tmp,app}) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+  </head>
+  <body ng-app="chalkupStartApp">
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
 
-    <title>chalkUp!</title>
-    <!-- build:css css/app.min.css -->
+    <!-- Add your site or application content here -->
+    <div class="container" ng-include="'views/main.html'" ng-controller="MainCtrl"></div>
 
-    <link rel="stylesheet" href="bower_components/flexslider/flexslider.css">
-    <link rel="stylesheet" href="css/app.css">
-    <link rel="stylesheet" href="css/app_override.css">
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+     <script>
+       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+       ga('create', 'UA-XXXXX-X');
+       ga('send', 'pageview');
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
+    <script src="bower_components/json3/lib/json3.min.js"></script>
+    <![endif]-->
+
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/angular/angular.js"></script>
+    <!-- endbower -->
     <!-- endbuild -->
 
-    <!-- build:js js/vendor/modernizr.min.js -->
-    <script src="bower_components/modernizr/modernizr.js"></script>
-    <!-- endbuild -->
-</head>
-<body id="start-page">
-
-<section class="row dark" id="title">
-    <div class="large-12 large-centered column panel">
-        <h1>chalkUp!</h1>
-
-        <div class="row" data-equalizer>
-            <div class="large-6 column" data-equalizer-watch>
-                <p><strong>Mit chalkUp! kannst du deinen persönlichen Fortschritt beim Bouldern in der Halle verfolgen,
-                    visualisieren und mit anderen vergleichen.</strong></p>
-
-                <p>In den unterstützen Hallen sind die momentan geschraubten Boulder voreingetragen. Um eine <a
-                        href="#enter-session">Boulder-Session zu erfassen</a> wählst du die Boulder aus, die du an
-                    diesem Tag geschafft hast. Daraufhin kannst du deinen Fortschritt in einer <a
-                            href="#session-stats">Auswertung der Session</a> beurteile. <br/> <a href="#global-stats">Statistiken</a>
-                    erlauben dir deinen Fortschritt und andere Kenndaten über einen längeren Zeitraum zu verfolgen.
-                    chalkUp! kann dir aber auch <a href="#recommendations">Empfehlungen</a> für Boulder geben, die dir
-                    liegen könnten. Du kannst dich mit deinen Mit-Boulderern <a href="#compare">vergleichen</a> und
-                    deinen Fortschritt teilen.
-                </p>
-            </div>
-            <div class="large-6 column" data-equalizer-watch id="notify">
-                <div class="panel">
-                    <p>Hast du Interesse? Dann geben wir dir Bescheid, sobald die erste Version für dich benutzbar
-                        ist:</p>
-
-                    <form action="" class="row collapse">
-                        <div class="large-7 column">
-                            <input type="email" placeholder="danielwoods@themachine.me" required/>
-                        </div>
-                        <div class="large-5 column">
-                            <button class="postfix" type="submit">Benachrichten!</button>
-                        </div>
-                    </form>
-                    <small>Deine E-Mail-Adresse verwenden wir nur um dich zu benachrichtigen und löschen sie, sobald die
-                        Benachrichtigungs-Mail an dich versandt wurde.
-                    </small>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="row light" id="enter-session">
-    <div class="large-12 column panel">
-        <h2><i class="fi-pencil"></i> Boulder-Session eintragen</h2>
-
-        <div class="row">
-            <div class="large-9 column">
-                <p>TEXT</p>
-            </div>
-            <div class="large-3 column">
-                <div class="flexslider">
-                    <ul class="slides">
-                        <li>
-                            <img src="/images/mockups/create-session-1.png" />
-                        </li>
-                        <li>
-                            <img src="/images/mockups/create-session-1.png" />
-                        </li>
-                        <li>
-                            <img src="/images/mockups/create-session-1.png" />
-                        </li>
-                        <li>
-                            <img src="/images/mockups/create-session-1.png" />
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="row dark" id="session-stats">
-    <div class="large-12 column panel">
-        <div class="row">
-            <div class="large-2 column">
-            </div>
-            <div class="large-2 column">
-            </div>
-            <div class="large-2 column">
-            </div>
-            <div class="large-6 column">
-                <h2><i class="fi-results"></i> Session auswerten</h2>
-
-                <p>TEXT</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-<section class="row light" id="global-stats">
-    <div class="large-12 column panel">
-        <div class="row">
-            <div class="large-6 column">
-                <h2><i class="fi-graph-bar"></i> Statistiken</h2>
-
-                <p>TEXT</p>
-            </div>
-            <div class="large-2 column">
-            </div>
-            <div class="large-2 column">
-            </div>
-            <div class="large-2 column">
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="row dark" id="recommendations">
-    <div class="large-12 column panel">
-        <div class="row">
-            <div class="large-2 column">
-            </div>
-            <div class="large-2 column">
-            </div>
-            <div class="large-2 column">
-            </div>
-            <div class="large-6 column">
-                <h2><i class="fi-lightbulb"></i> Empfehlungen</h2>
-
-                <p>TEXT</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-<section class="row light" id="compare">
-    <div class="large-12 column panel">
-        <div class="large-6 column">
-            <h2><i class="fi-share"></i> Vergleiche dich und teile</h2>
-
-            <p>TEXT</p>
-        </div>
-
-        <div class="row">
-            <div class="large-2 column">
-            </div>
-            <div class="large-2 column">
-            </div>
-            <div class="large-2 column">
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="row dark" id="about-us">
-    <div class="large-12 column panel">
-        <h2><i class="fi-torsos-male-female"></i> Über uns</h2>
-
-        <div class="large-6 column">
-            <p>TEXT</p>
-        </div>
-
-        <div class="large-6 column">
-            <p>TEXT</p>
-        </div>
-    </div>
-</section>
-
-<section class="row dark">
-    <div class="large-12 column panel footer">
-    </div>
-</section>
-
-<!--<script>
-    // Include the UserVoice JavaScript SDK (only needed once on a page)
-    UserVoice = window.UserVoice || [];
-    (function () {
-        var uv = document.createElement('script');
-        uv.type = 'text/javascript';
-        uv.async = true;
-        uv.src = '//widget.uservoice.com/2oIoDbuTLfxbQe92GPJLAA.js';
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(uv, s)
-    })();
-
-    //
-    // UserVoice Javascript SDK developer documentation:
-    // https://www.uservoice.com/o/javascript-sdk
-    //
-
-    // Set colors
-    UserVoice.push(['set', {
-        accent_color: '#448dd6',
-        trigger_color: 'white',
-        trigger_background_color: '#e2753a'
-    }]);
-
-    // Identify the user and pass traits
-    // To enable, replace sample data with actual user traits and uncomment the line
-    UserVoice.push(['identify', {
-        //email:      'john.doe@example.com', // User’s email address
-        //name:       'John Doe', // User’s real name
-        //created_at: 1364406966, // Unix timestamp for the date the user signed up
-        //id:         123, // Optional: Unique id of the user (if set, this should not change)
-        //type:       'Owner', // Optional: segment your users by type
-        //account: {
-        //  id:           123, // Optional: associate multiple users with a single account
-        //  name:         'Acme, Co.', // Account name
-        //  created_at:   1364406966, // Unix timestamp for the date the account was created
-        //  monthly_rate: 9.99, // Decimal; monthly rate of the account
-        //  ltv:          1495.00, // Decimal; lifetime value of the account
-        //  plan:         'Enhanced' // Plan name for the account
-        //}
-    }]);
-
-    // Add default trigger to the bottom-right corner of the window:
-    UserVoice.push(['addTrigger', { mode: 'contact', trigger_position: 'bottom-right' }]);
-
-    // Or, use your own custom trigger:
-    //UserVoice.push(['addTrigger', '#id', { mode: 'contact' }]);
-
-    // Autoprompt for Satisfaction and SmartVote (only displayed under certain conditions)
-    UserVoice.push(['autoprompt', {}]);
-</script>-->
-
-
-<!-- Google Analytics -->
-<script>
-    (function (b, o, i, l, e, r) {
-        b.GoogleAnalyticsObject = l;
-        b[l] || (b[l] =
-                function () {
-                    (b[l].q = b[l].q || []).push(arguments)
-                });
-        b[l].l = +new Date;
-        e = o.createElement(i);
-        r = o.getElementsByTagName(i)[0];
-        e.src = '//www.google-analytics.com/analytics.js';
-        r.parentNode.insertBefore(e, r)
-    }(window, document, 'script', 'ga'));
-    ga('create', 'UA-47002539-2');
-    ga('send', 'pageview');
-</script>
-
-
-<!-- build:js js/vendor/jquery.min.js -->
-<script src="bower_components/jquery/jquery.js"></script>
-<!-- endbuild -->
-
-<!-- build:js js/vendor/jquery.flexslider.min.js -->
-<script src="bower_components/flexslider/jquery.flexslider.js"></script>
-<!-- endbuild -->
-
-
-<!-- build:js js/foundation/foundation.min.js -->
-<script src="bower_components/foundation/js/foundation.js"></script>
-<!-- endbuild -->
-
-<!-- build:js js/app.min.js -->
-<script src="js/app.js"></script>
-<!-- endbuild -->
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="scripts/app.js"></script>
+        <script src="scripts/controllers/main.js"></script>
+        <!-- endbuild -->
 </body>
 </html>
