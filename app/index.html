@@ -12,6 +12,7 @@
     <title>chalkUp!</title>
     <!-- build:css css/app.min.css -->
 
+    <link rel="stylesheet" href="bower_components/flexslider/flexslider.css">
     <link rel="stylesheet" href="css/app.css">
     <link rel="stylesheet" href="css/app_override.css">
     <!-- endbuild -->
@@ -68,17 +69,26 @@
         <h2><i class="fi-pencil"></i> Boulder-Session eintragen</h2>
 
         <div class="row">
-            <div class="large-3 column">
+            <div class="large-9 column">
                 <p>TEXT</p>
             </div>
             <div class="large-3 column">
-                <img src="/images/mockups/create-session-1.png"/>
-            </div>
-            <div class="large-3 column">
-                <img src="/images/mockups/create-session-1.png"/>
-            </div>
-            <div class="large-3 column">
-                <img src="/images/mockups/create-session-1.png"/>
+                <div class="flexslider">
+                    <ul class="slides">
+                        <li>
+                            <img src="/images/mockups/create-session-1.png" />
+                        </li>
+                        <li>
+                            <img src="/images/mockups/create-session-1.png" />
+                        </li>
+                        <li>
+                            <img src="/images/mockups/create-session-1.png" />
+                        </li>
+                        <li>
+                            <img src="/images/mockups/create-session-1.png" />
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
@@ -253,6 +263,11 @@
 <!-- build:js js/vendor/jquery.min.js -->
 <script src="bower_components/jquery/jquery.js"></script>
 <!-- endbuild -->
+
+<!-- build:js js/vendor/jquery.flexslider.min.js -->
+<script src="bower_components/flexslider/jquery.flexslider.js"></script>
+<!-- endbuild -->
+
 
 <!-- build:js js/foundation/foundation.min.js -->
 <script src="bower_components/foundation/js/foundation.js"></script>
