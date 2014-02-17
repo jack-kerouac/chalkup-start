@@ -1,6 +1,7 @@
 #!/bin/bash
 
 grunt --force
-git add dist
+cd dist
+git add .
 git commit -m "heroku deployment"
-git push heroku master
+git push
