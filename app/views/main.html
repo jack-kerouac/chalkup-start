@@ -1,10 +1,26 @@
-<section class="row dark panel" id="title">
-    <div class="large-6 column">
+<section class="row dark" id="title">
+    <div class="medium-6 column">
+        <h1>chalkUp!</h1>
+
         <p><strong>Mit chalkUp! kannst du deinen persönlichen Fortschritt beim Bouldern in der Halle verfolgen,
             visualisieren und mit anderen vergleichen.</strong></p>
     </div>
-    <div class="large-6 column" id="notify">
-        <div class="panel" ng-show="!registered">
+
+</section>
+
+
+<section class="row light" id="summary">
+    <div class="medium-6 column">
+        <p>In den unterstützen Hallen sind die momentan geschraubten Boulder voreingetragen. Um eine <a
+                href="#create-session">Boulder-Session zu erfassen</a> wählst du die Boulder aus, die du an diesem Tag
+            geschafft hast. <br/> <a href="#stats">Statistiken</a> erlauben dir deinen Fortschritt und andere Kenndaten
+            über einen längeren Zeitraum zu verfolgen. chalkUp! kann dir aber auch <a href="#recommendations">Empfehlungen</a>
+            für Boulder geben, die dir liegen könnten. Du kannst dich mit deinen Mit-Boulderern <a href="#compare">vergleichen</a>
+            und deinen Fortschritt teilen.
+        </p>
+    </div>
+    <div class="medium-6 column panel">
+        <div ng-show="!registered">
             <p>Hast du Interesse? Dann geben wir dir Bescheid sobald die erste Version für dich benutzbar ist:</p>
 
             <form name="notify" class="row collapse" ng-submit="registerNotification(email)" novalidate>
@@ -28,26 +44,10 @@
     </div>
 </section>
 
-
-<section class="row light panel" id="summary" data-equalizer>
-    <div class="large-6 column" data-equalizer-watch>
-        <p>In den unterstützen Hallen sind die momentan geschraubten Boulder voreingetragen. Um eine <a
-                href="#enter-session">Boulder-Session zu erfassen</a> wählst du die Boulder aus, die du an diesem Tag
-            geschafft hast. Daraufhin kannst du deinen Fortschritt in einer <a
-                    href="#session-stats">Auswertung der Session</a> beurteile. <br/> <a href="#global-stats">Statistiken</a>
-            erlauben dir deinen Fortschritt und andere Kenndaten über einen längeren Zeitraum zu verfolgen. chalkUp!
-            kann dir aber auch <a href="#recommendations">Empfehlungen</a> für Boulder geben, die dir liegen könnten. Du
-            kannst dich mit deinen Mit-Boulderern <a href="#compare">vergleichen</a> und deinen Fortschritt teilen.
-        </p>
+<section class="row dark" id="create-session">
+    <div class="medium-6 column">
     </div>
-    <div class="large-6 column" data-equalizer-watch>
-    </div>
-</section>
-
-<section class="row dark panel" id="create-session">
-    <div class="large-6 column">
-    </div>
-    <div class="large-6 column">
+    <div class="medium-6 column">
         <h2><i class="fi-pencil"></i> Boulder-Session eintragen</h2>
 
         <p>Wähle die Boulder die du an einem Tag klettern konntest auf dem Hallengrundriss und anhand eines Fotos aus.
@@ -57,21 +57,21 @@
 </section>
 
 
-<section class="row light panel" id="stats">
-    <div class="large-6 column">
+<section class="row light" id="stats">
+    <div class="medium-6 column">
         <h2><i class="fi-graph-bar"></i> Statistiken</h2>
 
         <p>Wie lief eine Session? Hast du dich verbessert? Um wie viel? Wie viele Boulder hast du gemacht? All dies
             beantwortet dir deine Statistik.</p>
     </div>
-    <div class="large-6 column">
+    <div class="medium-6 column">
     </div>
 </section>
 
-<section class="row dark panel" id="recommendations">
-    <div class="large-6 column">
+<section class="row dark" id="recommendations">
+    <div class="medium-6 column">
     </div>
-    <div class="large-6 column">
+    <div class="medium-6 column">
         <h2><i class="fi-lightbulb"></i> Empfehlungen</h2>
 
         <p>chalkUp! schlägt dir Boulder vor, die in deinem Grad liegen.</p>
@@ -79,38 +79,39 @@
 </section>
 
 
-<section class="row light panel" id="compare" data-equalizer>
-    <div class="large-6 column" data-equalizer-watch>
+<section class="row light" id="compare" data-equalizer>
+    <div class="medium-6 column" data-equalizer-watch>
         <h2><i class="fi-share"></i> Vergleiche dich und teile</h2>
 
         <p>Vergleiche deinen Fortschritt mit anderen. Teile eine Session über Facebook oder Google+.</p>
+
         <p><i class="fi-social-facebook"></i>&nbsp;<i class="fi-social-google-plus"></i></p>
     </div>
 
-    <div class="large-6 column" data-equalizer-watch>
+    <div class="medium-6 column" data-equalizer-watch>
     </div>
 </section>
 
-<section class="row dark panel" id="about-us">
+<section class="row dark" id="about-us">
     <h2><i class="fi-torsos-male-female"></i> Über uns</h2>
 
-    <div class="large-6 column">
+    <div class="medium-6 column">
         <p>TEXT</p>
     </div>
 
-    <div class="large-6 column">
+    <div class="medium-6 column">
         <p>TEXT</p>
     </div>
 </section>
 
-<section class="row dark panel" id="footer">
-    <div class="large-7 column">
+<section class="row dark" id="footer">
+    <div class="medium-7 column">
         <p>TEXT</p>
     </div>
-    <div class="large-1 column">
+    <div class="medium-1 column">
         <p>Images</p>
     </div>
-    <div class="large-4 column">
+    <div class="medium-4 column">
         <ul>
             <li><a href="http://flic.kr/p/aCv6jx">Unnamed</a> by nordique (<a
                     href="http://creativecommons.org/licenses/by-sa/2.0/">CC BY-SA</a>)
