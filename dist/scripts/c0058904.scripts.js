@@ -1,1 +1,0 @@
-"use strict";angular.module("chalkupStartApp",[]),function(){$(document).foundation(),$(".flexslider").flexslider({animation:"slide"}),$("#notify form").submit(function(a){var b="signedUp";ga("set","dimension1",b),a.preventDefault()})}(),angular.module("chalkupStartApp").controller("MainCtrl",["$scope",function(a){a.awesomeThings=["HTML5 Boilerplate","AngularJS","Karma"]}]);
