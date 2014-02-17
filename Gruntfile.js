@@ -286,17 +286,25 @@ module.exports = function (grunt) {
             'views/{,*/}*.html',
             'bower_components/**/*',
             'images/{,*/}*.{webp}',
-            'fonts/*',
-              // HEROKU STUFF
-            'web.js',
-            'Procfile',
-            'newrelic.js'
+            'fonts/*'
           ]
         }, {
           expand: true,
           cwd: '.tmp/images',
           dest: '<%= yeoman.dist %>/images',
           src: ['generated/*']
+        },
+        // HEROKU STUFF
+        {
+          expand: true,
+          flatten: true,
+          dest: '<%= yeoman.dist %>',
+          src: [
+              'app/heroku/web.js',
+              'app/heroku/Procfile',
+              'app/heroku/newrelic.js',
+              'package.json'
+          ]
         }]
       },
       styles: {
