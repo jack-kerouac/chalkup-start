@@ -286,7 +286,11 @@ module.exports = function (grunt) {
             'views/{,*/}*.html',
             'bower_components/**/*',
             'images/{,*/}*.{webp}',
-            'fonts/*'
+            'fonts/*',
+              // HEROKU STUFF
+            'web.js',
+            'Procfile',
+            'newrelic.js'
           ]
         }, {
           expand: true,
