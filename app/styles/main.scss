@@ -6,7 +6,6 @@
 $fi-path: "/bower_components/foundation-icon-fonts";
 @import "foundation-icon-fonts/foundation-icons";
 
-
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -14,14 +13,20 @@ $fi-path: "/bower_components/foundation-icon-fonts";
   padding: 0.2em 0;
 }
 
+.container {
+  margin-top: $topbar-height;
+}
 
+section.panel {
+  border-top: 0;
+}
 
 section.light {
 
 }
 
 section.dark {
-  h1, h2, p, small {
+  h1, h2, p, small, ul {
     color: lighten($body-font-color, 95%);
   }
   a {
@@ -30,7 +35,18 @@ section.dark {
   }
 }
 
+h2 > i {
+  color: $primary-color;
+  font-size: 80%;
+}
+
+.top-bar {
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5);
+}
+
 #notify {
+  height: 400px;
+
   > .panel {
     background-color: rgba(0, 0, 0, 0.4);
     border: none;
@@ -39,7 +55,7 @@ section.dark {
     position: relative;
     > div {
       position: absolute;
-      right: 0.9375rem;
+      right: 0;
       bottom: 0;
     }
   }
@@ -50,46 +66,57 @@ section.dark {
 }
 
 #title {
+  background: url(/images/bg/gym_1.jpg) #5e2a19 no-repeat;
+
   > div {
-    background: url(/images/bg/title.jpg) #5e2a19 no-repeat;
+
+    div.row > div {
+      height: 400px;
+    }
   }
   p:last-child {
     margin-bottom: 0;
   }
 }
 
-#session-stats {
-  > div {
-    background: url(/images/bg/fingers.jpg) #060405 no-repeat;
-    height: 400px;
+#summary {
+  > div:nth-child(2) {
+    background: url(/images/bg/holds_1.jpg) 0% 50% no-repeat;
   }
 }
 
+#create-session {
+  background: url(/images/bg/chalked_hands_1.jpg) #000 0% 10% no-repeat;
+}
+
 #recommendations {
-  > div {
-    background: url(/images/bg/recommendations.jpg) #020b12 no-repeat;
-    height: 400px;
+  background: url(/images/bg/recommendations.jpg) #020b12 no-repeat;
+}
+
+#compare {
+  > div:nth-child(2) {
+    background: url(/images/bg/hanging_boulderer.jpg) 0% 30% no-repeat;
+  }
+  p i[class^="fi-"] {
+    font-size: 3em;
+    display: inline-block;
+    margin-right: 0.5em;
   }
 }
 
 #about-us {
-  > div {
-    background: url(/images/bg/crowd.jpg) no-repeat;
-    height: 400px;
-  }
+  background: url(/images/bg/crowd.jpg) no-repeat;
 }
-
-.footer {
-  background-color: #222;
-  height: 100px;
-}
-
-h2 > i {
-  color: $primary-color;
-  font-size: 80%;
-}
-
 
 input.ng-invalid.ng-dirty {
   border-color: $alert-color;
+}
+
+#footer {
+  background-color: #222;
+  height: 100px;
+
+  p, ul {
+    font-size: 0.6em;
+  }
 }
