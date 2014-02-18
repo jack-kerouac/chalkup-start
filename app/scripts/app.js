@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('chalkupStartApp', ['ui.router'])
+angular.module('chalkupStartApp', ['ui.router', 'restangular'])
     .run(function ($rootScope, $state) {
         // foundation init when displaying view/include
         $rootScope.$on('$viewContentLoaded', function () {
@@ -15,7 +15,7 @@ angular.module('chalkupStartApp', ['ui.router'])
 
 
 angular.module('chalkupStartApp')
-    .config(function ($stateProvider, $urlRouterProvider) {
+    .config(function ($stateProvider, $urlRouterProvider, RestangularProvider) {
 
         // For any unmatched url, redirect to /state1
         $urlRouterProvider.otherwise("/");
@@ -31,4 +31,6 @@ angular.module('chalkupStartApp')
                 templateUrl: "views/stats.html",
                 controller: 'StatsCtrl'
             })
+
+        RestangularProvider.setBaseUrl('http://demo.chalkup.de')
     });

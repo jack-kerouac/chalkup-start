@@ -8,13 +8,7 @@
 
     <div id="session-list">
         <ul class="sessions">
-            <li>Session1</li>
-            <li>Session2</li>
-
-            <li>Session2</li>
-            <li>Session2</li>
-            <li>Session2</li>
-            <li>Session2</li>
+            <li ng-repeat="s in statistics">{{s.session.date}}</li>
         </ul>
     </div>
 </section>
