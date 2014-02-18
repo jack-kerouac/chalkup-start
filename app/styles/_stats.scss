@@ -3,8 +3,8 @@ body[state='stats'] {
 
   // POSITIONING
 
-  $current-grade-height: 2.5rem;
-  $chart-height-small: 13.5rem;
+  $current-grade-height: 2rem;
+  $chart-height-small: 13rem;
   $chart-height-large: 30rem;
 
   .container section {
@@ -13,6 +13,8 @@ body[state='stats'] {
   }
   #current-grade {
     height: $current-grade-height;
+    line-height: $current-grade-height;
+    vertical-align: middle;
   }
   #chart {
     height: $chart-height-small;
@@ -42,25 +44,84 @@ body[state='stats'] {
   // REST
 
   #current-grade {
-    padding-left: 1em;
+    text-align: right;
+    color: white;
+    background-color: #3498db;
+    padding-right: 0.5em;
+
     font-size: 1.5em;
     .grade {
-      font-size: 1.2em;
       font-weight: 600;
     }
   }
   #chart {
+    background: #3498db;
   }
   #session-list {
     overflow-y: scroll;
   }
 
   ul.sessions {
+    color: #444;
+
     margin: 0;
+
+    $session-height: 3.5rem;
+
     li {
-      height: 3em;
-      border: 1px solid;
+      border-bottom: 1px solid #ddd;
       list-style: none;
+
+      .title {
+        margin-top: $session-height * 0.125;
+        font-weight: 600;
+        color: #2980b9;
+      }
+      .gym {
+        font-size: 0.8em;
+      }
+
+      .session-edit, .trend, .ascents {
+        // TODO: use foundation equalizer
+        height: $session-height;
+
+        text-align: center;
+        line-height: $session-height;
+        vertical-align: middle;
+      }
+
+      .trend {
+        font-size: 2em;
+
+        i:nth-child(1) {
+          color: #2ecc71;
+        }
+        i:nth-child(2) {
+          color: #e74c3c;
+        }
+      }
+
+      .ascents span {
+        font-size: 0.8em;
+        font-weight: 600;
+      }
+
+      .session-edit {
+        font-size: 1.4em;
+
+        border-left: 1px solid #eee;
+
+        a {
+          width: 100%;
+          height: 100%;
+          display: block;
+          color: #444;
+          &:hover {
+            color: $primary-color;
+          }
+        }
+      }
+
     }
   }
 

@@ -11,11 +11,19 @@ angular.module('chalkupStartApp')
                 gradeData: '='
             },
             link: function ($scope, elem) {
-                var gradeColor = 'rgb(203,75,75)';
+                var gradeColor = 'white';
 
                 $scope.options = {
                     xaxis: {
-                        mode: "time"
+                        mode: "time",
+                        tickFormatter: function(number, object) {
+                            var date = moment(number);
+                            return date.format("MMM") + "<br>" + date.format("D");
+                        },
+                        tickLength: 5,
+                        font: {
+                            color: 'white'
+                        }
                     },
                     yaxes: [
                         {
@@ -23,8 +31,17 @@ angular.module('chalkupStartApp')
                         }
                     ],
                     series: {
-                        lines: { show: true, fill: false },
-                        points: { show: true, fill: false }
+                        lines: { show: true, fill: false, lineWidth: 3 },
+                        points: { show: true, fill: true, radius: 5 },
+                        shadowSize: 0
+                    },
+                    grid: {
+                        borderWidth: 0,
+                        labelMargin: 10,
+                        margin: {
+                            bottom: 10
+                        },
+                        color: '#186496'
                     }
                 };
 
