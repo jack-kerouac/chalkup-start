@@ -17,11 +17,7 @@ b, strong {
   font-weight: 600;
 }
 
-.container {
-  margin-top: $topbar-height;
-}
-
-section {
+section.row {
   @include panel();
 
   border-top: 0;
@@ -30,21 +26,22 @@ section {
     border-left-width: 0;
     border-right-width: 0;
   }
-}
 
-section.light {
+  &.light {
 
-}
-
-section.dark {
-  h1, h2, p, small, ul {
-    color: lighten($body-font-color, 95%);
   }
-  a {
-    color: lighten($primary-color, 50%);
-    text-decoration: underline;
+
+  &.dark {
+    h1, h2, p, small, ul {
+      color: lighten($body-font-color, 95%);
+    }
+    a {
+      color: lighten($primary-color, 50%);
+      text-decoration: underline;
+    }
   }
 }
+
 
 h2 > i {
   color: $primary-color;
@@ -61,6 +58,7 @@ input.ng-invalid.ng-dirty {
 }
 
 
+// START PAGE
 
 #title {
   background: url(/images/bg/chalked_hands_1.jpg) #000 no-repeat;

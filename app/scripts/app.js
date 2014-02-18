@@ -24,4 +24,11 @@ angular.module('chalkupStartApp')
                 templateUrl: "views/start.html",
                 controller: 'StartCtrl'
             })
+            .state('stats', {
+                url: "/stats",
+                templateUrl: "views/stats.html",
+                controller: function ($scope) {
+                    $scope.items = ["A", "List", "Of", "Items"];
+                }
+            })
     });
