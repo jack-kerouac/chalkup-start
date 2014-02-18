@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('chalkupStartApp', ['ui.router', 'restangular'])
+angular.module('chalkupStartApp', ['ui.router', 'restangular', 'angularSpinner'])
     .run(function ($rootScope, $state) {
         // foundation init when displaying view/include
         $rootScope.$on('$viewContentLoaded', function () {
@@ -11,6 +11,10 @@ angular.module('chalkupStartApp', ['ui.router', 'restangular'])
         });
 
         $rootScope.$state = $state;
+
+        $rootScope.isLoading = function(loading) {
+            $rootScope.loading = loading;
+        }
     });
 
 

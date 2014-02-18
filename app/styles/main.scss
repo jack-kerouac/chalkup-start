@@ -44,17 +44,14 @@ section.row {
   }
 }
 
-
 h2 > i {
   color: $primary-color;
   font-size: 80%;
 }
 
-
 input.ng-invalid.ng-dirty {
   border-color: $alert-color;
 }
-
 
 // CONTENT CONTAINER
 
@@ -70,7 +67,6 @@ input.ng-invalid.ng-dirty {
   position: relative;
 }
 
-
 // TOP BAR
 
 .top-bar {
@@ -83,6 +79,23 @@ body {
   padding-top: $topbar-height;
 }
 
+// SPINNER
+#loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+
+  background-color: rgba(50, 50, 50, 0.3);
+  z-index: 1000;
+
+  *[us-spinner] {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+  }
+}
 
 // PARTIALS
 
