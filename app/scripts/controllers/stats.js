@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('chalkupStartApp')
-    .controller('StatsCtrl', function ($scope, Restangular) {
+    .controller('StatsCtrl', function ($scope, Restangular, LoadingIndicator) {
 
         var user = Restangular.one('users', 1);
 
@@ -11,7 +11,7 @@ angular.module('chalkupStartApp')
 
         var statistics = user.all('statistics').getList();
 
-        $scope.waitFor(statistics);
+        LoadingIndicator.waitFor(statistics);
         statistics.then(function (statistics) {
             $scope.statistics = statistics;
 

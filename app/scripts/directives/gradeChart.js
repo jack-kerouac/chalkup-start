@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('chalkupStartApp')
-    .directive('gradeChart', function (Restangular) {
+    .directive('gradeChart', function (Restangular, LoadingIndicator) {
         var chart;
         var gradesAboveBelow = 1;
 
@@ -29,7 +29,7 @@ angular.module('chalkupStartApp')
                 };
 
                 var grades = Restangular.all('grades').getList();
-//                $scope.waitFor(grades);
+                LoadingIndicator.waitFor(grades);
                 grades.then(function (grades) {
                     var gradeTicks = _.map(grades, function (grade) {
                         return [grade.value, grade.font];
