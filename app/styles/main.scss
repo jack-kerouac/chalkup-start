@@ -6,6 +6,8 @@
 $fi-path: "/bower_components/foundation-icon-fonts";
 @import "foundation-icon-fonts/foundation-icons";
 
+@import "start";
+
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -55,69 +57,4 @@ h2 > i {
 
 input.ng-invalid.ng-dirty {
   border-color: $alert-color;
-}
-
-
-// START PAGE
-
-#title {
-  background: url(/images/bg/chalked_hands_1.jpg) #000 no-repeat;
-  position: relative;
-
-  p {
-    margin-top: 2em;
-    margin-bottom: 0;
-  }
-
-  @media #{$medium-up} {
-    > div {
-      height: 300px;
-    }
-    p {
-      position: absolute;
-      bottom: 0;
-    }
-  }
-}
-
-#summary {
-  .panel {
-    background: #f7f7f7;
-  }
-  .alert-box {
-    margin: 0;
-  }
-}
-
-#create-session {
-  background: url(/images/bg/gym_1.jpg) #5e2a19 0 40% no-repeat;
-}
-
-#recommendations {
-  background: url(/images/bg/recommendations.jpg) #020b12 no-repeat;
-}
-
-#compare {
-  > div:nth-child(2) {
-    background: url(/images/bg/hanging_boulderer.jpg) 0% 30% no-repeat;
-  }
-  p i[class^="fi-"] {
-    font-size: 3em;
-    display: inline-block;
-    margin-right: 0.5em;
-  }
-}
-
-#about-us {
-  background: url(/images/bg/crowd.jpg) no-repeat;
-}
-
-#footer {
-  background-color: #222;
-  min-height: 100px;
-
-  p, ul {
-    font-size: 0.6em;
-    margin: 0;
-  }
 }
