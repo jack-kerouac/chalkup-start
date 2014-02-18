@@ -7,7 +7,7 @@
 
     <div id="session-list">
         <ul class="sessions">
-            <li ng-repeat="s in statistics">{{s.session.date}}</li>
+            <li ng-repeat="s in statistics | orderBy:'-session.date'">{{s.session.date | amDateFormat: 'LLLL' }}</li>
         </ul>
     </div>
 </section>

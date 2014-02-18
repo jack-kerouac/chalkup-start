@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('chalkupStartApp', ['ui.router', 'restangular', 'angularSpinner'])
+angular.module('chalkupStartApp', ['ui.router', 'restangular', 'angularSpinner', 'angularMoment'])
     .run(function ($rootScope, $state) {
         // foundation init when displaying view/include
         $rootScope.$on('$viewContentLoaded', function () {
