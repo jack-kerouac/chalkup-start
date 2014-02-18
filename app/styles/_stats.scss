@@ -2,22 +2,27 @@ body[state='stats'] {
   @include no-scroll-content;
 
   // POSITIONING
+
+  $current-grade-height: 2.5rem;
+  $chart-height-small: 13.5rem;
+  $chart-height-large: 30rem;
+
   .container section {
     height: 100%;
     padding: 0;
   }
   #current-grade {
-    height: 2.5rem;
+    height: $current-grade-height;
   }
   #chart {
-    height: 13.5rem;
+    height: $chart-height-small;
   }
   #session-list {
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    top: 16rem;
+    top: $chart-height-small + $current-grade-height;
   }
 
   @media #{$large-up} {
@@ -25,12 +30,12 @@ body[state='stats'] {
       width: 70%;
     }
     #chart {
-      height: 30rem;
+      height: $chart-height-large;
     }
     #session-list {
       left: 70%;
       right: 0;
-      top: 0;
+      top: $current-grade-height;
     }
   }
 
@@ -60,9 +65,6 @@ body[state='stats'] {
       list-style: none;
     }
   }
-
-
-
 
 }
 
