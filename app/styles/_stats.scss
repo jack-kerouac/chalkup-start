@@ -1,0 +1,10 @@
+body[state='stats'] {
+  @include no-scroll-content;
+
+  section {
+    height: 100%;
+  }
+
+}
+
+

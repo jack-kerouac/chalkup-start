@@ -6,8 +6,6 @@
 $fi-path: "/bower_components/foundation-icon-fonts";
 @import "foundation-icon-fonts/foundation-icons";
 
-@import "start";
-
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -50,11 +48,40 @@ h2 > i {
   font-size: 80%;
 }
 
-.top-bar {
-  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5);
-}
-
 
 input.ng-invalid.ng-dirty {
   border-color: $alert-color;
 }
+
+
+// CONTENT CONTAINER
+
+@mixin no-scroll-content {
+  .container {
+    overflow-y: hidden;
+  }
+}
+
+.container {
+  height: 100%;
+  overflow-y: scroll;
+}
+
+
+// TOP BAR
+
+.top-bar {
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5);
+}
+
+body {
+  // this prevents container from disappearing partially behind top bar
+  // this is added by foundation if you add data-topbar to the topbar <nav>
+  padding-top: $topbar-height;
+}
+
+
+// PARTIALS
+
+@import "start";
+@import "stats";
