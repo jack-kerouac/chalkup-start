@@ -1,9 +1,68 @@
 body[state='stats'] {
   @include no-scroll-content;
 
-  section {
+  // POSITIONING
+  .container section {
     height: 100%;
+    padding: 0;
   }
+  #current-grade {
+    height: 2.5rem;
+  }
+  #chart {
+    height: 13.5rem;
+  }
+  #session-list {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 16rem;
+  }
+
+  @media #{$large-up} {
+    #current-grade, #chart {
+      width: 70%;
+    }
+    #chart {
+      height: 30rem;
+    }
+    #session-list {
+      left: 70%;
+      right: 0;
+      top: 0;
+    }
+  }
+
+
+  // REST
+
+  #current-grade {
+    padding-left: 1em;
+    font-size: 1.5em;
+    .grade {
+      font-size: 1.2em;
+      font-weight: 600;
+    }
+  }
+  #chart {
+    background: blue;
+  }
+  #session-list {
+    overflow-y: scroll;
+  }
+
+  ul.sessions {
+    margin: 0;
+    li {
+      height: 3em;
+      border: 1px solid;
+      list-style: none;
+    }
+  }
+
+
+
 
 }
 
