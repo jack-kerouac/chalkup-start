@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('chalkupStartApp')
-    .controller('MainCtrl', function ($scope, $http) {
+    .controller('StartCtrl', function ($scope, $http) {
 
         $('.flexslider').flexslider({
             animation: "slide"
@@ -19,7 +19,6 @@ angular.module('chalkupStartApp')
             }).error(function (data, status) {
                 $scope.error = {data: data, status: status };
             });
-
         }
 
     });
