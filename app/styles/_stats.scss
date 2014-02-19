@@ -1,15 +1,11 @@
 body[state='stats'] {
-  @include no-scroll-content;
+  @include no-scroll-container;
 
   // POSITIONING
 
   $current-grade-height: 2rem;
   $chart-height-small: 13rem;
 
-  .container section {
-    height: 100%;
-    padding: 0;
-  }
   #current-grade {
     height: $current-grade-height;
     line-height: $current-grade-height;

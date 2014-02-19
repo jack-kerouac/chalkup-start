@@ -21,33 +21,6 @@ b, strong {
   display: none !important;
 }
 
-section.row {
-  position: relative;
-
-  @include panel();
-
-  border-top: 0;
-
-  @media #{$small-only}, #{$medium-only} {
-    border-left-width: 0;
-    border-right-width: 0;
-  }
-
-  &.light {
-
-  }
-
-  &.dark {
-    h1, h2, p, small, ul {
-      color: lighten($body-font-color, 95%);
-    }
-    a {
-      color: lighten($primary-color, 50%);
-      text-decoration: underline;
-    }
-  }
-}
-
 h2 > i {
   color: $primary-color;
   font-size: 80%;
@@ -59,7 +32,7 @@ input.ng-invalid.ng-dirty {
 
 // CONTENT CONTAINER
 
-@mixin no-scroll-content {
+@mixin no-scroll-container {
   .container {
     overflow-y: hidden;
   }
@@ -68,7 +41,17 @@ input.ng-invalid.ng-dirty {
 .container {
   height: 100%;
   overflow-y: scroll;
-  position: relative;
+
+  > .content {
+    min-height: 100%;
+    background-color: white;
+    position: relative;
+
+    @media #{$large-up} {
+      border-left: 1px solid $silver;
+      border-right: 1px solid $silver;
+    }
+  }
 }
 
 // TOP BAR
