@@ -8,11 +8,11 @@
     <div id="session-list">
         <ul class="sessions">
             <li ng-repeat="s in statistics | orderBy:'-session.date'" class="row collapse">
-                <div class="column small-2 trend">
+                <div class="column medium-1 small-2 trend">
                     <i ng-show="$even" class="fi-arrow-up"></i>
                     <i ng-show="$odd" class="fi-arrow-down"></i>
                 </div>
-                <div class="column small-7">
+                <div class="column small-6">
                     <div class="title">
                         {{s.session.date | amDateFormat: 'LL' }}
                     </div>
@@ -20,10 +20,10 @@
                         Heavens Gate
                     </div>
                 </div>
-                <div class="column small-2 ascents">
+                <div class="column medium-1 small-2 ascents">
                     <span class="round label">{{s.session.ascents.length}}</span>
                 </div>
-                <div class="column small-1 session-edit">
+                <div class="column large-1 medium-1 small-2 session-edit">
                     <a href="#"><i class="fi-pencil"></i></a>
                 </div>
             </li>

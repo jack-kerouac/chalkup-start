@@ -5,7 +5,6 @@ body[state='stats'] {
 
   $current-grade-height: 2rem;
   $chart-height-small: 13rem;
-  $chart-height-large: 30rem;
 
   .container section {
     height: 100%;
@@ -25,20 +24,6 @@ body[state='stats'] {
     left: 0;
     right: 0;
     top: $chart-height-small + $current-grade-height;
-  }
-
-  @media #{$large-up} {
-    #current-grade, #chart {
-      width: 70%;
-    }
-    #chart {
-      height: $chart-height-large;
-    }
-    #session-list {
-      left: 70%;
-      right: 0;
-      top: $current-grade-height;
-    }
   }
 
   // REST
