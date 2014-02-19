@@ -3,7 +3,6 @@
 angular.module('chalkupStartApp')
     .directive('gradeChart', function (Restangular, LoadingIndicator) {
         var chart;
-        var gradesAboveBelow = 1;
 
         return {
             restrict: 'A',
@@ -51,6 +50,10 @@ angular.module('chalkupStartApp')
                     var gradeTicks = _.map(grades, function (grade) {
                         return [grade.value, grade.font];
                     });
+
+                    $scope.options.yaxes[0].ticks = gradeTicks;
+                    var gradeDiff = gradeTicks[1][0] - gradeTicks[0][0];
+
                     $scope.$watch('gradeData', function(gradeData) {
                         if(_.isEmpty(gradeData))
                             return;
@@ -58,14 +61,8 @@ angular.module('chalkupStartApp')
                         var minGrade = _.min(_.map(gradeData, function(point) { return point[1]}));
                         var maxGrade = _.max(_.map(gradeData, function(point) { return point[1]}));
 
-                        var lowerGrade = _.findIndex(gradeTicks, function(grade) {
-                            return grade[0] > minGrade;
-                        }) - gradesAboveBelow - 1;
-                        var upperGrade = _.findLastIndex(gradeTicks, function(grade) {
-                            return grade[0] < maxGrade;
-                        }) + gradesAboveBelow + 1;
-
-                        $scope.options.yaxes[0].ticks = gradeTicks.slice(lowerGrade, upperGrade + 1);
+                        $scope.options.yaxes[0].min = minGrade - gradeDiff * 1.2;
+                        $scope.options.yaxes[0].max = maxGrade + gradeDiff * 1.2;
 
                         var chartData = [{ data: gradeData, color: gradeColor, yaxis: 1 }];
                         chart = $.plot(elem, chartData, $scope.options);
