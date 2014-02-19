@@ -23,13 +23,23 @@ angular.module('chalkupStartApp')
         $stateProvider
             .state('start', {
                 url: "/",
-                templateUrl: "views/start.html",
-                controller: 'StartCtrl'
+                views: {
+                    content: {
+                        templateUrl: "views/start.html",
+                        controller: 'StartCtrl'
+                    },
+                    navbar: { templateUrl: "views/navbar/start.navbar.html" }
+                }
             })
             .state('stats', {
                 url: "/stats",
-                templateUrl: "views/stats.html",
-                controller: 'StatsCtrl'
+                views: {
+                    content: {
+                        templateUrl: "views/stats.html",
+                        controller: 'StatsCtrl'
+                    },
+                    navbar: { templateUrl: "views/navbar/stats.navbar.html" }
+                }
             })
 
         RestangularProvider.setBaseUrl('http://demo.chalkup.de')

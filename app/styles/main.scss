@@ -54,17 +54,6 @@ input.ng-invalid.ng-dirty {
   }
 }
 
-// TOP BAR
-
-.top-bar {
-  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5);
-}
-
-body {
-  // this prevents container from disappearing partially behind top bar
-  // this is added by foundation if you add data-topbar to the topbar <nav>
-  padding-top: $topbar-height;
-}
 
 // SPINNER
 #loading-overlay {
@@ -86,5 +75,6 @@ body {
 
 // PARTIALS
 
+@import "navbar";
 @import "start";
 @import "stats";

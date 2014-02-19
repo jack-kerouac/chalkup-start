@@ -1,0 +1,61 @@
+$navbar-height: 45px;
+
+body {
+  // this prevents container from disappearing partially behind top bar
+  // this is added by foundation if you add data-topbar to the topbar <nav>
+  padding-top: $navbar-height;
+}
+
+nav.bar {
+  // POSITION
+  height: $navbar-height;
+  width: 100%;
+  left: 0;
+  top: 0;
+  position: fixed;
+  z-index: 1000;
+  overflow: hidden;
+
+  // COLORS
+
+  background-color: $midnight-blue;
+
+  color: white;
+  a {
+    color: white;
+  }
+
+
+  // CONTENT
+
+  line-height: $navbar-height;
+  vertical-align: middle;
+
+  > * {
+    height: $navbar-height;
+    line-height: $navbar-height;
+    vertical-align: middle;
+
+    margin: 0;
+  }
+
+  h1 {
+    float: left;
+    font-size: 1.2em;
+    display: block;
+
+    margin-left: 1em;
+  }
+
+  ul.actions {
+    @include inline-list;
+    float: right;
+    margin-right: 1em;
+
+    // all icons bigger
+    i[class^='fi-'] {
+      font-size: 1.5em;
+    }
+  }
+
+}
