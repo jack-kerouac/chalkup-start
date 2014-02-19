@@ -18,7 +18,7 @@ angular.module('chalkupStartApp')
                         mode: "time",
                         tickFormatter: function(number, object) {
                             var date = moment(number);
-                            return date.format("MMM") + "<br>" + date.format("D");
+                            return date.format("D") + "<br>" + date.format("MMM");
                         },
                         tickLength: 5,
                         font: {
