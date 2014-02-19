@@ -19,7 +19,7 @@
 </section>
 
 <section class="ascents">
-    <h2>Begehungen {{session.ascents.length}}</h2>
+    <h2>Begehungen <span class="ascent-count">{{session.ascents.length}}</span></h2>
     <ul>
         <li ng-repeat="ascent in session.ascents">
             {{ascent.style}}

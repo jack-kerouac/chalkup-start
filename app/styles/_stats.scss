@@ -81,13 +81,7 @@ body[state='stats'] {
       }
 
       .ascents span {
-        font-weight: 600 !important;
-
-        @include label(
-          $text-size: 0.8em,
-          $bg: $carrot,
-          $radius: 1000px
-        );
+        @include ascent-count;
       }
 
       .session-edit {

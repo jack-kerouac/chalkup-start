@@ -1,4 +1,8 @@
 
+.ascents .ascent-count {
+  @include ascent-count;
+}
+
 .map {
   height: 40em;
   margin-bottom: 1.25rem;

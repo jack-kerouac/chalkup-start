@@ -6,6 +6,17 @@
 $fi-path: "/bower_components/foundation-icon-fonts";
 @import "foundation-icon-fonts/foundation-icons";
 
+
+@mixin ascent-count {
+  font-weight: 600 !important;
+
+  @include label(
+    $text-size: 0.8em,
+    $bg: $carrot,
+    $radius: 1000px
+  );
+}
+
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
