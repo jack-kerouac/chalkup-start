@@ -10,7 +10,8 @@ angular.module('chalkupStartApp')
                 gradeData: '='
             },
             link: function ($scope, elem) {
-                var gradeColor = 'white';
+                var foregroundColor = 'white';
+                var gridColor = '#0D4F7A';
 
                 $scope.options = {
                     xaxis: {
@@ -21,12 +22,12 @@ angular.module('chalkupStartApp')
                         },
                         tickLength: 5,
                         font: {
-                            color: 'white'
+                            color: foregroundColor
                         }
                     },
                     yaxes: [
                         {
-                            font: { color: gradeColor }
+                            font: { color: foregroundColor, weight: '600' }
                         }
                     ],
                     series: {
@@ -38,9 +39,11 @@ angular.module('chalkupStartApp')
                         borderWidth: 0,
                         labelMargin: 10,
                         margin: {
+                            left: 10,
+                            right: 15,
                             bottom: 10
                         },
-                        color: '#186496'
+                        color: gridColor
                     }
                 };
 
@@ -48,7 +51,12 @@ angular.module('chalkupStartApp')
                 LoadingIndicator.waitFor(grades);
                 grades.then(function (grades) {
                     var gradeTicks = _.map(grades, function (grade) {
-                        return [grade.value, grade.font];
+                        var label;
+                        if(grade.font.length == 2)
+                            label = grade.font + "&nbsp;&nbsp;";
+                        else
+                            label = grade.font;
+                        return [grade.value, label];
                     });
 
                     $scope.options.yaxes[0].ticks = gradeTicks;
@@ -64,7 +72,7 @@ angular.module('chalkupStartApp')
                         $scope.options.yaxes[0].min = minGrade - gradeDiff * 1.2;
                         $scope.options.yaxes[0].max = maxGrade + gradeDiff * 1.2;
 
-                        var chartData = [{ data: gradeData, color: gradeColor, yaxis: 1 }];
+                        var chartData = [{ data: gradeData, color: foregroundColor, yaxis: 1 }];
                         chart = $.plot(elem, chartData, $scope.options);
                     });
                 });
