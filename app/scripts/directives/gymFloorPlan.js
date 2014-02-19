@@ -1,44 +1,7 @@
 'use strict';
 
 angular.module('chalkupStartApp')
-    .directive('gymFloorPlan', function () {
-
-	function colorDiv(color, div) {
-		var css;
-
-		if (color.hasOwnProperty('ternary')) {
-			// use text gradient for two colored boulders
-			var gradient = color.primary + " 33%, " +
-				color.secondary + " 33%, " + color.secondary + " 67%, " +
-				color.ternary + " 67%";
-
-			css = {
-                // TODO: add multiple backgrounds
-//				background: "-webkit-linear-gradient(top, " + gradient + ")", /* Chrome10+,Safari5.1+ */
-//				background: "-o-linear-gradient(top, " + gradient + ")", /* Opera 11.10+ */
-//				background: "-ms-linear-gradient(top, " + gradient + ")", /* IE10+ */
-				background: "linear-gradient(to bottom, " + gradient + ")" /* W3C */
-			};
-		}
-		else if (color.hasOwnProperty('secondary')) {
-			// use text gradient for two colored boulders
-			var gradient = color.primary + " 50%, " + color.secondary + " 50%";
-
-			css = {
-                // TODO: add multiple backgrounds
-//				background: "-webkit-linear-gradient(top, " + gradient + ")", /* Chrome10+,Safari5.1+ */
-//				background: "-o-linear-gradient(top, " + gradient + ")", /* Opera 11.10+ */
-//				background: "-ms-linear-gradient(top, " + gradient + ")", /* IE10+ */
-				background: "linear-gradient(to bottom, " + gradient + ")" /* W3C */
-			};
-		}
-		else {
-			css = {
-				background: color.primary
-			};
-		}
-		$(div).css(css);
-	}
+    .directive('gymFloorPlan', function (cuColorService) {
 
 	L.BoulderIcon = L.DivIcon.extend({
 		options: {
@@ -54,7 +17,7 @@ angular.module('chalkupStartApp')
 			var div = L.DivIcon.prototype.createIcon.call(this, oldIcon);
 			var color = this.options.color;
 
-			colorDiv(color, div);
+            cuColorService.color(div, color);
 			return div;
 		}
 	});

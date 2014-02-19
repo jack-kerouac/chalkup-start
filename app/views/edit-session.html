@@ -11,7 +11,10 @@
             <img ng-src="{{currentBoulder.photo.url}}" alt=""/>
         </div>
     </div>
-    <div class="boulder-meta">{{currentBoulder.initialGrade.readable}}</div>
+    <div class="boulder-meta">
+        {{currentBoulder.initialGrade.readable}}
+        <div style="width: 50px; height: 50px;" cu-color="currentBoulder.color"></div>
+    </div>
     <div class="ascent-style-control">top/flash</div>
 </section>
 
