@@ -43,6 +43,16 @@ angular.module('chalkupStartApp')
                     navbar: { templateUrl: "views/navbar/stats.navbar.html" }
                 }
             })
+            .state('create-session', {
+                url: "/createSession",
+                views: {
+                    content: {
+                        templateUrl: "views/create-session.html",
+                        controller: 'CreateSessionCtrl'
+                    },
+                    navbar: { templateUrl: "views/navbar/create-session.navbar.html" }
+                }
+            })
 
         RestangularProvider.setBaseUrl('http://demo.chalkup.de')
     });

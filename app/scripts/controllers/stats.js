@@ -22,7 +22,6 @@ angular.module('chalkupStartApp')
                 return stat;
             });
 
-
             var currentGradeData = [];
             currentGradeData.push([moment($scope.user.registrationDate).toDate(), $scope.user.initialGrade.value]);
 
