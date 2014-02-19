@@ -13,7 +13,15 @@ angular.module('chalkupStartApp')
 
         LoadingIndicator.waitFor(statistics);
         statistics.then(function (statistics) {
-            $scope.statistics = statistics;
+            // trend calculation
+            var oldGradeValue = $scope.user.initialGrade.value;
+            $scope.statistics = _.map(statistics, function (stat) {
+                var gradeValue = stat.grade.mean.value
+                stat.gradeDiff = gradeValue - oldGradeValue;
+                oldGradeValue = gradeValue;
+                return stat;
+            });
+
 
             var currentGradeData = [];
             currentGradeData.push([moment($scope.user.registrationDate).toDate(), $scope.user.initialGrade.value]);
