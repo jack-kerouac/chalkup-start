@@ -1,16 +1,25 @@
 <section class="floor-plan">
     <h2>alle Boulder</h2>
-    <div class="floor-plan">FP</div>
+    <gym-floor-plan floor-plan="gym.floorPlans[0]" boulders="boulders"
+                    boulder-click="select(boulder)"
+                    floor-plan-click="unselect()"
+                    selected="currentBoulder"></gym-floor-plan>
 
-    <div class="boulder-photo">Photo</div>
-    <div class="boulder-meta">Meta</div>
+    <div class="boulder-photo">
+        <div ng-show="!currentBoulder.photo">NO PHOTO</div>
+        <div ng-show="currentBoulder.photo">
+            <img ng-src="{{currentBoulder.photo.url}}" alt=""/>
+        </div>
+    </div>
+    <div class="boulder-meta">{{currentBoulder.initialGrade.readable}}</div>
     <div class="ascent-style-control">top/flash</div>
 </section>
 
 <section class="ascents">
-    <h2>Begehungen (2)</h2>
+    <h2>Begehungen {{session.ascents.length}}</h2>
     <ul>
-        <li>first boulder</li>
-        <li>second boulder</li>
+        <li ng-repeat="ascent in session.ascents">
+            {{ascent.style}}
+        </li>
     </ul>
 </section>

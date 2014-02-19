@@ -2,8 +2,7 @@
 
 angular.module('chalkupStartApp')
     .controller('StatsCtrl', function ($scope, Restangular, LoadingIndicator) {
-
-        var user = Restangular.one('users', 1);
+        var user = Restangular.one('users', 4);
 
         $scope.user = user.get().$object;
 
