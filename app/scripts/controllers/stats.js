@@ -2,7 +2,7 @@
 
 angular.module('chalkupStartApp')
     .controller('StatsCtrl', function ($scope, $q, Restangular, LoadingIndicator) {
-        var user = Restangular.one('users', 4);
+        var user = Restangular.one('users', 8);
 
         var userGet = user.get();
         LoadingIndicator.waitFor(userGet);

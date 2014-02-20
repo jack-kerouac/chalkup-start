@@ -6,16 +6,46 @@
 $fi-path: "/bower_components/foundation-icon-fonts";
 @import "foundation-icon-fonts/foundation-icons";
 
+@mixin ascent-count($background-color: $carrot, $color: white) {
+  @include label($text-size: 0.8em, $bg: $background-color, $radius: 1000px);
 
-@mixin ascent-count {
   font-weight: 600 !important;
-
-  @include label(
-    $text-size: 0.8em,
-    $bg: $carrot,
-    $radius: 1000px
-  );
+  color: $color;
+  position: relative;
+  top: -0.1em;
 }
+
+// TABS
+
+dl.tabs dd {
+  top: 0;
+
+  a {
+    $tabs-height: 45px;
+
+    font-weight: 300;
+
+    width: 100%;
+    height: $tabs-height;
+    line-height: $tabs-height;
+    vertical-align: middle;
+    text-align: center;
+
+    .ascent-count {
+      @include ascent-count(white, $belize-hole);
+    }
+  }
+
+  &.active a {
+    border-bottom: 3px solid $silver;
+
+    .ascent-count {
+      @include ascent-count(white, $peter-river);
+    }
+  }
+}
+
+// OTHER STUFF
 
 .browsehappy {
   margin: 0.2em 0;

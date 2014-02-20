@@ -27,7 +27,7 @@ body[state='stats'] {
   #current-grade {
     text-align: right;
     color: white;
-    background-color: $primary-color;
+    background-color: $peter-river;
     padding-right: 0.5em;
 
     font-size: 1.5em;
@@ -36,7 +36,7 @@ body[state='stats'] {
     }
   }
   #chart {
-    background: $primary-color;
+    background: $peter-river;
   }
   #session-list {
     overflow-y: scroll;
@@ -54,7 +54,7 @@ body[state='stats'] {
       .title {
         margin-top: $session-height * 0.125;
         font-weight: 600;
-        color: $primary-color;
+        color: $peter-river;
       }
       .gym {
         font-size: 0.8em;

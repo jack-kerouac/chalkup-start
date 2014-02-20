@@ -41,6 +41,16 @@ angular.module('chalkupStartApp')
             $scope.currentBoulder = undefined;
         };
 
+
+        $scope.boulder = function (id) {
+            return _.find($scope.gym.boulders, function (boulder) {
+                return boulder.id === id;
+            });
+        }
+
+
+        $scope.activeTab = 'floor-plan';
+
         // CONFIGURE ASCENT
 
         $scope.currentAscent = {};
