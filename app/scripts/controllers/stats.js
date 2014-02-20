@@ -1,19 +1,25 @@
 'use strict';
 
 angular.module('chalkupStartApp')
-    .controller('StatsCtrl', function ($scope, Restangular, LoadingIndicator) {
+    .controller('StatsCtrl', function ($scope, $q, Restangular, LoadingIndicator) {
         var user = Restangular.one('users', 4);
 
-        $scope.user = user.get().$object;
+        var userGet = user.get();
+        LoadingIndicator.waitFor(userGet);
+
+        var statisticsGet = user.all('statistics').getList();
+        LoadingIndicator.waitFor(statisticsGet);
 
         $scope.gradeData = [];
 
-        var statistics = user.all('statistics').getList();
+        $q.all([userGet, statisticsGet]).then(function (args) {
+            var user = args[0];
+            var statistics = args[1];
 
-        LoadingIndicator.waitFor(statistics);
-        statistics.then(function (statistics) {
+            $scope.user = user;
+
             // trend calculation
-            var oldGradeValue = $scope.user.initialGrade.value;
+            var oldGradeValue = user.initialGrade.value;
             $scope.statistics = _.map(statistics, function (stat) {
                 var gradeValue = stat.grade.mean.value
                 stat.gradeDiff = gradeValue - oldGradeValue;
@@ -22,7 +28,7 @@ angular.module('chalkupStartApp')
             });
 
             var currentGradeData = [];
-            currentGradeData.push([moment($scope.user.registrationDate).toDate(), $scope.user.initialGrade.value]);
+            currentGradeData.push([moment(user.registrationDate).toDate(), user.initialGrade.value]);
 
             _.each(statistics, function (stat) {
                 var date = moment(stat.session.date).toDate();
