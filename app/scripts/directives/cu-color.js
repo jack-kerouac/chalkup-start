@@ -4,7 +4,12 @@ angular.module('chalkupStartApp')
     .factory('cuColorService', function () {
 
         function getCss(color) {
-            if (color.hasOwnProperty('ternary')) {
+            if (_.isUndefined(color)) {
+                return {
+                    background: 'transparent'
+                };
+            }
+            else if (color.hasOwnProperty('ternary')) {
                 // use text gradient for two colored boulders
                 var gradient = color.primary + " 33%, " +
                     color.secondary + " 33%, " + color.secondary + " 67%, " +
@@ -48,9 +53,7 @@ angular.module('chalkupStartApp')
             },
             link: function ($scope, elem) {
                 $scope.$watch('cuColor', function (color) {
-                    if (!_.isUndefined(color)) {
-                        cuColorService.color(elem, color);
-                    }
+                    cuColorService.color(elem, color);
                 })
             }
         };
