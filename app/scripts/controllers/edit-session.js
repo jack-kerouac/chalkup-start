@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('chalkupStartApp')
-    .controller('EditSessionCtrl', function ($scope, $stateParams, Restangular, LoadingIndicator) {
+    .controller('EditSessionCtrl', function ($scope, $stateParams, $state, Restangular, LoadingIndicator) {
+
         var session = Restangular.one('sessions', $stateParams.id).get();
         LoadingIndicator.waitFor(session);
         $scope.session = session.$object;
@@ -96,10 +97,14 @@ angular.module('chalkupStartApp')
         });
 
 
-        $scope.boulder = function (id) {
-            return _.find($scope.gym.boulders, function (boulder) {
-                return boulder.id === id;
+        // SAVE SESSION
+
+        $scope.$on('SAVE-SESSION', function(event) {
+            var update = $scope.session.put();
+            LoadingIndicator.waitFor(update);
+            update.then(function() {
+                $state.go('stats');
             });
-        }
+        });
 
     });

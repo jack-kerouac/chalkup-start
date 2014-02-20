@@ -60,10 +60,16 @@ angular.module('chalkupStartApp')
                         templateUrl: "views/edit-session.html",
                         controller: 'EditSessionCtrl'
                     },
-                    navbar: { templateUrl: "views/navbar/edit-session.navbar.html" }
+                    navbar: {
+                        templateUrl: "views/navbar/edit-session.navbar.html",
+                        controller: function($scope, $rootScope) {
+                            $scope.save = function() {
+                                $rootScope.$broadcast('SAVE-SESSION');
+                            }
+                        }
+                    }
                 }
-            })
-
+            });
 
         RestangularProvider.setBaseUrl('http://demo.chalkup.de')
     });
