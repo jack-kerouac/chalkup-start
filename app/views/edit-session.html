@@ -1,6 +1,6 @@
 <section class="floor-plan">
     <h2>alle Boulder</h2>
-    <gym-floor-plan floor-plan="gym.floorPlans[0]" boulders="boulders"
+    <gym-floor-plan floor-plan="gym.floorPlans[0]" boulders="gym.boulders"
                     boulder-click="select(boulder)"
                     floor-plan-click="unselect()"
                     selected="currentBoulder"></gym-floor-plan>
@@ -15,14 +15,25 @@
         {{currentBoulder.initialGrade.readable}}
         <div style="width: 50px; height: 50px;" cu-color="currentBoulder.color"></div>
     </div>
-    <div class="ascent-style-control">top/flash</div>
+    <div class="ascent-style-control">
+        <div>
+            <input id="flash" type="checkbox" ng-model="currentAscent.style" ng-true-value="flash" ng-false-value="none"
+                   ng-disabled="!currentAscent">
+            <label for="flash">flash</label>
+        </div>
+        <div>
+            <input id="top" type="checkbox" ng-model="currentAscent.style" ng-true-value="top" ng-false-value="none"
+                   ng-disabled="!currentAscent">
+            <label for="top">top</label>
+        </div>
+    </div>
 </section>
 
 <section class="ascents">
     <h2>Begehungen <span class="ascent-count">{{session.ascents.length}}</span></h2>
     <ul>
         <li ng-repeat="ascent in session.ascents">
-            {{ascent.style}}
+            <a ng-click="select(boulder(ascent.boulder))">{{ascent.boulder}}</a>: {{ascent.style}}
         </li>
     </ul>
 </section>

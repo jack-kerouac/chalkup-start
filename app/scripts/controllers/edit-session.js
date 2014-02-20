@@ -11,20 +11,20 @@ angular.module('chalkupStartApp')
             LoadingIndicator.waitFor(gym);
             $scope.gym = gym.$object;
 
-            gym.then(function(gym) {
+            gym.then(function (gym) {
                 // make image URLs absolute
-                _.each(gym.floorPlans, function(floorPlan) {
+                _.each(gym.floorPlans, function (floorPlan) {
                     floorPlan.img.url = Restangular.configuration.baseUrl + floorPlan.img.url;
                 });
 
                 var boulders = gym.one('boulders').getList();
                 LoadingIndicator.waitFor(boulders);
-                $scope.boulders = boulders.$object;
+                $scope.gym.boulders = boulders.$object;
 
-                boulders.then(function(boulders) {
+                boulders.then(function (boulders) {
                     // make photo URLs absolute
-                    _.each(boulders, function(boulder) {
-                        if(!_.isUndefined(boulder.photo))
+                    _.each(boulders, function (boulder) {
+                        if (!_.isUndefined(boulder.photo))
                             boulder.photo.url = Restangular.configuration.baseUrl + boulder.photo.url;
                     });
                 });
@@ -37,8 +37,58 @@ angular.module('chalkupStartApp')
             $scope.currentBoulder = boulder;
         };
 
-        $scope.unselect = function() {
+        $scope.unselect = function () {
             $scope.currentBoulder = undefined;
+        };
+
+        // CONFIGURE ASCENT
+
+        $scope.currentAscent = {};
+
+        function getOrCreate(session, boulder) {
+            var ascent = _.find(session.ascents, function (ascent) {
+                return ascent.boulder === boulder.id;
+            });
+            if (_.isUndefined(ascent))
+                return { boulder: boulder.id, style: "none" };
+            else
+                return ascent;
+        }
+
+        $scope.$watch('currentBoulder', function (currentBoulder) {
+            if (_.isUndefined(currentBoulder))
+                $scope.currentAscent = undefined;
+            else
+                $scope.currentAscent = getOrCreate($scope.session, currentBoulder);
+        });
+
+
+        function addAscent(session, ascent) {
+            if (!_.contains(session.ascents, ascent))
+                session.ascents.push(ascent);
+        }
+
+        function removeAscent(session, ascent) {
+            if (_.contains(session.ascents, ascent)) {
+                _.pull(session.ascents, ascent);
+            }
+        }
+
+        $scope.$watch('currentAscent.style', function (style) {
+            if (_.isUndefined(style))
+                return;
+
+            if (style === 'none')
+                removeAscent($scope.session, $scope.currentAscent);
+            else
+                addAscent($scope.session, $scope.currentAscent);
+        });
+
+
+        $scope.boulder = function (id) {
+            return _.find($scope.gym.boulders, function (boulder) {
+                return boulder.id === id;
+            });
         }
 
     });
