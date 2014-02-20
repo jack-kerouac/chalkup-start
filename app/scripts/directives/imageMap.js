@@ -98,153 +98,169 @@ angular.module('chalkupStartApp')
 			markerClickHandler: '&markerClick',
 			imageMarkers: '=markers'
 		},
-		controller: ['$scope', '$element', '$attrs', '$q', function ($scope, $element, $attrs, $q) {
+		controller: ['$scope', '$element', '$attrs', '$q', '$timeout', function ($scope, $element, $attrs, $q, $timeout) {
 			// +++++++++
 			// SETUP MAP
 			// +++++++++
 			var leafletMapElem = $element[0].children[0];
-			var map = L.map(leafletMapElem, {
-				maxZoom: 3,
-				crs: L.CRS.Simple
-			});
-			map.setView([0, 0], 0);
 
-			var imageReady = $q.defer();
-			$scope.$watch('image', function (image, oldImage) {
-				if (image === undefined)
-					return;
+            var imageReady = $q.defer();
+            var map;
 
-				if ($scope.overlay !== undefined) {
-					map.removeLayer($scope.overlay);
-				}
-
-				$scope.projection = calculateProjection(map, $scope.image);
-
-				$scope.overlay = L.imageOverlay($scope.image.url, $scope.projection.latLngBounds, {
-						noWrap: true
-					}
-				);
-				$scope.overlay.addTo(map);
-				map.setMaxBounds($scope.projection.latLngBounds);
-
-				imageReady.resolve();
-			});
+            $timeout(function() {
 
 
-			// +++++++++++++
-			// CLICK HANDLER
-			// +++++++++++++
-			map.on('click', function (event) {
-				$scope.$apply(function () {
-					var point = $scope.projection.latLngToImagePoint(event.latlng);
-					$scope.mapClickHandler({point: point});
-				});
-			});
+                map = L.map(leafletMapElem, {
+                    maxZoom: 3,
+                    crs: L.CRS.Simple
+                });
+                map.setView([0, 0], 0);
 
-			// +++++++
-			// MARKERS
-			// +++++++
-			$scope.$watch('imageMarkers', function (imageMarkers, oldImageMarkers) {
-				if (imageMarkers === undefined)
-					return;
+                $scope.$watch('image', function (image, oldImage) {
 
-				// DELETE OLD MARKERS
+                    if (image === undefined)
+                        return;
 
-				if (imageMarkers !== oldImageMarkers) {
-					if (!$scope.hasLayers) {
-						_.each($scope.leafletMarkers, function (leafletMarker) {
-							map.removeLayer(leafletMarker);
-						});
-						delete $scope.leafletMarkers;
-					}
-					else {
-						_.each($scope.leafletMarkerLayers, function (layerGroup, layerName) {
-							map.removeLayer(layerGroup);
-						});
-						delete $scope.leafletMarkerLayers;
+                    if ($scope.overlay !== undefined) {
+                        map.removeLayer($scope.overlay);
+                    }
 
-						map.removeControl($scope.layerControl);
-						delete $scope.layerControl;
-					}
-				}
+                    $scope.projection = calculateProjection(map, $scope.image);
 
-				// CREATE NEW MARKERS
-				imageReady.promise.then(function () {
-					function toMarkers(imageMarkers) {
-						return _.map(imageMarkers, function (imageMarker) {
-							var latLng = $scope.projection.imagePointToLatLng([imageMarker.x, imageMarker.y]);
-							var options = {
-								id: imageMarker.id,
-								riseOnHover: true,
-								draggable: imageMarker.draggable
-							};
-							if (imageMarker.leafletIcon)
-								options.icon = imageMarker.leafletIcon;
-							if (imageMarker.color)
-								options.color = imageMarker.color;
-							if (imageMarker.selected)
-								options.selected = imageMarker.selected;
+                    $scope.overlay = L.imageOverlay($scope.image.url, $scope.projection.latLngBounds, {
+                            noWrap: true
+                        }
+                    );
+                    $scope.overlay.addTo(map);
+                    map.setMaxBounds($scope.projection.latLngBounds);
 
-							var marker = L.selectableMarker(latLng, options);
+                    imageReady.resolve();
+                });
 
 
-							marker.on('dragend', function (e) {
-								$scope.$apply(function () {
-									var marker = e.target;
-									var p = $scope.projection.latLngToImagePoint(marker.getLatLng());
-									imageMarker.x = p.x;
-									imageMarker.y = p.y;
-								});
-							});
 
-							marker.on('click', function (event) {
-								$scope.$apply(function () {
-									$scope.markerClickHandler({marker: imageMarker});
-								});
-							});
-							return marker;
-						});
-					}
 
-					// MARKERS AS FLAT ARRAY => NO LAYERS
-					if (angular.isArray(imageMarkers)) {
-						$scope.hasLayers = false;
 
-						var leafletMarkers = toMarkers(imageMarkers);
-						_.each(leafletMarkers, function (leafletMarker) {
-							leafletMarker.addTo(map);
-						});
 
-						$scope.leafletMarkers = leafletMarkers;
-					}
-					// MARKERS AS OBJECT => LAYERS WITH KEY AS NAME
-					else if (angular.isObject(imageMarkers)) {
-						$scope.hasLayers = true;
+                // +++++++++++++
+                // CLICK HANDLER
+                // +++++++++++++
+                map.on('click', function (event) {
+                    $scope.$apply(function () {
+                        var point = $scope.projection.latLngToImagePoint(event.latlng);
+                        $scope.mapClickHandler({point: point});
+                    });
+                });
 
-						var markerLayers = {};
+                // +++++++
+                // MARKERS
+                // +++++++
+                $scope.$watch('imageMarkers', function (imageMarkers, oldImageMarkers) {
+                    if (imageMarkers === undefined)
+                        return;
 
-						_.each(imageMarkers, function (imageMarkers, layerName) {
-							markerLayers[layerName] = L.layerGroup();
+                    // DELETE OLD MARKERS
 
-							var leafletMarkers = toMarkers(imageMarkers);
-							_.each(leafletMarkers, function (leafletMarker) {
-								markerLayers[layerName].addLayer(leafletMarker);
-							});
-						});
+                    if (imageMarkers !== oldImageMarkers) {
+                        if (!$scope.hasLayers) {
+                            _.each($scope.leafletMarkers, function (leafletMarker) {
+                                map.removeLayer(leafletMarker);
+                            });
+                            delete $scope.leafletMarkers;
+                        }
+                        else {
+                            _.each($scope.leafletMarkerLayers, function (layerGroup, layerName) {
+                                map.removeLayer(layerGroup);
+                            });
+                            delete $scope.leafletMarkerLayers;
 
-						// show all layers
-						_.each(markerLayers, function (layerGroup) {
-							layerGroup.addTo(map);
-						});
-						// add control
-						$scope.layerControl = L.control.layers({}, markerLayers);
-						$scope.layerControl.addTo(map);
+                            map.removeControl($scope.layerControl);
+                            delete $scope.layerControl;
+                        }
+                    }
 
-						$scope.leafletMarkerLayers = markerLayers;
-					}
-				});
+                    // CREATE NEW MARKERS
+                    imageReady.promise.then(function () {
+                        function toMarkers(imageMarkers) {
+                            return _.map(imageMarkers, function (imageMarker) {
+                                var latLng = $scope.projection.imagePointToLatLng([imageMarker.x, imageMarker.y]);
+                                var options = {
+                                    id: imageMarker.id,
+                                    riseOnHover: true,
+                                    draggable: imageMarker.draggable
+                                };
+                                if (imageMarker.leafletIcon)
+                                    options.icon = imageMarker.leafletIcon;
+                                if (imageMarker.color)
+                                    options.color = imageMarker.color;
+                                if (imageMarker.selected)
+                                    options.selected = imageMarker.selected;
 
-			}, true);
-		}]
+                                var marker = L.selectableMarker(latLng, options);
+
+
+                                marker.on('dragend', function (e) {
+                                    $scope.$apply(function () {
+                                        var marker = e.target;
+                                        var p = $scope.projection.latLngToImagePoint(marker.getLatLng());
+                                        imageMarker.x = p.x;
+                                        imageMarker.y = p.y;
+                                    });
+                                });
+
+                                marker.on('click', function (event) {
+                                    $scope.$apply(function () {
+                                        $scope.markerClickHandler({marker: imageMarker});
+                                    });
+                                });
+                                return marker;
+                            });
+                        }
+
+                        // MARKERS AS FLAT ARRAY => NO LAYERS
+                        if (angular.isArray(imageMarkers)) {
+                            $scope.hasLayers = false;
+
+                            var leafletMarkers = toMarkers(imageMarkers);
+                            _.each(leafletMarkers, function (leafletMarker) {
+                                leafletMarker.addTo(map);
+                            });
+
+                            $scope.leafletMarkers = leafletMarkers;
+                        }
+                        // MARKERS AS OBJECT => LAYERS WITH KEY AS NAME
+                        else if (angular.isObject(imageMarkers)) {
+                            $scope.hasLayers = true;
+
+                            var markerLayers = {};
+
+                            _.each(imageMarkers, function (imageMarkers, layerName) {
+                                markerLayers[layerName] = L.layerGroup();
+
+                                var leafletMarkers = toMarkers(imageMarkers);
+                                _.each(leafletMarkers, function (leafletMarker) {
+                                    markerLayers[layerName].addLayer(leafletMarker);
+                                });
+                            });
+
+                            // show all layers
+                            _.each(markerLayers, function (layerGroup) {
+                                layerGroup.addTo(map);
+                            });
+                            // add control
+                            $scope.layerControl = L.control.layers({}, markerLayers);
+                            $scope.layerControl.addTo(map);
+
+                            $scope.leafletMarkerLayers = markerLayers;
+                        }
+                    });
+
+                }, true);
+
+            // TIMER
+            }, 300);
+
+
+        }]
 	};
 });

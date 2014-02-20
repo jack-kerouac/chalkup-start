@@ -39,66 +39,37 @@ body[state='stats'] {
     background: $peter-river;
   }
   #session-list {
-    overflow-y: scroll;
+    overflow-y: auto;
   }
 
   ul.sessions {
-    margin: 0;
-
     $session-height: 3.5rem;
 
-    li {
-      border-bottom: 1px solid $silver;
-      list-style: none;
+    @include list-items($session-height, true);
+    .trend {
+      font-size: 2em;
 
-      .title {
-        margin-top: $session-height * 0.125;
-        font-weight: 600;
-        color: $peter-river;
+      i:nth-child(1) {
+        color: #2ecc71;
       }
-      .gym {
-        font-size: 0.8em;
+      i:nth-child(2) {
+        color: #e74c3c;
       }
+    }
 
-      .session-edit, .trend, .ascents {
-        // TODO: use foundation equalizer
-        height: $session-height;
+    .trend, .ascents {
+      line-height: $session-height;
+      vertical-align: middle;
+      text-align: center;
+    }
 
-        text-align: center;
-        line-height: $session-height;
-        vertical-align: middle;
-      }
+    .trend {
+      font-size: 2em;
+    }
 
-      .trend {
-        font-size: 2em;
-
-        i:nth-child(1) {
-          color: #2ecc71;
-        }
-        i:nth-child(2) {
-          color: #e74c3c;
-        }
-      }
-
-      .ascents span {
-        @include ascent-count;
-      }
-
-      .session-edit {
-        font-size: 1.4em;
-
-        border-left: 1px solid $clouds;
-
-        a {
-          width: 100%;
-          height: 100%;
-          display: block;
-        }
-      }
-
+    .ascents span {
+      @include ascent-count;
     }
   }
 
 }
-
-

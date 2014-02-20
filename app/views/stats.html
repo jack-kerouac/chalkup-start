@@ -12,10 +12,10 @@
                 <i ng-show="s.gradeDiff < 0" class="fi-arrow-down"></i>
             </div>
             <div class="column medium-9 small-6">
-            <div class="title">
+                <div class="title">
                     {{s.session.date | amDateFormat: 'LL' }}
                 </div>
-                <div class="gym">
+                <div class="subtitle">
                     {{s.session.gym.name}}
                 </div>
             </div>
@@ -23,7 +23,7 @@
                 <span>{{s.session.ascents.length}}</span>
             </div>
             <div class="column medium-1 small-2 session-edit">
-            <a ui-sref="edit-session({id: {{s.session.id}} })"><i class="fi-pencil"></i></a>
+                <a ui-sref="edit-session({id: {{s.session.id}} })"><i class="fi-pencil"></i></a>
             </div>
         </li>
     </ul>

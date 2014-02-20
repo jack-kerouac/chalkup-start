@@ -37,13 +37,89 @@ dl.tabs dd {
   }
 
   &.active a {
-    border-bottom: 3px solid $silver;
+    border-bottom: 3px solid $orange;
 
     .ascent-count {
       @include ascent-count(white, $peter-river);
     }
   }
 }
+
+
+// GYM FLOOR PLAN
+
+.leaflet-container form, .leaflet-container input[type=checkbox] {
+  margin: 0;
+}
+
+.boulder-icon {
+  opacity: 0.9;
+  border-radius: 100px; /* something large */
+
+  width: 24px;
+  height: 24px;
+  margin-left: -12px;
+  margin-top: -12px;
+}
+
+.boulder-icon:hover, .boulder-icon.selected {
+  width: 30px;
+  height: 30px;
+  margin-left: -15px;
+  margin-top: -15px;
+  -webkit-box-shadow: 0px 0px 30px 0px rgba(50, 50, 50, 1);
+  -moz-box-shadow: 0px 0px 30px 0px rgba(50, 50, 50, 1);
+  box-shadow: 0px 0px 30px 0px rgba(50, 50, 50, 1);
+}
+
+.boulder-icon.selected {
+  opacity: 1.0;
+  z-index: 1000000 !important;
+}
+
+// LIST ITEMS
+
+@mixin list-items($height, $linkIcon: false) {
+  margin: 0;
+
+  li {
+    border-bottom: 1px solid $silver;
+    list-style: none;
+
+    .title {
+      margin-top: $height * 0.125;
+      font-weight: 600;
+      color: $peter-river;
+    }
+    .subtitle {
+      font-size: 0.8em;
+    }
+
+    > * {
+      // TODO: use foundation equalizer
+      height: $height;
+    }
+
+    @if $linkIcon {
+      > :last-child {
+        font-size: 1.4em;
+
+        border-left: 1px solid $clouds;
+
+        a {
+          width: 100%;
+          height: 100%;
+          display: block;
+
+          line-height: $height;
+          vertical-align: middle;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+
 
 // OTHER STUFF
 
@@ -94,7 +170,6 @@ input.ng-invalid.ng-dirty {
     }
   }
 }
-
 
 // SPINNER
 #loading-overlay {

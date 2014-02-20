@@ -31,10 +31,14 @@ angular.module('chalkupStartApp')
             });
         });
 
+        $scope.activeTab = 'floor-plan';
+
+
         $scope.currentBoulder = undefined;
 
         $scope.select = function (boulder) {
             $scope.currentBoulder = boulder;
+            $scope.activeTab = 'floor-plan';
         };
 
         $scope.unselect = function () {
@@ -47,9 +51,6 @@ angular.module('chalkupStartApp')
                 return boulder.id === id;
             });
         }
-
-
-        $scope.activeTab = 'floor-plan';
 
         // CONFIGURE ASCENT
 

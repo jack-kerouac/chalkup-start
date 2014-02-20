@@ -6,7 +6,7 @@ angular.module('chalkupStartApp')
         function getCss(color) {
             if (_.isUndefined(color)) {
                 return {
-                    background: 'transparent'
+                    background: ''
                 };
             }
             else if (color.hasOwnProperty('ternary')) {
