@@ -149,15 +149,9 @@ input.ng-invalid.ng-dirty {
 
 // CONTENT CONTAINER
 
-@mixin no-scroll-container {
-  .container {
-    overflow-y: hidden;
-  }
-}
-
 .container {
   height: 100%;
-  overflow-y: scroll;
+  overflow-y: auto;
 
   > .content {
     min-height: 100%;
