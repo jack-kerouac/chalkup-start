@@ -31,6 +31,16 @@ body[state='edit-session'] {
     }
   }
 
+  .tabs {
+    .ascent-count {
+      @include ascent-count(white, $belize-hole);
+    }
+
+    .active .ascent-count {
+      color: $peter-river;
+    }
+  }
+
   // hide the content of inactive tabs
   .tabs-content > *:not(.active) {
     display: none;
@@ -45,7 +55,6 @@ body[state='edit-session'] {
     // all tab content should take up the full height
     height: 100%;
   }
-
 
   #floor-plan {
 
@@ -108,13 +117,11 @@ body[state='edit-session'] {
 
     }
 
-
     .ascent-count {
       @include ascent-count;
     }
 
   }
-
 
   #ascents {
     overflow-y: auto;

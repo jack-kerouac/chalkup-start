@@ -34,17 +34,8 @@ $tabs-height: 45px;
     text-align: center;
   }
 
-  // TODO: move this somewhere else where it is more specific
-  .ascent-count {
-    @include ascent-count(white, $belize-hole);
-  }
-
   .active a {
     border-bottom: 3px solid $orange;
-
-    .ascent-count {
-      @include ascent-count(white, $peter-river);
-    }
   }
 }
 
