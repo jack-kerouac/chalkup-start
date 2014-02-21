@@ -20,9 +20,9 @@
             <div cu-color="currentBoulder.color"></div>
             <div class="column small-8 boulder-photo">
                 <img ng-show="currentBoulder !== undefined && currentBoulder.photo === undefined"
-                     src="images/placeholder.png"/>
+                     src="images/placeholder.png" scale-to-fill/>
                 <img ng-show="currentBoulder !== undefined && currentBoulder.photo !== undefined"
-                     ng-src="{{currentBoulder.photo.url}}" alt=""/>
+                     ng-src="{{currentBoulder.photo.url}}" scale-to-fill/>
             </div>
             <div class="column small-4">
                 <div class="boulder-meta">

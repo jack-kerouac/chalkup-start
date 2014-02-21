@@ -86,7 +86,12 @@ body[state='edit-session'] {
     }
 
     .boulder-photo {
+      overflow: hidden;
       background-color: $midnight-blue;
+
+      > img {
+        max-width: none;
+      }
     }
 
     .boulder-meta {
