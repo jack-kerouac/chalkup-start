@@ -112,7 +112,9 @@ angular.module('chalkupStartApp')
 
                 map = L.map(leafletMapElem, {
                     maxZoom: 3,
-                    crs: L.CRS.Simple
+                    crs: L.CRS.Simple,
+                    attributionControl: false,
+                    zoomControl: false
                 });
                 map.setView([0, 0], 0);
 
