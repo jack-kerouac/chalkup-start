@@ -17,11 +17,11 @@ body[state='edit-session'] {
       }
     }
 
-    #floor-plan {
+    #floor-plan-tab {
       @include grid-column($columns: 7, $collapse: true);
     }
 
-    #ascents {
+    #ascents-tab {
       @include grid-column($columns: 5, $collapse: false);
 
       // we want to display this heading above the list for larger screens
@@ -56,11 +56,32 @@ body[state='edit-session'] {
     height: 100%;
   }
 
-  #floor-plan {
+  #floor-plan-tab {
+    > .row:nth-of-type(1) {
+      height: 50%;
+
+      .map {
+        height: 100%;
+      }
+    }
+    > .row:nth-of-type(2) {
+      height: 50%;
+      position: relative;
+
+      $color-bar-height: rem-calc(7px);
+      div[cu-color] {
+        height: $color-bar-height;
+      }
+
+      .boulder-photo {
+        position: absolute;
+        top: $color-bar-height;
+        bottom: 0;
+      }
+    }
 
     div[cu-color] {
       width: 100%;
-      height: rem-calc(7px);
       transition: background-color 500ms ease-out;
     }
 
@@ -114,16 +135,10 @@ body[state='edit-session'] {
       div[cu-color], .boulder-meta {
         background-color: #eee;
       }
-
     }
-
-    .ascent-count {
-      @include ascent-count;
-    }
-
   }
 
-  #ascents {
+  #ascents-tab {
     overflow-y: auto;
     ul {
       $height: 3.5rem;

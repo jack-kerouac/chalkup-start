@@ -8,13 +8,14 @@
 </dl>
 
 <div class="tabs-content">
-    <section id="floor-plan" ng-class="{active: activeTab == 'floor-plan'}">
+    <section id="floor-plan-tab" ng-class="{active: activeTab == 'floor-plan'}">
         <h2>alle Boulder</h2>
-        <gym-floor-plan floor-plan="gym.floorPlans[0]" boulders="gym.boulders"
+        <div class="row collapse">
+            <gym-floor-plan floor-plan="gym.floorPlans[0]" boulders="gym.boulders"
                         boulder-click="select(boulder)"
                         floor-plan-click="unselect()"
                         selected="currentBoulder"></gym-floor-plan>
-
+        </div>
         <div class="row collapse" ng-class="{inactive: currentBoulder === undefined}">
             <div cu-color="currentBoulder.color"></div>
             <div class="column small-8 boulder-photo">
@@ -46,7 +47,7 @@
 
     </section>
 
-    <section id="ascents"  ng-class="{active: activeTab == 'ascents'}">
+    <section id="ascents-tab"  ng-class="{active: activeTab == 'ascents'}">
         <h2>Begehungen <span class="ascent-count">{{session.ascents.length}}</span></h2>
         <ul>
             <li ng-repeat="ascent in session.ascents" class="row collapse">
