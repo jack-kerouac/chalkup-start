@@ -15,13 +15,11 @@
 
         <div class="row collapse" ng-class="{inactive: currentBoulder === undefined}">
             <div cu-color="currentBoulder.color"></div>
-            <div class="column small-8 boulder-photo" ng-switch on="currentBoulder.photo.url">
-                <div ng-switch-when="undefined">
-                    <img src="http://budapesttimes.hu/wp-content/themes/newsroom14/img/placeholder.png"/>
-                </div>
-                <div ng-switch-default>
-                    <img ng-src="{{currentBoulder.photo.url}}" alt=""/>
-                </div>
+            <div class="column small-8 boulder-photo">
+                <img ng-show="currentBoulder !== undefined && currentBoulder.photo === undefined"
+                     src="images/placeholder.png"/>
+                <img ng-show="currentBoulder !== undefined && currentBoulder.photo !== undefined"
+                     ng-src="{{currentBoulder.photo.url}}" alt=""/>
             </div>
             <div class="column small-4">
                 <div class="boulder-meta">
@@ -53,7 +51,7 @@
                 <div class="column small-1" cu-color="boulder(ascent.boulder).color"></div>
                 <div class="column small-4 boulder-photo" ng-switch on="boulder(ascent.boulder).photo.url">
                     <div ng-switch-when="undefined">
-                        <img src="http://budapesttimes.hu/wp-content/themes/newsroom14/img/placeholder.png"/>
+                        <img src="images/placeholder.png"/>
                     </div>
                     <div ng-switch-default>
                         <img ng-src="{{boulder(ascent.boulder).photo.url}}" alt=""/>
