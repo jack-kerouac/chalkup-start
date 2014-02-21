@@ -25,9 +25,6 @@
                      ng-src="{{currentBoulder.photo.url}}" scale-to-fill/>
             </div>
             <div class="column small-4">
-                <div class="boulder-meta">
-                    <span>{{currentBoulder.initialGrade.readable}}</span>
-                </div>
                 <div class="ascent-style-control button-group">
                     <div>
                         <input id="flash" type="checkbox" ng-model="currentAscent.style" ng-true-value="flash"
@@ -42,6 +39,9 @@
                         <label for="top" class="button medium">top</label>
                     </div>
                 </div>
+                <div class="boulder-meta">
+                    <span>{{currentBoulder.initialGrade.readable}}</span>
+                </div>
             </div>
         </div>
 
@@ -52,7 +52,7 @@
         <ul>
             <li ng-repeat="ascent in session.ascents" class="row collapse">
                 <div class="column small-1" cu-color="boulder(ascent.boulder).color"></div>
-                <div class="column small-4 boulder-photo" ng-switch on="boulder(ascent.boulder).photo.url">
+                <div class="column small-3 boulder-photo" ng-switch on="boulder(ascent.boulder).photo.url">
                     <div ng-switch-when="undefined">
                         <img src="images/placeholder.png"/>
                     </div>
@@ -60,7 +60,7 @@
                         <img ng-src="{{boulder(ascent.boulder).photo.url}}" alt=""/>
                     </div>
                 </div>
-                <div class="column small-5 ascent-meta">
+                <div class="column small-6 ascent-meta">
                     <div class="title">{{boulder(ascent.boulder).initialGrade.readable}}</div>
                     <div class="subtitle">{{ascent.style}}</div>
                 </div>

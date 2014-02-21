@@ -22,7 +22,7 @@ body[state='edit-session'] {
     }
 
     #ascents-tab {
-      @include grid-column($columns: 5, $collapse: false);
+      @include grid-column($columns: 5, $collapse: true);
 
       // we want to display this heading above the list for larger screens
       h2 {
@@ -144,6 +144,21 @@ body[state='edit-session'] {
   }
 
   #ascents-tab {
+    h2 {
+      margin: 0;
+      line-height: 1em;
+      vertical-align: middle;
+      background-color: $belize-hole;
+      color: white;
+
+      padding: 0.3em;
+      text-align: center;
+
+      .ascent-count {
+        @include ascent-count(white, $belize-hole);
+      }
+    }
+
     overflow-y: auto;
     ul {
       $height: 3.5rem;
@@ -155,7 +170,6 @@ body[state='edit-session'] {
       }
 
       .boulder-photo {
-        background: $midnight-blue;
 
         img {
           max-height: 100%;
