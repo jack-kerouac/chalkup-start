@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('chalkupStartApp')
-    .controller('StatsCtrl', function ($scope, $q, Restangular, LoadingIndicator) {
+    .controller('StatsCtrl', function ($scope, $rootScope, $q, Restangular, LoadingIndicator) {
         var user = Restangular.one('users', 8);
 
         var userGet = user.get();
@@ -16,7 +16,7 @@ angular.module('chalkupStartApp')
             var user = args[0];
             var statistics = args[1];
 
-            $scope.user = user;
+            $rootScope.user = user;
 
             // trend calculation
             var oldGradeValue = user.initialGrade.value;

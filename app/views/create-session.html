@@ -1,1 +1,33 @@
-chose gym, ...
+<div class="row">
+    <div class="small-12 column">
+        <h1>Neue Session anlegen</h1>
+    </div>
+</div>
+
+<form ng-submit="logSession()">
+<div class="row">
+    <div class="small-3 column">
+        <label class="right inline">Datum</label>
+    </div>
+
+    <div class="small-9 column">
+        <input type="date" ng-model="session.date">
+    </div>
+</div>
+
+<div class="row">
+    <div class="small-3 column">
+        <label class="right inline">Halle</label>
+    </div>
+
+    <div class="small-9 column">
+        <select ng-model="session.gym" ng-options="gym.name for gym in gyms" required></select>
+    </div>
+</div>
+
+<div class="row">
+    <div class="small-7 small-offset-3 column">
+        <button>Anlegen</button>
+    </div>
+</div>
+</form>
