@@ -66,6 +66,9 @@ angular.module('chalkupStartApp')
                             $scope.save = function () {
                                 $rootScope.$broadcast('SAVE-SESSION');
                             }
+                            $scope.delete = function() {
+                                $rootScope.$broadcast('DELETE-SESSION');
+                            }
                         }
                     }
                 }

@@ -107,4 +107,15 @@ angular.module('chalkupStartApp')
             });
         });
 
+
+        // DELETE SESSION
+
+        $scope.$on('DELETE-SESSION', function(event) {
+            var deleteSession = $scope.session.remove();
+            LoadingIndicator.waitFor(deleteSession);
+            deleteSession.then(function() {
+                $state.go('stats');
+            });
+        });
+
     });
