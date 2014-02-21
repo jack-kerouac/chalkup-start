@@ -62,8 +62,8 @@ angular.module('chalkupStartApp')
                     },
                     navbar: {
                         templateUrl: "views/navbar/edit-session.navbar.html",
-                        controller: function($scope, $rootScope) {
-                            $scope.save = function() {
+                        controller: function ($scope, $rootScope) {
+                            $scope.save = function () {
                                 $rootScope.$broadcast('SAVE-SESSION');
                             }
                         }
@@ -72,4 +72,12 @@ angular.module('chalkupStartApp')
             });
 
         RestangularProvider.setBaseUrl('http://demo.chalkup.de')
+    });
+
+angular.module('chalkupStartApp')
+    .factory('$exceptionHandler', function () {
+        return function (exception, cause) {
+            exception.message += ' (caused by "' + cause + '")';
+            throw exception;
+        };
     });
