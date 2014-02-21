@@ -48,14 +48,22 @@ nav.bar {
   }
 
   ul.actions {
-    @include inline-list;
     float: right;
-    margin-right: 1em;
+    margin: 0;
 
-    // all icons bigger
-    i[class^='fi-'] {
-      font-size: 1.5em;
+    li {
+      list-style: none;
+      float: left;
+      display: block;
     }
+  }
+
+  a.icon {
+    display: inline-block;
+    line-height: $navbar-height;
+    vertical-align: middle;
+    padding: 0 0.5em;
+    font-size: 1.5em;
   }
 
 }
