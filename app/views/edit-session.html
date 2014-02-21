@@ -1,12 +1,14 @@
 <dl class="tabs row collapse">
-    <dd class="column small-6" ng-class="{active: activeTab == 'floor-plan'}"><a ng-click="activeTab = 'floor-plan'">alle
-        Boulder</a></dd>
-    <dd class="column small-6" ng-class="{active: activeTab == 'ascents'}"><a ng-click="activeTab = 'ascents'">Begehungen
-        <span class="ascent-count">{{session.ascents.length}}</span></a></dd>
+    <dd class="column small-6" ng-class="{active: activeTab == 'floor-plan'}">
+        <a ng-click="activeTab = 'floor-plan'">alle Boulder</a>
+    </dd>
+    <dd class="column small-6" ng-class="{active: activeTab == 'ascents'}">
+        <a ng-click="activeTab = 'ascents'">Begehungen <span class="ascent-count">{{session.ascents.length}}</span></a>
+    </dd>
 </dl>
 
 <div class="tabs-content">
-    <section class="content" id="floor-plan" ng-class="{active: activeTab == 'floor-plan'}">
+    <section id="floor-plan" ng-class="{active: activeTab == 'floor-plan'}">
         <h2>alle Boulder</h2>
         <gym-floor-plan floor-plan="gym.floorPlans[0]" boulders="gym.boulders"
                         boulder-click="select(boulder)"
@@ -44,7 +46,7 @@
 
     </section>
 
-    <section class="content" id="ascents" ng-class="{active: activeTab == 'ascents'}">
+    <section id="ascents"  ng-class="{active: activeTab == 'ascents'}">
         <h2>Begehungen <span class="ascent-count">{{session.ascents.length}}</span></h2>
         <ul>
             <li ng-repeat="ascent in session.ascents" class="row collapse">

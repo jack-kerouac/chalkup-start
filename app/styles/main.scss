@@ -16,13 +16,15 @@ $fi-path: "/bower_components/foundation-icon-fonts";
 }
 
 // TABS
+$tabs-height: 45px;
 
-dl.tabs dd {
-  top: 0;
+.tabs {
+  dd {
+    // overwrite the foundation style of .tabs dd { top: 1px }
+    top: 0;
+  }
 
   a {
-    $tabs-height: 45px;
-
     font-weight: 300;
 
     width: 100%;
@@ -30,13 +32,14 @@ dl.tabs dd {
     line-height: $tabs-height;
     vertical-align: middle;
     text-align: center;
-
-    .ascent-count {
-      @include ascent-count(white, $belize-hole);
-    }
   }
 
-  &.active a {
+  // TODO: move this somewhere else where it is more specific
+  .ascent-count {
+    @include ascent-count(white, $belize-hole);
+  }
+
+  .active a {
     border-bottom: 3px solid $orange;
 
     .ascent-count {
@@ -45,6 +48,14 @@ dl.tabs dd {
   }
 }
 
+.tabs-content {
+  // tab content fills the whole space of the surrounding div
+  position: absolute;
+  top: $tabs-height;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
 
 // GYM FLOOR PLAN
 
@@ -119,7 +130,6 @@ dl.tabs dd {
     }
   }
 }
-
 
 // OTHER STUFF
 
