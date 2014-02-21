@@ -1,4 +1,6 @@
 body[state='stats'] {
+  @include full-height();
+
   // POSITIONING
 
   $current-grade-height: 2rem;

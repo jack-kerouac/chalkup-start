@@ -1,4 +1,5 @@
 body[state='edit-session'] {
+  @include full-height();
 
   // LAYOUT
 

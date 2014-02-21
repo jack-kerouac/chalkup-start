@@ -34,10 +34,10 @@
 
 <!-- fills the viewport. Displays a scroll bar to the very right. -->
 <div class="container">
-    <!-- maximizes the size width to 1000px --><!-- do not use a column div below this row! Problem is that this row has min-height of 100%, the column below
-    would thus need a height of 100%. But this does not work:
-    http://www.456bereastreet.com/archive/201306/height_in_percent_when_parent_has_min-height_and_no_height/ -->
-    <div class="row collapse content" ui-view="content"/>
+    <!-- maximizes the size width to 1000px -->
+    <div class="row collapse">
+        <div class="column large-12 content" ui-view="content"></div>
+    </div>
 </div>
 
 <div id="loading-overlay" ng-show="loading">

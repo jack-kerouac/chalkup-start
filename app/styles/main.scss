@@ -148,19 +148,40 @@ input.ng-invalid.ng-dirty {
 }
 
 // CONTENT CONTAINER
-
 .container {
-  height: 100%;
+  // the next two styles result in the scroll bar to be displayed next to the content and not over the full page.
+
+  height: 100%; // take up the full viewport height
   overflow-y: auto;
 
-  > .content {
-    min-height: 100%;
+  > .row {
     background-color: white;
-    position: relative;
 
     @media #{$large-up} {
       border-left: 1px solid $silver;
       border-right: 1px solid $silver;
+    }
+  }
+}
+
+// this mixing constrains/extends the page content height to the viewport! So the content will always take up full height
+// of the viewport.
+// If a scrollbar for scrolling the page appears, the content overflows the .content div! Fix it!
+@mixin full-height {
+  .container {
+
+    > .row {
+      min-height: 100%; // this scales the row to the full container height
+      position: relative; // required since the .column inside is positioned absolute
+
+      > .column {
+        // the combination of position: absolute and height 100% is important!
+        // For what reasons ever, it works to make this div full height, despite this issue:
+        // the row has a min-height of 100%, but no set height. Thus, setting a height of 100% on the inner div does not
+        // work. See more: http://www.456bereastreet.com/archive/201306/height_in_percent_when_parent_has_min-height_and_no_height/ -->
+        position: absolute;
+        height: 100%;
+      }
     }
   }
 }
