@@ -76,11 +76,3 @@ angular.module('chalkupStartApp')
 
         RestangularProvider.setBaseUrl('http://demo.chalkup.de')
     });
-
-angular.module('chalkupStartApp')
-    .factory('$exceptionHandler', function () {
-        return function (exception, cause) {
-            exception.message += ' (caused by "' + cause + '")';
-            throw exception;
-        };
-    });
