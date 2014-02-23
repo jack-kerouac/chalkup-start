@@ -62,14 +62,14 @@ angular.module('chalkupStartApp')
                     },
                     navbar: {
                         templateUrl: "views/navbar/edit-session.navbar.html",
-                        controller: function ($scope, $rootScope) {
+                        controller: ['$scope', '$rootScope', function ($scope, $rootScope) {
                             $scope.save = function () {
                                 $rootScope.$broadcast('SAVE-SESSION');
                             }
                             $scope.delete = function() {
                                 $rootScope.$broadcast('DELETE-SESSION');
                             }
-                        }
+                        }]
                     }
                 }
             });

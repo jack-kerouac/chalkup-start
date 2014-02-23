@@ -38,7 +38,7 @@ angular.module('chalkupStartApp')
 			bouldersDraggable: '@',
 			selected: '='
 		},
-		controller: ['$scope', '$element', '$attrs', '$q', function ($scope, $element, $attrs, $q) {
+		controller: function ($scope, $element, $attrs, $q) {
 
 			function boulderForMarker(marker) {
 				return _.find($scope.boulders, function (boulder) {
@@ -103,6 +103,6 @@ angular.module('chalkupStartApp')
 				var boulder = boulderForMarker(marker);
 				$scope.boulderClickHandler({boulder: boulder});
 			}
-		}]
+		}
 	};
 });

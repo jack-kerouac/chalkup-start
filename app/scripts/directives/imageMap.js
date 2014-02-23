@@ -98,7 +98,7 @@ angular.module('chalkupStartApp')
 			markerClickHandler: '&markerClick',
 			imageMarkers: '=markers'
 		},
-		controller: ['$scope', '$element', '$attrs', '$q', '$timeout', function ($scope, $element, $attrs, $q, $timeout) {
+		controller: function ($scope, $element, $attrs, $q, $timeout) {
 			// +++++++++
 			// SETUP MAP
 			// +++++++++
@@ -263,6 +263,6 @@ angular.module('chalkupStartApp')
             }, 300);
 
 
-        }]
+        }
 	};
 });
