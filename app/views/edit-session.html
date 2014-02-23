@@ -8,7 +8,7 @@
 </dl>
 
 <div class="tabs-content">
-    <section id="floor-plan-tab" ng-class="{active: activeTab == 'floor-plan'}">
+    <section id="floor-plan-tab" class="active" ng-init="activeTab = 'floor-plan'" ng-class="{active: activeTab == 'floor-plan'}">
         <h2>alle Boulder</h2>
         <div class="row collapse">
             <gym-floor-plan floor-plan="gym.floorPlans[0]" boulders="gym.boulders"

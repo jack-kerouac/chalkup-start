@@ -32,9 +32,6 @@ angular.module('chalkupStartApp')
             });
         });
 
-        $scope.activeTab = 'floor-plan';
-
-
         $scope.currentBoulder = undefined;
 
         $scope.select = function (boulder) {
