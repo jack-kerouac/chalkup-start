@@ -14,7 +14,7 @@
             <gym-floor-plan floor-plan="gym.floorPlans[0]" boulders="gym.boulders"
                         boulder-click="select(boulder)"
                         floor-plan-click="unselect()"
-                        selected="currentBoulder"></gym-floor-plan>
+                        selected-boulder="currentBoulder"></gym-floor-plan>
         </div>
         <div class="row collapse" ng-class="{inactive: currentBoulder === undefined}">
             <div cu-color="currentBoulder.color"></div>

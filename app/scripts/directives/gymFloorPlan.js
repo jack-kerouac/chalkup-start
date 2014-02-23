@@ -36,7 +36,7 @@ angular.module('chalkupStartApp')
 			boulderClickHandler: '&boulderClick',
 			boulders: '=',
 			bouldersDraggable: '@',
-			selected: '='
+			selectedBoulder: '='
 		},
 		controller: function ($scope, $element, $attrs, $q) {
 
@@ -87,7 +87,7 @@ angular.module('chalkupStartApp')
 				});
 			}, true);
 
-			$scope.$watch('selected', function (selectedBoulder, previouslySelectedBoulder) {
+			$scope.$watch('selectedBoulder', function (selectedBoulder, previouslySelectedBoulder) {
 				if (previouslySelectedBoulder !== undefined)
 					markerForBoulder(previouslySelectedBoulder).selected = false;
 
