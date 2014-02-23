@@ -15,6 +15,7 @@ angular.module('chalkupStartApp')
         }
 
         function scaleToFill(content, wrapper, centerContent) {
+            content.height('').width('');
             var r = ratio(content, wrapper);
             var width, height;
             var offset = {top: 0, left: 0};
