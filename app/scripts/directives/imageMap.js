@@ -136,6 +136,38 @@ angular.module('chalkupStartApp')
                     imageReady.resolve();
                 });
 
+                function resize() {
+                    if ($scope.overlay !== undefined) {
+                        map.removeLayer($scope.overlay);
+                    }
+
+                    $scope.projection = calculateProjection(map, $scope.image);
+
+                    $scope.overlay = L.imageOverlay($scope.image.url, $scope.projection.latLngBounds, {
+                            noWrap: true
+                        }
+                    );
+                    $scope.overlay.addTo(map);
+                    map.setMaxBounds($scope.projection.latLngBounds);
+
+                    updateSelectableMarkers($scope.imageMarkers, undefined);
+                }
+
+                map.on('resize', function (event) {
+                    $scope.$apply(function () {
+                        resize();
+                    });
+                });
+
+                $scope.$on('cu-imageMap:resize', function(event) {
+                    imageReady.promise.then(function() {
+                        // do not use $timeout here since we need to break out of the current $digest
+                        setTimeout(function() {
+                            map.invalidateSize();
+                        }, 0);
+                    });
+                });
+
 
                 // +++++++++++++
                 // CLICK HANDLER
@@ -150,7 +182,7 @@ angular.module('chalkupStartApp')
                 // +++++++
                 // MARKERS
                 // +++++++
-                $scope.$watch('imageMarkers', function (imageMarkers, oldImageMarkers) {
+                var updateSelectableMarkers = function (imageMarkers, oldImageMarkers) {
                     if (imageMarkers === undefined)
                         return;
 
@@ -176,7 +208,7 @@ angular.module('chalkupStartApp')
 
                     // CREATE NEW MARKERS
                     imageReady.promise.then(function () {
-                        function toMarkers(imageMarkers) {
+                        function toSelectableMarkers(imageMarkers) {
                             return _.map(imageMarkers, function (imageMarker) {
                                 var latLng = $scope.projection.imagePointToLatLng([imageMarker.x, imageMarker.y]);
                                 var options = {
@@ -216,7 +248,7 @@ angular.module('chalkupStartApp')
                         if (angular.isArray(imageMarkers)) {
                             $scope.hasLayers = false;
 
-                            var leafletMarkers = toMarkers(imageMarkers);
+                            var leafletMarkers = toSelectableMarkers(imageMarkers);
                             _.each(leafletMarkers, function (leafletMarker) {
                                 leafletMarker.addTo(map);
                             });
@@ -232,7 +264,7 @@ angular.module('chalkupStartApp')
                             _.each(imageMarkers, function (imageMarkers, layerName) {
                                 markerLayers[layerName] = L.layerGroup();
 
-                                var leafletMarkers = toMarkers(imageMarkers);
+                                var leafletMarkers = toSelectableMarkers(imageMarkers);
                                 _.each(leafletMarkers, function (leafletMarker) {
                                     markerLayers[layerName].addLayer(leafletMarker);
                                 });
@@ -250,7 +282,8 @@ angular.module('chalkupStartApp')
                         }
                     });
 
-                }, true);
+                };
+                $scope.$watch('imageMarkers', updateSelectableMarkers, true);
 
             }
         };

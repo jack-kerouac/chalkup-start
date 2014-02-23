@@ -1,7 +1,14 @@
 'use strict';
 
 angular.module('chalkupStartApp')
-    .controller('EditSessionCtrl', function ($scope, $stateParams, $state, Restangular, LoadingIndicator) {
+    .controller('EditSessionCtrl', function ($scope, $stateParams, $state, $timeout, Restangular, LoadingIndicator) {
+        $scope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
+            // broadcast later after the body state attribute is updated to the current state name
+            $timeout(function() {
+                $scope.$broadcast('cu-imageMap:resize')
+            }, 0);
+        });
+
 
         var session = Restangular.one('sessions', $stateParams.id).get();
         LoadingIndicator.waitFor(session);
@@ -96,10 +103,10 @@ angular.module('chalkupStartApp')
 
         // SAVE SESSION
 
-        $scope.$on('SAVE-SESSION', function(event) {
+        $scope.$on('SAVE-SESSION', function (event) {
             var update = $scope.session.put();
             LoadingIndicator.waitFor(update);
-            update.then(function() {
+            update.then(function () {
                 $state.go('stats');
             });
         });
