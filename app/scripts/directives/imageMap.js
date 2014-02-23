@@ -29,86 +29,83 @@
 angular.module('chalkupStartApp')
     .directive('imageMap', function () {
 
-	function calculateProjection(map, image) {
-		var containerWidth = map.getSize().x;
-		var containerHeight = map.getSize().y;
-		var containerAspectRatio = containerHeight / containerWidth;
+        function calculateProjection(map, image) {
+            var containerWidth = map.getSize().x;
+            var containerHeight = map.getSize().y;
+            var containerAspectRatio = containerHeight / containerWidth;
 
-		var imageWidth = image.widthInPx;
-		var imageHeight = image.heightInPx;
-		var imageAspectRatio = imageHeight / imageWidth;
+            var imageWidth = image.widthInPx;
+            var imageHeight = image.heightInPx;
+            var imageAspectRatio = imageHeight / imageWidth;
 
-		if (containerAspectRatio >= imageAspectRatio) {
-			// image plan is wider, => fit to containerWidth
-			var resultingWidth = containerWidth;
-			var resultingHeight = imageHeight * containerWidth / imageWidth;
-			var xOffset = 0;
-			var yOffset = (containerHeight - resultingHeight) / 2;
-		}
-		else {
-			// image plan is higher, => fit to containerHeight
-			var resultingWidth = imageWidth * containerHeight / imageHeight;
-			var resultingHeight = containerHeight;
-			var xOffset = (containerWidth - resultingWidth) / 2;
-			var yOffset = 0;
-		}
+            if (containerAspectRatio >= imageAspectRatio) {
+                // image plan is wider, => fit to containerWidth
+                var resultingWidth = containerWidth;
+                var resultingHeight = imageHeight * containerWidth / imageWidth;
+                var xOffset = 0;
+                var yOffset = (containerHeight - resultingHeight) / 2;
+            }
+            else {
+                // image plan is higher, => fit to containerHeight
+                var resultingWidth = imageWidth * containerHeight / imageHeight;
+                var resultingHeight = containerHeight;
+                var xOffset = (containerWidth - resultingWidth) / 2;
+                var yOffset = 0;
+            }
 
-		var southWestCorner = map.containerPointToLatLng([xOffset, resultingHeight + yOffset]);
-		var northEastCorner = map.containerPointToLatLng([xOffset + resultingWidth, yOffset]);
+            var southWestCorner = map.containerPointToLatLng([xOffset, resultingHeight + yOffset]);
+            var northEastCorner = map.containerPointToLatLng([xOffset + resultingWidth, yOffset]);
 
-		var scaleFactor = imageWidth / resultingWidth;
+            var scaleFactor = imageWidth / resultingWidth;
 
-		return {
-			latLngBounds: L.latLngBounds(southWestCorner, northEastCorner),
-			latLngToImagePoint: function (latLng) {
-				return map.project(L.latLng(latLng), 0).add([resultingWidth / 2, resultingHeight / 2]).multiplyBy(scaleFactor);
-			},
-			imagePointToLatLng: function (point) {
-				return map.unproject(L.point(point).divideBy(scaleFactor).subtract([resultingWidth / 2, resultingHeight / 2]), 0);
-			}
-		}
-	}
+            return {
+                latLngBounds: L.latLngBounds(southWestCorner, northEastCorner),
+                latLngToImagePoint: function (latLng) {
+                    return map.project(L.latLng(latLng), 0).add([resultingWidth / 2, resultingHeight / 2]).multiplyBy(scaleFactor);
+                },
+                imagePointToLatLng: function (point) {
+                    return map.unproject(L.point(point).divideBy(scaleFactor).subtract([resultingWidth / 2, resultingHeight / 2]), 0);
+                }
+            }
+        }
 
-	L.SelectableMarker = L.Marker.extend({
-		_initIcon: function () {
-			L.Marker.prototype._initIcon.call(this);
-			this.select(this.options.selected);
-		},
-		select: function (selected) {
-			if (typeof(selected) === 'undefined')
-				return;
-			else if (selected)
-				$(this._icon).addClass('selected');
-			else
-				$(this._icon).removeClass('selected');
-		}
-	});
+        L.SelectableMarker = L.Marker.extend({
+            _initIcon: function () {
+                L.Marker.prototype._initIcon.call(this);
+                this.select(this.options.selected);
+            },
+            select: function (selected) {
+                if (typeof(selected) === 'undefined')
+                    return;
+                else if (selected)
+                    $(this._icon).addClass('selected');
+                else
+                    $(this._icon).removeClass('selected');
+            }
+        });
 
-	L.selectableMarker = function(latLng, options) {
-		return new L.SelectableMarker(latLng, options);
-	}
+        L.selectableMarker = function (latLng, options) {
+            return new L.SelectableMarker(latLng, options);
+        }
 
 
-	return {
-		restrict: 'E',
-		template: '<div class="map"></div>',
-		scope: {
-			image: '=',
-			mapClickHandler: '&mapClick',
-			markerClickHandler: '&markerClick',
-			imageMarkers: '=markers'
-		},
-		controller: function ($scope, $element, $attrs, $q, $timeout) {
-			// +++++++++
-			// SETUP MAP
-			// +++++++++
-			var leafletMapElem = $element[0].children[0];
+        return {
+            restrict: 'E',
+            template: '<div class="map"></div>',
+            scope: {
+                image: '=',
+                mapClickHandler: '&mapClick',
+                markerClickHandler: '&markerClick',
+                imageMarkers: '=markers'
+            },
+            controller: function ($scope, $element, $attrs, $q) {
+                // +++++++++
+                // SETUP MAP
+                // +++++++++
+                var leafletMapElem = $element[0].children[0];
 
-            var imageReady = $q.defer();
-            var map;
-
-            $timeout(function() {
-
+                var imageReady = $q.defer();
+                var map;
 
                 map = L.map(leafletMapElem, {
                     maxZoom: 3,
@@ -138,10 +135,6 @@ angular.module('chalkupStartApp')
 
                     imageReady.resolve();
                 });
-
-
-
-
 
 
                 // +++++++++++++
@@ -259,10 +252,6 @@ angular.module('chalkupStartApp')
 
                 }, true);
 
-            // TIMER
-            }, 300);
-
-
-        }
-	};
-});
+            }
+        };
+    });
