@@ -10,6 +10,10 @@ angular.module('chalkupStartApp', ['ui.router', 'restangular', 'angularSpinner',
             $(document).foundation();
         });
 
+        $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
+            $rootScope.stateName = toState.name;
+        });
+
         $rootScope.$state = $state;
 
         $window.moment.lang('de');
