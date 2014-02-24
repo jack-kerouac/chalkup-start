@@ -74,5 +74,5 @@ angular.module('chalkupStartApp')
                 }
             });
 
-        RestangularProvider.setBaseUrl('http://demo.chalkup.de')
+        RestangularProvider.setBaseUrl('http://demo.chalkup.de/rest/v1')
     });
