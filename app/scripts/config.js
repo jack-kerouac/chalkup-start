@@ -1,6 +1,6 @@
 
 angular.module('chalkupStartApp')
-    .config(function ($stateProvider, $urlRouterProvider, RestangularProvider, userServiceProvider) {
+    .config(function ($stateProvider, $urlRouterProvider, $httpProvider, RestangularProvider, userServiceProvider) {
 
         // For any unmatched url, redirect to /state1
         $urlRouterProvider.otherwise("/");
@@ -56,6 +56,10 @@ angular.module('chalkupStartApp')
                     }
                 }
             });
+
+
+        // send Cookie along with the CORS AJAX requests
+        $httpProvider.defaults.withCredentials = true;
 
         RestangularProvider.setBaseUrl('http://demo.chalkup.de/rest/v1');
 
