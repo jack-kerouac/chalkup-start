@@ -61,6 +61,8 @@ angular.module('chalkupStartApp')
                             if (!data.loggedIn) {
                                 service.current = undefined;
                                 loggedOut.resolve('logout successful');
+
+                                $state.go('start');
                             }
                             else {
                                 loggedOut.reject('login unsucessful');
@@ -71,8 +73,6 @@ angular.module('chalkupStartApp')
                         });
 
                     LoadingIndicator.waitFor(logoutPost);
-
-                    $state.go('start');
 
                     return loggedOut.promise;
                 },
