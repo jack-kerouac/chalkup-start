@@ -20,6 +20,9 @@ angular.module('chalkupStartApp')
         this.$get = function ($rootScope, $http, $q, $state, LoadingIndicator, Restangular) {
             return {
                 current: undefined,
+                isLoggedIn: function() {
+                    return !_.isUndefined(this.current);
+                },
                 login: function (credentials) {
                     var loggedIn = $q.defer();
                     var service = this;
