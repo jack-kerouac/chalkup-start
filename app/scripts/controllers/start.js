@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('chalkupStartApp')
-    .controller('StartCtrl', function ($scope, $http, $state, navBarService) {
+    .controller('StartCtrl', function ($scope, $http, $state, $timeout, navBarService) {
         $scope.logout = function() {
             $scope.user.logout();
             // this is required since the state does not change and thus the navBar is not emptied and this
@@ -24,6 +24,18 @@ angular.module('chalkupStartApp')
             }
         });
 
+        $scope.credentials = {};
+
+        $scope.demoLogin = function() {
+            $scope.credentials = {
+                email: 'demo@chalkup.de',
+                password: 'demo123'
+            };
+            // timeout for the effect
+            $timeout(function() {
+                $scope.loginAndRedirect($scope.credentials);
+            }, 500);
+        };
 
         $('.flexslider').flexslider({
             animation: "slide"
