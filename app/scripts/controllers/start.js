@@ -23,6 +23,12 @@ angular.module('chalkupStartApp')
                 });
             }
         });
+        navBarService.addMenuItem({
+            label: 'Feedback',
+            action: function() {
+                UserVoice.push(['show', { mode: 'contact' }]);
+            }
+        });
 
         $scope.credentials = {};
 

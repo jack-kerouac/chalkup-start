@@ -13,6 +13,12 @@ angular.module('chalkupStartApp')
             }
         });
         navBarService.addMenuItem({
+            label: 'Feedback',
+            action: function() {
+                UserVoice.push(['show', { mode: 'contact' }]);
+            }
+        });
+        navBarService.addMenuItem({
             label: 'Abmelden',
             action: function () {
                 $scope.user.logout();
