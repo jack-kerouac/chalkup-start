@@ -16,5 +16,5 @@ angular.module('chalkupStartApp')
 
         $window.moment.lang('de');
 
-        $rootScope.user = userService;
+        userService.init();
     });

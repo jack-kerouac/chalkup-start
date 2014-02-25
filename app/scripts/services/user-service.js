@@ -12,7 +12,12 @@ angular.module('chalkupStartApp')
             logoutUrl = url;
         };
 
-        this.$get = function ($http, $q, LoadingIndicator, Restangular) {
+        var loginStatusUrl;
+        this.setLoginStatusUrl = function (url) {
+            loginStatusUrl = url;
+        };
+
+        this.$get = function ($rootScope, $http, $q, LoadingIndicator, Restangular) {
             return {
                 current: undefined,
                 login: function (credentials) {
@@ -23,26 +28,26 @@ angular.module('chalkupStartApp')
                         url: loginUrl,
                         data: credentials
                     }).success(function (data, status) {
-                            if(data.loggedIn) {
+                            if (data.loggedIn) {
                                 var userGet = Restangular.one('users', data.userId).get();
                                 LoadingIndicator.waitFor(userGet);
-                                userGet.then(function(user) {
+                                userGet.then(function (user) {
                                     service.current = user;
                                     loggedIn.resolve(user);
-                                }).catch(function() {
-                                    loggedIn.reject('getting logged in user unsuccessful');
-                                });
+                                }).catch(function () {
+                                        loggedIn.reject('getting logged in user unsuccessful');
+                                    });
                             } else {
                                 loggedIn.reject('login unsucessful');
                             }
-                        }).error(function(data, status) {
+                        }).error(function (data, status) {
                             loggedIn.reject('login unsucessful');
                         });
                     LoadingIndicator.waitFor(loginPost);
 
                     return loggedIn.promise;
                 },
-                logout: function() {
+                logout: function () {
                     var loggedOut = $q.defer();
                     var service = this;
 
@@ -50,14 +55,14 @@ angular.module('chalkupStartApp')
                         method: 'POST',
                         url: logoutUrl
                     }).success(function (data, status) {
-                            if(!data.loggedIn) {
+                            if (!data.loggedIn) {
                                 service.current = undefined;
                                 loggedOut.resolve('logout successful');
                             }
                             else {
                                 loggedOut.reject('login unsucessful');
                             }
-                        }).error(function(data, status) {
+                        }).error(function (data, status) {
                             // login was not successful
                             loggedOut.reject('login unsucessful');
                         });
@@ -65,6 +70,24 @@ angular.module('chalkupStartApp')
                     LoadingIndicator.waitFor(logoutPost);
 
                     return loggedOut.promise;
+                },
+                init: function () {
+                    var service = this;
+                    $rootScope.user = service;
+
+                    var loginStatusGet = $http({
+                        method: 'GET',
+                        url: loginStatusUrl
+                    }).success(function (data, status) {
+                            if (data.loggedIn) {
+                                var userGet = Restangular.one('users', data.userId).get();
+                                LoadingIndicator.waitFor(userGet);
+                                service.current = userGet.$object;
+                            } else {
+                                service.current = undefined;
+                            }
+                        });
+                    LoadingIndicator.waitFor(loginStatusGet);
                 }
             }
         }

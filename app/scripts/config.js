@@ -61,8 +61,11 @@ angular.module('chalkupStartApp')
         // send Cookie along with the CORS AJAX requests
         $httpProvider.defaults.withCredentials = true;
 
-        RestangularProvider.setBaseUrl('http://demo.chalkup.de/rest/v1');
+        var host = 'http://demo.chalkup.de';
 
-        userServiceProvider.setLoginUrl('http://demo.chalkup.de/loginOrRegister');
-        userServiceProvider.setLogoutUrl('http://demo.chalkup.de/j_spring_security_logout');
+        RestangularProvider.setBaseUrl(host + '/rest/v1');
+
+        userServiceProvider.setLoginUrl(host + '/loginOrRegister');
+        userServiceProvider.setLogoutUrl(host + '/j_spring_security_logout');
+        userServiceProvider.setLoginStatusUrl(host + '/loginStatus');
     });
