@@ -1,0 +1,32 @@
+<div ng-show="!user.current">
+    <h2>Anmelden</h2>
+
+    <p>Blabla, registrieren, blabla, oder mit demo user</p>
+
+    <form name="login" ng-submit="user.login(credentials)" novalidate>
+        <div class="row">
+            <div class="large-3 column">
+                <label for="email-field" class="inline right">E-Mail</label>
+            </div>
+            <div class="large-9 column">
+                <input id="email-field" type="text" placeholder="danielwoods@themachine.me" ng-model="credentials.email" required/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="large-3 column">
+                <label for="password-field" class="inline right">Password</label>
+            </div>
+            <div class="large-9 column">
+                <input id="password-field" type="password" ng-model="credentials.password" required/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="column large-12">
+                <button class="postfix" type="submit" ng-disabled="login.$invalid">Anmelden</button>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="alert-box alert" ng-show="error">
+    Es ist ein Fehler ({{error.status}}) aufgetreten! Tut uns leid.
+</div>

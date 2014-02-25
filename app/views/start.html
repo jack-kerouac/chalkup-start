@@ -18,28 +18,8 @@
             und deinen Fortschritt teilen.
         </p>
     </div>
-    <div class="medium-6 column panel">
-        <div ng-show="!registered">
-            <p>Hast du Interesse? Dann geben wir dir Bescheid sobald die erste Version für dich benutzbar ist:</p>
+    <div class="medium-6 column panel" ng-include="'/views/login.html'">
 
-            <form name="notify" class="row collapse" ng-submit="registerNotification(email)" novalidate>
-                <div class="large-7 column">
-                    <input type="email" placeholder="danielwoods@themachine.me" ng-model="email" required/>
-                </div>
-                <div class="large-5 column">
-                    <button class="postfix" type="submit" ng-disabled="notify.$invalid">Benachrichten!</button>
-                </div>
-            </form>
-            <small>Deine E-Mail-Adresse verwenden wir nur um dich zu benachrichtigen und löschen sie, sobald die
-                Benachrichtigungs-Mail an dich versandt wurde.
-            </small>
-        </div>
-        <div class="alert-box success" ng-show="registered">
-            Wir schreiben dir an <i>{{email}}</i> sobald die erste Version für dich benutzbar ist!
-        </div>
-        <div class="alert-box alert" ng-show="error">
-            Es ist ein Fehler ({{error.status}}) aufgetreten! Tut uns leid.
-        </div>
     </div>
 </section>
 
