@@ -7,13 +7,18 @@ angular.module('chalkupStartApp')
             loginUrl = url;
         };
 
+        var logoutUrl;
+        this.setLogoutUrl = function (url) {
+            logoutUrl = url;
+        };
+
         this.$get = function ($http, $q, LoadingIndicator, Restangular) {
-            var loggedIn = $q.defer();
             return {
                 current: undefined,
                 login: function (credentials) {
+                    var loggedIn = $q.defer();
                     var service = this;
-                    $http({
+                    var loginPost = $http({
                         method: 'POST',
                         url: loginUrl,
                         data: credentials
@@ -27,13 +32,39 @@ angular.module('chalkupStartApp')
                                 }).catch(function() {
                                     loggedIn.reject('getting logged in user unsuccessful');
                                 });
+                            } else {
+                                loggedIn.reject('login unsucessful');
+                            }
+                        }).error(function(data, status) {
+                            loggedIn.reject('login unsucessful');
+                        });
+                    LoadingIndicator.waitFor(loginPost);
+
+                    return loggedIn.promise;
+                },
+                logout: function() {
+                    var loggedOut = $q.defer();
+                    var service = this;
+
+                    var logoutPost = $http({
+                        method: 'POST',
+                        url: logoutUrl
+                    }).success(function (data, status) {
+                            if(!data.loggedIn) {
+                                service.current = undefined;
+                                loggedOut.resolve('logout successful');
+                            }
+                            else {
+                                loggedOut.reject('login unsucessful');
                             }
                         }).error(function(data, status) {
                             // login was not successful
-                            loggedIn.reject('login unsucessful');
+                            loggedOut.reject('login unsucessful');
                         });
 
-                    return loggedIn.promise;
+                    LoadingIndicator.waitFor(logoutPost);
+
+                    return loggedOut.promise;
                 }
             }
         }
