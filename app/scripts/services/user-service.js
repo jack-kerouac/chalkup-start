@@ -17,7 +17,7 @@ angular.module('chalkupStartApp')
             loginStatusUrl = url;
         };
 
-        this.$get = function ($rootScope, $http, $q, LoadingIndicator, Restangular) {
+        this.$get = function ($rootScope, $http, $q, $state, LoadingIndicator, Restangular) {
             return {
                 current: undefined,
                 login: function (credentials) {
@@ -68,6 +68,8 @@ angular.module('chalkupStartApp')
                         });
 
                     LoadingIndicator.waitFor(logoutPost);
+
+                    $state.go('start');
 
                     return loggedOut.promise;
                 },
