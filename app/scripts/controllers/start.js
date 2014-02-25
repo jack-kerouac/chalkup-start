@@ -9,18 +9,21 @@ angular.module('chalkupStartApp')
             navBarService.clearNavBar();
         }
 
-        if($scope.user.isLoggedIn()) {
-            navBarService.addMenuItem({
-                label: 'Statistik',
-                state: 'stats'
-            });
-            navBarService.addMenuItem({
-                label: 'Abmelden',
-                action: function() {
-                    $scope.logout();
-                }
-            });
-        }
+        $scope.$watch('user.isLoggedIn()', function(loggedIn) {
+            if(loggedIn) {
+                navBarService.addMenuItem({
+                    label: 'Statistik',
+                    state: 'stats'
+                });
+                navBarService.addMenuItem({
+                    label: 'Abmelden',
+                    action: function() {
+                        $scope.logout();
+                    }
+                });
+            }
+        });
+
 
         $('.flexslider').flexslider({
             animation: "slide"
