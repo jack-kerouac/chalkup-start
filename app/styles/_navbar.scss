@@ -9,6 +9,13 @@ body {
 $navbar-bg-color: $midnight-blue;
 
 nav.bar {
+
+  .username {
+    float: right;
+    padding: 0 0.5em;
+    color: lighten($navbar-bg-color, 50%);
+  }
+
   // POSITION
   height: $navbar-height;
   width: 100%;
