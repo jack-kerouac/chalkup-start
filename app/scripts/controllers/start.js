@@ -11,6 +11,10 @@ angular.module('chalkupStartApp')
 
         if($scope.user.isLoggedIn()) {
             navBarService.addMenuItem({
+                label: 'Statistik',
+                state: 'stats'
+            });
+            navBarService.addMenuItem({
                 label: 'Abmelden',
                 action: function() {
                     $scope.logout();
