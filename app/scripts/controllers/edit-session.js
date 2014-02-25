@@ -1,10 +1,43 @@
 'use strict';
 
 angular.module('chalkupStartApp')
-    .controller('EditSessionCtrl', function ($scope, $stateParams, $state, $timeout, Restangular, LoadingIndicator) {
+    .controller('EditSessionCtrl', function ($scope, $rootScope, $stateParams, $state, $timeout, Restangular, LoadingIndicator, navBarService) {
+        navBarService.addMenuItem({
+            label: 'Session löschen',
+            action: function () {
+                var deleteSession = $scope.session.remove();
+                LoadingIndicator.waitFor(deleteSession);
+                deleteSession.then(function () {
+                    $state.go('stats');
+                });
+            }
+        });
+        navBarService.addMenuItem({
+            label: 'Abmelden',
+            action: function () {
+                $scope.user.logout();
+            }
+        });
+
+        navBarService.addButton({
+            icon: 'x',
+            state: 'stats'
+        });
+        navBarService.addButton({
+            icon: 'check',
+            action: function () {
+                var update = $scope.session.put();
+                LoadingIndicator.waitFor(update);
+                update.then(function () {
+                    $state.go('stats');
+                });
+            }
+        });
+
+
         $scope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
             // broadcast later after the body state attribute is updated to the current state name
-            $timeout(function() {
+            $timeout(function () {
                 $scope.$broadcast('cu-imageMap:resize')
             }, 0);
         });
@@ -85,28 +118,6 @@ angular.module('chalkupStartApp')
                 removeAscent($scope.session, $scope.currentAscent);
             else
                 addAscent($scope.session, $scope.currentAscent);
-        });
-
-
-        // SAVE SESSION
-
-        $scope.$on('SAVE-SESSION', function (event) {
-            var update = $scope.session.put();
-            LoadingIndicator.waitFor(update);
-            update.then(function () {
-                $state.go('stats');
-            });
-        });
-
-
-        // DELETE SESSION
-
-        $scope.$on('DELETE-SESSION', function(event) {
-            var deleteSession = $scope.session.remove();
-            LoadingIndicator.waitFor(deleteSession);
-            deleteSession.then(function() {
-                $state.go('stats');
-            });
         });
 
     });

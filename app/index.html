@@ -32,13 +32,13 @@
 <!--[if lt IE 7]><p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a
         href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p><![endif]-->
 
-<nav class="bar" ui-view="navbar"></nav>
+<nav-bar></nav-bar>
 
 <!-- fills the viewport. Displays a scroll bar to the very right. -->
 <div class="container">
     <!-- maximizes the size width to 1000px -->
     <div class="row collapse">
-        <div class="column large-12 content" ui-view="content"></div>
+        <div class="column large-12 content" ui-view></div>
     </div>
 </div>
 
@@ -156,6 +156,7 @@
 <script src="scripts/controllers/start.js"></script>
 <script src="scripts/controllers/stats.js"></script>
 <script src="scripts/directives/cu-color.js"></script>
+<script src="scripts/directives/nav-bar.js"></script>
 <script src="scripts/directives/gradeChart.js"></script>
 <script src="scripts/directives/imageMap.js"></script>
 <script src="scripts/directives/gymFloorPlan.js"></script>
@@ -163,6 +164,7 @@
 <script src="scripts/directives/form-autofill-fix.js"></script>
 <script src="scripts/services/loadingIndicator.js"></script>
 <script src="scripts/services/user-service.js"></script>
+<script src="scripts/services/nav-bar-service.js"></script>
 <script src="scripts/controllers/create-session.js"></script>
 <script src="scripts/controllers/edit-session.js"></script>
 <script src="scripts/config.js"></script>

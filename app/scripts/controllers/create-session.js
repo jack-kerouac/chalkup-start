@@ -1,11 +1,16 @@
 'use strict';
 
 angular.module('chalkupStartApp')
-    .controller('CreateSessionCtrl', function ($scope, $state, LoadingIndicator, Restangular) {
+    .controller('CreateSessionCtrl', function ($scope, $state, LoadingIndicator, Restangular, navBarService) {
+        navBarService.addButton({
+            icon: 'x',
+            state: 'stats'
+        });
+
         $scope.session = {
             date: moment().format('YYYY-MM-DD'),
             ascents: [],
-            boulderer: $scope.user.id
+            boulderer: $scope.user.current.id
         };
 
         var gyms = Restangular.all('gyms').getList();

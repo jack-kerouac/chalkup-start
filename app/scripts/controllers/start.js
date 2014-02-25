@@ -1,7 +1,22 @@
 'use strict';
 
 angular.module('chalkupStartApp')
-    .controller('StartCtrl', function ($scope, $http, $state) {
+    .controller('StartCtrl', function ($scope, $http, $state, navBarService) {
+        $scope.logout = function() {
+            $scope.user.logout();
+            // this is required since the state does not change and thus the navBar is not emptied and this
+            // controller is not initialized again
+            navBarService.clearNavBar();
+        }
+
+        if($scope.user.isLoggedIn()) {
+            navBarService.addMenuItem({
+                label: 'Abmelden',
+                action: function() {
+                    $scope.logout();
+                }
+            });
+        }
 
         $('.flexslider').flexslider({
             animation: "slide"

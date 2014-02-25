@@ -1,7 +1,18 @@
 'use strict';
 
 angular.module('chalkupStartApp')
-    .controller('StatsCtrl', function ($scope, $rootScope, $q, Restangular, LoadingIndicator) {
+    .controller('StatsCtrl', function ($scope, $rootScope, $q, Restangular, LoadingIndicator, navBarService) {
+        navBarService.addButton({
+            icon: 'plus',
+            state: 'create-session'
+        });
+        navBarService.addMenuItem({
+            label: 'Abmelden',
+            action: function() {
+                $scope.user.logout();
+            }
+        });
+
         var user = $scope.user.current;
         var statisticsGet = user.all('statistics').getList();
         LoadingIndicator.waitFor(statisticsGet);

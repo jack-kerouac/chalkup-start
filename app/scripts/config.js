@@ -8,53 +8,23 @@ angular.module('chalkupStartApp')
         $stateProvider
             .state('start', {
                 url: "/",
-                views: {
-                    content: {
-                        templateUrl: "views/start.html",
-                        controller: 'StartCtrl'
-                    },
-                    navbar: { templateUrl: "views/navbar/start.navbar.html" }
-                }
+                templateUrl: "views/start.html",
+                controller: 'StartCtrl'
             })
             .state('stats', {
                 url: "/stats",
-                views: {
-                    content: {
-                        templateUrl: "views/stats.html",
-                        controller: 'StatsCtrl'
-                    },
-                    navbar: { templateUrl: "views/navbar/stats.navbar.html" }
-                }
+                templateUrl: "views/stats.html",
+                controller: 'StatsCtrl'
             })
             .state('create-session', {
                 url: "/createSession",
-                views: {
-                    content: {
-                        templateUrl: "views/create-session.html",
-                        controller: 'CreateSessionCtrl'
-                    },
-                    navbar: { templateUrl: "views/navbar/create-session.navbar.html" }
-                }
+                templateUrl: "views/create-session.html",
+                controller: 'CreateSessionCtrl'
             })
             .state('edit-session', {
                 url: "/editSession?id",
-                views: {
-                    content: {
-                        templateUrl: "views/edit-session.html",
-                        controller: 'EditSessionCtrl'
-                    },
-                    navbar: {
-                        templateUrl: "views/navbar/edit-session.navbar.html",
-                        controller: ['$scope', '$rootScope', function ($scope, $rootScope) {
-                            $scope.save = function () {
-                                $rootScope.$broadcast('SAVE-SESSION');
-                            }
-                            $scope.delete = function() {
-                                $rootScope.$broadcast('DELETE-SESSION');
-                            }
-                        }]
-                    }
-                }
+                templateUrl: "views/edit-session.html",
+                controller: 'EditSessionCtrl'
             });
 
 
