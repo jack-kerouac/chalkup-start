@@ -2,22 +2,13 @@
 
 angular.module('chalkupStartApp')
     .controller('StatsCtrl', function ($scope, $rootScope, $q, Restangular, LoadingIndicator) {
-        var user = Restangular.one('users', 8);
-
-        var userGet = user.get();
-        LoadingIndicator.waitFor(userGet);
-
+        var user = $scope.user.current;
         var statisticsGet = user.all('statistics').getList();
         LoadingIndicator.waitFor(statisticsGet);
 
         $scope.gradeData = [];
 
-        $q.all([userGet, statisticsGet]).then(function (args) {
-            var user = args[0];
-            var statistics = args[1];
-
-            $rootScope.user = user;
-
+        statisticsGet.then(function (statistics) {
             // trend calculation
             var oldGradeValue = user.initialGrade.value;
             $scope.statistics = _.map(statistics, function (stat) {
