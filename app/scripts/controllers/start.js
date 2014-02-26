@@ -3,7 +3,9 @@
 angular.module('chalkupStartApp')
     .controller('StartCtrl', function ($scope, $http, $state, $timeout, navBarService) {
 
-        $scope.$watch('user.isLoggedIn()', function(loggedIn) {
+        
+        // watching the login status is required since upon initializing this controller, the login state is not clear yet.
+        var unregisterLoggedInMenuWatcher = $scope.$watch('user.isLoggedIn()', function(loggedIn) {
             if(loggedIn) {
                 navBarService.addMenuItem({
                     label: 'Statistik',
@@ -59,6 +61,7 @@ angular.module('chalkupStartApp')
             var login = $scope.user.login(credentials);
             login.then(function() {
                 $state.go('stats');
+                unregisterLoggedInMenuWatcher();
             });
         };
 
