@@ -14,7 +14,7 @@ angular.module('chalkupStartApp')
                 navBarService.addMenuItem({
                     label: 'Abmelden',
                     action: function() {
-                        $scope.logout();
+                        $scope.user.logout();
                     }
                 });
             }
