@@ -3,7 +3,11 @@
 angular.module('chalkupStartApp')
     .factory('cuColorService', function () {
 
-        function getCss(color) {
+        function getCss(color, angle) {
+            if (_.isUndefined(angle)) {
+                angle = 0;
+            }
+
             if (_.isUndefined(color)) {
                 return {
                     background: ''
@@ -16,7 +20,7 @@ angular.module('chalkupStartApp')
                     color.ternary + " 67%";
 
                 return {
-                    background: "linear-gradient(to bottom, " + gradient + ")"
+                    background: "linear-gradient(" + angle + "deg, " + gradient + ")"
                 };
             }
             else if (color.hasOwnProperty('secondary')) {
@@ -24,7 +28,7 @@ angular.module('chalkupStartApp')
                 var gradient = color.primary + " 50%, " + color.secondary + " 50%";
 
                 return {
-                    background: "linear-gradient(to bottom, " + gradient + ")"
+                    background: "linear-gradient(" + angle + "deg, " + gradient + ")"
                 };
             }
             else {
@@ -35,8 +39,8 @@ angular.module('chalkupStartApp')
         }
 
         return {
-            color: function (elem, color) {
-                var css = getCss(color);
+            color: function (elem, color, angle) {
+                var css = getCss(color, angle);
                 $(elem).css(css);
             }
         }
@@ -51,9 +55,12 @@ angular.module('chalkupStartApp')
             scope: {
                 cuColor: '='
             },
-            link: function ($scope, elem) {
+            link: function ($scope, elem, attrs) {
                 $scope.$watch('cuColor', function (color) {
-                    cuColorService.color(elem, color);
+                    if(!_.isUndefined(attrs.angle))
+                        cuColorService.color(elem, color, parseInt(attrs.angle));
+                    else
+                        cuColorService.color(elem, color);
                 })
             }
         };
