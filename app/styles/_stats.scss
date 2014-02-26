@@ -16,10 +16,15 @@ body[state='stats'] {
   }
   #session-list {
     position: absolute;
-    bottom: 0;
+    bottom: rem-calc(10);
     left: 0;
     right: 0;
-    top: $chart-height-small + $current-grade-height;
+    top: $chart-height-small + $current-grade-height + rem-calc(10);
+
+    ul {
+      height: 100%;
+      overflow-y: auto;
+    }
   }
 
   // REST
@@ -39,11 +44,16 @@ body[state='stats'] {
     background: $peter-river;
   }
   #session-list {
-    overflow-y: auto;
+    @include card;
   }
 
   ul.sessions {
     $session-height: 3.5rem;
+
+    li:first-child {
+      // remove the standard list items top margin
+      margin-top: 0;
+    }
 
     @include list-items($session-height, true);
     .trend {

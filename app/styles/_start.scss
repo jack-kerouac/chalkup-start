@@ -20,6 +20,13 @@ body[state='start'] {
     }
   }
 
+  form[name="login"] {
+    label {
+      @include form-label($alignment: inline);
+      margin-bottom: 0;
+    }
+  }
+
   #title {
     background: url(/images/bg/chalked_hands_1.jpg) #000 no-repeat;
     position: relative;

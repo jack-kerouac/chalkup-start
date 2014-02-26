@@ -17,7 +17,7 @@ angular.module('chalkupStartApp')
 			var div = L.DivIcon.prototype.createIcon.call(this, oldIcon);
 			var color = this.options.color;
 
-            cuColorService.color(div, color);
+            cuColorService.color(div, color, 45);
 			return div;
 		}
 	});

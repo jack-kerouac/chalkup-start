@@ -22,7 +22,7 @@ body[state='edit-session'] {
     }
 
     #ascents-tab {
-      @include grid-column($columns: 5, $collapse: true);
+      @include grid-column($columns: 5, $collapse: false);
 
       // we want to display this heading above the list for larger screens
       h2 {
@@ -57,26 +57,39 @@ body[state='edit-session'] {
   }
 
   #floor-plan-tab {
+
     > .row:nth-of-type(1) {
       height: 50%;
 
-      .map {
+      > .column {
         height: 100%;
+
+        .gym-floor-plan-wrapper {
+          height: 100%;
+          .map {
+            height: 100%;
+          }
+        }
       }
     }
     > .row:nth-of-type(2) {
-      height: 50%;
-      position: relative;
+      // margin percentages are always multiplied with the width of the containing element
+      // this results at the boulder photo not taking up all the vertical space
+      margin-top: 2%;
+      height: 48%;
 
-      $color-bar-height: rem-calc(7px);
       div[cu-color] {
-        height: $color-bar-height;
+        height: rem-calc(20px);
       }
 
-      .boulder-photo {
-        position: absolute;
-        top: $color-bar-height;
-        bottom: 0;
+      > .column {
+        height: 100%;
+        .boulder-photo-wrapper {
+          height: 100%;
+          .boulder-photo {
+            height: 100%;
+          }
+        }
       }
     }
 
@@ -85,13 +98,22 @@ body[state='edit-session'] {
       transition: background-color 500ms ease-out;
     }
 
-    .boulder-photo {
-      overflow: hidden;
-      background-color: $midnight-blue;
+    .boulder-photo-wrapper {
+      @include card;
+    }
 
+    .boulder-photo {
       > img {
         max-width: none;
       }
+    }
+
+    .gym-floor-plan-wrapper {
+      @include card;
+    }
+
+    .boulder-meta-wrapper {
+      @include card;
     }
 
     .boulder-meta {
@@ -109,22 +131,7 @@ body[state='edit-session'] {
       }
 
       label {
-        width: 100%;
-        margin: 0;
-      }
-
-      label[for='flash'] {
-        background-color: $wet-asphalt;
-      }
-
-      label[for='top'] {
-        background-color: lighten($wet-asphalt, 3%);
-
-      }
-
-      input[disabled] + label {
-        color: gray;
-        cursor: default;
+        @include button($bg: $wet-asphalt, $radius: false, $full-width: true);
       }
 
       input:checked + label {
@@ -132,52 +139,46 @@ body[state='edit-session'] {
       }
     }
 
-    .inactive {
-      .boulder-photo {
+  }
 
+  #ascents-tab {
+
+    .ascent-list-wrapper {
+      @include card;
+
+      h2 {
+        .ascent-count {
+          @include ascent-count($silver, $body-font-color);
+          float: right;
+        }
       }
 
-      div[cu-color], .boulder-meta {
-        background-color: #eee;
+      overflow-y: auto;
+      ul {
+        $height: 3.5rem;
+
+        @include list-items($height: $height, $linkIcon: true, $clickable: true);
+
+        .ascent-meta {
+          padding-left: 1rem;
+        }
+
+        .boulder-photo {
+          img {
+            max-width: 100%;
+            max-height: none;
+          }
+        }
       }
     }
   }
 
-  #ascents-tab {
-    h2 {
-      margin: 0;
-      line-height: 1em;
-      vertical-align: middle;
-      background-color: $belize-hole;
-      color: white;
+  .boulder-photo {
+    overflow: hidden;
 
-      padding: 0.3em;
-      text-align: center;
-
-      .ascent-count {
-        @include ascent-count(white, $belize-hole);
-      }
-    }
-
-    overflow-y: auto;
-    ul {
-      $height: 3.5rem;
-
-      @include list-items($height, true);
-
-      .ascent-meta {
-        padding-left: 1rem;
-      }
-
-      .boulder-photo {
-        overflow: hidden;
-
-        img {
-          max-width: 100%;
-          max-height: none;
-        }
-      }
-    }
+    background-image: url('/images/placeholder.png');
+    background-size: cover;
+    background-position: 50% 50%;
   }
 
 }

@@ -1,3 +1,7 @@
 body[state='create-session'] {
   @include full-height();
+
+  .create-session-wrapper {
+    @include card;
+  }
 }

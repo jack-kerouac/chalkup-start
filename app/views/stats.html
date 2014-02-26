@@ -6,7 +6,7 @@
 
 <div id="session-list">
     <ul class="sessions">
-        <li ng-repeat="s in statistics | orderBy:'-session.date'" class="row collapse">
+        <li ng-repeat="s in statistics | orderBy:'-session.date'" class="row">
             <div class="column medium-1 small-2 trend">
                 <i ng-show="s.gradeDiff > 0" class="fi-arrow-up"></i>
                 <i ng-show="s.gradeDiff < 0" class="fi-arrow-down"></i>
@@ -28,7 +28,8 @@
             </div>
         </li>
     </ul>
-    <div ng-show="statistics.length == 0" class="panel">Du hast noch keine Sessions eingetragen.
-        <a class="button" ui-sref="create-session"><i class="fi-plus"></i> Lege eine erste an!</a>
+    <div ng-show="statistics.length == 0" class="text-center">
+        <p>Du hast noch keine Sessions eingetragen.</p>
+        <a class="button" ui-sref="create-session"><i class="fi-plus"></i> Lege deine Erste an!</a>
     </div>
 </div>
