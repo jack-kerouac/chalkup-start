@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('chalkupStartApp')
-    .directive('scaleToFill', function () {
+    .directive('scaleToCover', function () {
 
         function ratio(content, wrapper) {
             return {
@@ -14,32 +14,21 @@ angular.module('chalkupStartApp')
             return parseInt((long - short) / 2, 10);
         }
 
-        function scaleToFill(content, wrapper, centerContent) {
+        function scaleToCover(content, wrapper, scroll) {
             content.height('').width('');
             var r = ratio(content, wrapper);
             var width, height;
-            var offset = {top: 0, left: 0};
 
             if (r.h > r.w) {
                 width = wrapper.width();
                 height = content.height() / r.w;
-                if (centerContent) {
-                    offset.top = - center(height, wrapper.height());
-                }
+                if(scroll)
+                    wrapper.css("overflow-y", "auto");
             } else {
                 height = wrapper.height();
                 width = content.width() / r.h;
-                if (centerContent) {
-                    offset.left = - center(width, wrapper.width());
-                }
-            }
-
-            if (centerContent) {
-                content.css({
-                    'position': 'relative',
-                    'top': offset.top + 'px',
-                    'left': offset.left + 'px'
-                });
+                if(scroll)
+                    wrapper.css("overflow-x", "auto");
             }
 
             content.height(height).width(width);
@@ -47,9 +36,9 @@ angular.module('chalkupStartApp')
 
         return {
             restrict: 'A',
-            link: function ($scope, elem) {
-                elem.bind('load', function() {
-                    scaleToFill(elem, elem.parent(), true);
+            link: function (scope, elem, attrs) {
+                elem.bind('load', function () {
+                    scaleToCover(elem, elem.parent(), attrs.scroll === "true");
                 });
             }
         };
