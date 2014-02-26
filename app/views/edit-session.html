@@ -65,7 +65,8 @@
                     <div class="subtitle">{{ascent.style}}</div>
                 </div>
                 <div class="column small-2">
-                    <a ng-click="select(boulder(ascent.boulder))"><i class="fi-arrows-out"></i></a>
+                    <!-- TODO: remove the ng-show as soon as the boulder is guaranteed to be loaded -->
+                    <a ng-click="select(boulder(ascent.boulder))" ng-show="boulder(ascent.boulder)"><i class="fi-arrows-out"></i></a>
                 </div>
             </li>
         </ul>
