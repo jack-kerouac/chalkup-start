@@ -2,12 +2,6 @@
 
 angular.module('chalkupStartApp')
     .controller('StartCtrl', function ($scope, $http, $state, $timeout, navBarService) {
-        $scope.logout = function() {
-            $scope.user.logout();
-            // this is required since the state does not change and thus the navBar is not emptied and this
-            // controller is not initialized again
-            navBarService.clearNavBar();
-        }
 
         $scope.$watch('user.isLoggedIn()', function(loggedIn) {
             if(loggedIn) {

@@ -62,7 +62,7 @@ angular.module('chalkupStartApp')
                                 service.current = undefined;
                                 loggedOut.resolve('logout successful');
 
-                                $state.go('start');
+                                $state.go('start', null, {reload: true});
                             }
                             else {
                                 loggedOut.reject('login unsucessful');
