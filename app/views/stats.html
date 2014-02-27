@@ -5,7 +5,7 @@
 </div>
 
 <div id="session-list">
-    <ul class="sessions">
+    <ul ng-show="statistics.length != 0" class="sessions">
         <li ng-repeat="s in statistics | orderBy:'-session.date'" class="row">
             <div class="column medium-1 small-2 trend">
                 <i ng-show="s.gradeDiff > 0" class="fi-arrow-up"></i>
