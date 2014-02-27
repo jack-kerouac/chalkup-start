@@ -117,8 +117,8 @@ body[state='edit-session'] {
     }
 
     .boulder-meta {
-      height: 2em;
-      line-height: 2em;
+      height: 3em;
+      line-height: 3em;
       vertical-align: middle;
       text-align: center;
 
@@ -126,13 +126,20 @@ body[state='edit-session'] {
     }
 
     .ascent-style-control {
+
       input {
         display: none;
       }
 
       label {
-        @include button($bg: $wet-asphalt, $radius: false, $full-width: true);
+        @include button($padding:$button-med, $bg: $wet-asphalt, $radius: false, $full-width: true);
+        margin: 0;
       }
+
+      > div:nth-of-type(1) {
+        margin-bottom: rem-calc(10px);
+      }
+
 
       input:checked + label {
         background-color: $pumpkin;
