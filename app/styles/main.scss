@@ -87,7 +87,7 @@ $tabs-height: 45px;
 
 @mixin card() {
   background-color: white;
-  border-bottom: 2px solid $clouds;
+  border-bottom: 2px solid darken($clouds, 5%);
 
   padding: rem-calc(10);
 }

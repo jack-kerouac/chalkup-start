@@ -36,7 +36,7 @@ $column-gutter: rem-calc(10);
 // $total-columns: 12;
 
 // We use these to control various global styles
-$body-bg: scale-color(#fff, $lightness: -3%);
+$body-bg: darken(#fff, 7%);
 $body-font-color: #444;
 $body-font-family: "Open Sans", sans-serif;
 $body-font-weight: 400;
