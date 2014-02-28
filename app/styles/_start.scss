@@ -11,10 +11,6 @@ body[state='start'] {
     // required for placing the ribbon
     position: relative;
     @include grid-row();
-
-    > div {
-      @include grid-column();
-    }
   }
 
   @mixin dark-row() {
@@ -42,6 +38,13 @@ body[state='start'] {
       @include dark-row;
     }
   }
+
+  @media #{$medium-up} {
+    .column {
+      padding: 0 1.5rem;
+    }
+  }
+
 
   footer {
     @include dark-row;
