@@ -2,6 +2,15 @@
 
 angular.module('chalkupStartApp')
     .controller('StartCtrl', function ($scope, $http, $modal, navBarService, feedbackService) {
+        var openLogin = function () {
+            var modalInstance = $modal.open({
+                template: '<div class="column" ng-include="\'/views/login.html\'"></div>' +
+                    '<a class="close-reveal-modal" ng-click="$dismiss()">&#215;</a>',
+                windowClass: 'small'
+            });
+        };
+
+        $scope.openLogin = openLogin;
 
         // watching the login status is required since upon initializing this controller, the login state is not clear yet.
         var unregisterLoggedInMenuWatcher = $scope.$watch('user.isLoggedIn()', function(loggedIn) {
@@ -14,6 +23,14 @@ angular.module('chalkupStartApp')
                     label: 'Abmelden',
                     action: function() {
                         $scope.user.logout();
+                    }
+                });
+            }
+            else {
+                navBarService.addMenuItem({
+                    label: 'Anmelden',
+                    action: function() {
+                        openLogin();
                     }
                 });
             }
@@ -42,15 +59,6 @@ angular.module('chalkupStartApp')
 
             }).error(function (data, status) {
                 $scope.error = {data: data, status: status };
-            });
-        };
-
-        $scope.openLogin = function () {
-
-            var modalInstance = $modal.open({
-                template: '<div class="column" ng-include="\'/views/login.html\'"></div>' +
-                    '<a class="close-reveal-modal" ng-click="$dismiss()">&#215;</a>',
-                windowClass: 'small'
             });
         };
 
