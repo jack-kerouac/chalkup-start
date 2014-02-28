@@ -1,81 +1,119 @@
 <section id="title">
-    <div class="medium-6">
+    <div>
         <h1>chalkUp!</h1>
 
-        <p><strong>Mit chalkUp! kannst du deinen persönlichen Fortschritt beim Bouldern in der Halle verfolgen,
-            visualisieren und mit anderen vergleichen.</strong></p>
+        <ul>
+            <li>verfolge deinen Fortschritt beim Bouldern</li>
+            <li>lasse dir neue Boulder empfehlen</li>
+            <li>teile und vergleiche dich mit deinen Boulderfreunden</li>
+        </ul>
     </div>
-    <div>&nbsp;</div>
 </section>
 
+<section id="story">
+    <div>
+        <h2>Die Story</h2>
 
-<section id="summary">
-    <div class="medium-6">
-        <p>In den unterstützen Hallen sind die momentan geschraubten Boulder voreingetragen. Um eine <a
-                href="#create-session">Boulder-Session zu erfassen</a> wählst du die Boulder aus, die du an diesem Tag
-            geschafft hast. <br/> <a href="#stats">Statistiken</a> erlauben dir deinen Fortschritt und andere Kenndaten
-            über einen längeren Zeitraum zu verfolgen. chalkUp! kann dir aber auch <a href="#recommendations">Empfehlungen</a>
-            für Boulder geben, die dir liegen könnten. Du kannst dich mit deinen Mit-Boulderern <a href="#compare">vergleichen</a>
-            und deinen Fortschritt teilen.
-        </p>
-    </div>
-    <div class="medium-6" id="login" ng-include="'/views/login.html'"></div>
-</section>
+        <p>Wir sind begeisterte Kletterer aus München. Im Winter halten wir uns in Boulderhallen fit und trainieren auf
+            den Sommer. Da uns eine Möglichkeit zum Verfolgen unseres Training-Levels fehlte haben wir chalkUp!
+            entwickelt.</p>
 
-<section id="create-session">
-    <div class="medium-6">&nbsp;</div>
-    <div class="medium-6">
-        <h2><i class="fi-pencil"></i> Boulder-Session eintragen</h2>
-
-        <p>Wähle die Boulder die du an einem Tag klettern konntest auf dem Hallengrundriss und anhand eines Fotos aus.
-            Für jeden Boulder gibst du an, ob du ihn auf Anhieb geschafft hast oder nicht.
+        <p>Mit der ersten Version können wir Bouldersessions eintragen und sofort sehen, wie sich unser Level entwickelt
+            hat. Und für dich <a>steht es auch offen</a>! Doch dies ist erst der Anfang!</p>
+        <ul>
+            <li>Boulder- und Kletterhallen könnten mit chalkUp! ihre Routendatenbank pflegen</li>
+            <li>Wir könnten spontane Wettkämpfe ausrufen und unsere Freunde dazu einladen</li>
+            <li>Unsere selbst definierten Boulderprobleme könnten über chalkUp! veröffentlicht werden</li>
+        </ul>
+        <p>Was würde dir beim Bouldern noch helfen? <a ng-click="openFeedbackPanel()">Teile deine Idee doch mit uns!</a>
         </p>
     </div>
 </section>
 
+<section id="steps">
+    <div class="medium-6">
+        <h2>So funktioniert's</h2>
+        <ol>
+            <li>Freunde sammeln und Bouldern gehen</li>
+            <li>Session bei chalkUp! eintragen</li>
+            <li>Deinen Fortschritt bei chalkUp! auswerten</li>
+        </ol>
+    </div>
+    <div class="medium-6">
+        <p>&lt;Bild 1: ChalkBag, Kletterschuhe, ...; Bild 2: Handy mit chalkUp! edit session offen, Bild 3: chalkUp
+            statistik auf Laptop offen?&gt;</p>
+    </div>
+</section>
 
 <section id="stats">
+    <div class="coming-soon">Coming soon!</div>
+    <div class="medium-6">
+        <p>&lt;Bild zum Lernalgorithmus?&gt;</p>
+    </div>
     <div class="medium-6">
         <h2><i class="fi-graph-bar"></i> Statistiken</h2>
 
-        <p>Wie lief eine Session? Hast du dich verbessert? Um wie viel? Wie viele Boulder hast du gemacht? All dies
-            beantwortet dir deine Statistik.</p>
-    </div>
-    <div class="medium-6">
+        <p>chalkUp! soll dein Kletter-Level als auch die Schwierigkeit der Boulder lernen. Umso mehr Begehungen
+            eingetragen werden, umso genauer wird die Bewertung. <br/>
+            Wir könnten auch einzelne Charakteristiken der Boulder und deine jeweilige Stärke darin erheben:
+        </p>
+        <ul>
+            <li>runde Sloper oder scharfe Leisten?</li>
+            <li>kräftige Überhänge oder balancieren auf Platten?</li>
+            <li>weite Züge oder delikate Fußwechsel?</li>
+            <li>...</li>
+        </ul>
     </div>
 </section>
 
 <section id="recommendations">
-    <div class="medium-6">&nbsp;</div>
-    <div class="medium-6">
+    <div class="coming-soon">Coming soon!</div>
+    <div>
         <h2><i class="fi-lightbulb"></i> Empfehlungen</h2>
-        <p>chalkUp! schlägt dir Boulder vor, die in deinem Grad liegen.</p>
+
+        <p>Basierend auf den von dir gelernten Grad könnte dir chalkUp! Boulder empfehlen, mit denen du an deinen
+            Schwächen arbeiten könntest, oder die du</p>
+        <ul>
+            <li>zum <strong>Aufwärmen</strong> machen kannst</li>
+            <li>vermutlich längere Zeit <strong>projektieren</strong> musst</li>
+            <li>in die du einen <strong>Flash-Versuch</strong> investieren solltest</li>
+        </ul>
     </div>
 </section>
 
 
-<section id="compare" data-equalizer>
-    <div class="medium-6" data-equalizer-watch>
+<section id="compare">
+    <div class="medium-6">
+        <div class="coming-soon">Coming soon!</div>
+
         <h2><i class="fi-share"></i> Vergleiche dich und teile</h2>
 
-        <p>Vergleiche deinen Fortschritt mit anderen. Teile eine Session über Facebook oder Google+.</p>
+        <p>Uns erfüllt es sehr, gemeinsam an einem Boulderproblem zu arbeiten und Erfolge und Rückschläge zu teilen. Und
+            auch wir wetteifern miteinander. Diese Aspekte sollten sich auch in chalkUp! wiederfinden.</p>
 
-        <p><i class="fi-social-facebook"></i>&nbsp;<i class="fi-social-google-plus"></i></p>
+        <p>Du solltest also Bouldergruppen definieren und deine Sessions mit deren Mitgliedern teilen können. Finde
+            andere, die ähnlich schwer und ähnliche Boulder wie du machen und tausche dich mit ihnen aus. Organisiere
+            spontane Competitions und messe dich!</p>
+
+        <p>Und all das sollte sich in einer Art und Weise mit deinen Profilen in sozialen Netzwerken integrieren, die
+            für dich durchschaubar ist und nicht zufällige Dinge auf deiner Pinnwand postet.</p>
     </div>
 
-    <div class="medium-6" data-equalizer-watch>
+    <div class="medium-6">
     </div>
 </section>
 
 <section id="about-us">
     <h2><i class="fi-torsos-male-female"></i> Über uns</h2>
 
-    <div class="medium-6">
-        <p>TEXT</p>
+    <div class="medium-4">
+        <p>Florian</p>
     </div>
-
-    <div class="medium-6">
-        <p>TEXT</p>
+    <div class="medium-4">
+        <p>Thomas</p>
+    </div>
+    <div class="medium-4">
+        <p>Tony</p>
     </div>
 </section>
 

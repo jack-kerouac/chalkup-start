@@ -1111,7 +1111,7 @@ $tabs-content-padding: 0;
 // $header-font-family: join("Open Sans", $body-font-family);
 $header-font-weight: 300;
 // $header-font-style: normal;
-// $header-font-color: #222;
+$header-font-color: inherit;
 // $header-line-height: 1.4;
 // $header-top-margin: .2rem;
 // $header-bottom-margin: .5rem;
@@ -1128,6 +1128,9 @@ $h3-font-size: rem-calc(20);
 // These control how subheaders are styled.
 // $subheader-line-height: 1.4;
 // $subheader-font-color: scale-color($header-font-color, $lightness: 35%);
+
+// Florian Rampp: needs to be overwritten since we set $header-font-color to inherit and not to a color
+$subheader-font-color: inherit;
 // $subheader-font-weight: 300;
 // $subheader-top-margin: .2rem;
 // $subheader-bottom-margin: .5rem;
@@ -1135,6 +1138,9 @@ $h3-font-size: rem-calc(20);
 // A general <small> styling
 // $small-font-size: 60%;
 // $small-font-color: scale-color($header-font-color, $lightness: 35%);
+
+// Florian Rampp: needs to be overwritten since we set $header-font-color to inherit and not to a color
+$small-font-color: inherit;
 
 // We use these to style paragraphs
 // $paragraph-font-family: inherit;
@@ -1174,11 +1180,20 @@ $anchor-font-color-hover: scale-color($primary-color, $lightness: +14%);
 // $definition-list-margin-bottom: rem-calc(12);
 
 // We use these to style blockquotes
+
 // $blockquote-font-color: scale-color($header-font-color, $lightness: 35%);
+
+// Florian Rampp: needs to be overwritten since we set $header-font-color to inherit and not to a color
+$blockquote-font-color: inherit;
+
 // $blockquote-padding: rem-calc(9 20 0 19);
 // $blockquote-border: 1px solid #ddd;
 // $blockquote-cite-font-size: rem-calc(13);
 // $blockquote-cite-font-color: scale-color($header-font-color, $lightness: 23%);
+
+// Florian Rampp: needs to be overwritten since we set $header-font-color to inherit and not to a color
+$blockquote-cite-font-color: inherit;
+
 // $blockquote-cite-link-color: $blockquote-cite-font-color;
 
 // Acronym styles

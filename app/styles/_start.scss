@@ -1,6 +1,15 @@
 body[state='start'] {
 
+  .coming-soon {
+    @include label($bg: $nephritis);
+    position: absolute;
+    top: rem-calc(10);
+    right: rem-calc(10);
+  }
+
   section, footer {
+    // required for placing the ribbon
+    position: relative;
     @include grid-row();
 
     > div {
@@ -11,9 +20,8 @@ body[state='start'] {
   @mixin dark-row() {
     background-color: #222;
 
-    h1, h2, p, small, ul {
-      color: lighten($body-font-color, 95%);
-    }
+    color: lighten($body-font-color, 95%);
+
     a {
       color: lighten($primary-color, 50%);
       text-decoration: underline;
@@ -68,31 +76,20 @@ body[state='start'] {
     }
   }
 
-  #summary {
-    .panel {
-      background: #f7f7f7;
-    }
-    .alert-box {
-      margin: 0;
-    }
-  }
-
-  #create-session {
+  #steps {
     background: url(/images/bg/gym_1.jpg) #5e2a19 0 40% no-repeat;
+    min-height: 300px;
   }
 
   #recommendations {
     background: url(/images/bg/recommendations.jpg) #020b12 no-repeat;
+    min-height: 300px;
   }
 
   #compare {
     > div:nth-child(2) {
       background: url(/images/bg/hanging_boulderer.jpg) 0% 30% no-repeat;
-    }
-    p i[class^="fi-"] {
-      font-size: 3em;
-      display: inline-block;
-      margin-right: 0.5em;
+      min-height: 300px;
     }
   }
 
