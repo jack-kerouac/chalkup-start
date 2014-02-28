@@ -1,48 +1,69 @@
 body[state='start'] {
 
-  .content section.row {
-    @include panel();
+  section, footer {
+    @include grid-row();
 
-    border: 0;
-
-    &.light {
-
-    }
-
-    &.dark {
-      h1, h2, p, small, ul {
-        color: lighten($body-font-color, 95%);
-      }
-      a {
-        color: lighten($primary-color, 50%);
-        text-decoration: underline;
-      }
+    > div {
+      @include grid-column();
     }
   }
 
-  form[name="login"] {
-    label {
-      @include form-label($alignment: inline);
-      margin-bottom: 0;
+  @mixin dark-row() {
+    background-color: #222;
+
+    h1, h2, p, small, ul {
+      color: lighten($body-font-color, 95%);
+    }
+    a {
+      color: lighten($primary-color, 50%);
+      text-decoration: underline;
+    }
+  }
+
+  @mixin light-row() {
+    background-color: white;
+  }
+
+  section {
+    &:nth-child(even) {
+      @include light-row;
+    }
+
+    // dark
+    &:nth-child(odd) {
+      @include dark-row;
+    }
+  }
+
+  footer {
+    @include dark-row;
+
+    min-height: 100px;
+
+    p, ul {
+      font-size: 0.6em;
+      margin: 0;
+    }
+  }
+
+  #login {
+    @include panel;
+
+    form {
+      label {
+        @include form-label($alignment: inline);
+        // this is required for when breaking to small layout
+        margin-bottom: 0;
+      }
     }
   }
 
   #title {
     background: url(/images/bg/chalked_hands_1.jpg) #000 no-repeat;
-    position: relative;
-
-    p {
-      margin-top: 2em;
-      margin-bottom: 0;
-    }
 
     @media #{$medium-up} {
       > div {
         height: 300px;
-      }
-      p {
-        position: absolute;
-        bottom: 0;
       }
     }
   }
@@ -77,16 +98,6 @@ body[state='start'] {
 
   #about-us {
     background: url(/images/bg/crowd.jpg) no-repeat;
-  }
-
-  #footer {
-    background-color: #222;
-    min-height: 100px;
-
-    p, ul {
-      font-size: 0.6em;
-      margin: 0;
-    }
   }
 
 }
