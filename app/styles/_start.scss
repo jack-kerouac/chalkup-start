@@ -58,8 +58,6 @@ body[state='start'] {
   }
 
   #login {
-    @include panel;
-
     form {
       label {
         @include form-label($alignment: inline);

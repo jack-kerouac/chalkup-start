@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('chalkupStartApp')
-    .controller('StartCtrl', function ($scope, $http, navBarService, feedbackService) {
+    .controller('StartCtrl', function ($scope, $http, $modal, navBarService, feedbackService) {
 
         // watching the login status is required since upon initializing this controller, the login state is not clear yet.
         var unregisterLoggedInMenuWatcher = $scope.$watch('user.isLoggedIn()', function(loggedIn) {
@@ -42,6 +42,15 @@ angular.module('chalkupStartApp')
 
             }).error(function (data, status) {
                 $scope.error = {data: data, status: status };
+            });
+        };
+
+        $scope.openLogin = function () {
+
+            var modalInstance = $modal.open({
+                template: '<div class="column" ng-include="\'/views/login.html\'"></div>' +
+                    '<a class="close-reveal-modal" ng-click="$dismiss()">&#215;</a>',
+                windowClass: 'small'
             });
         };
 
