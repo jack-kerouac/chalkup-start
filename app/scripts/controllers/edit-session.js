@@ -8,6 +8,7 @@ angular.module('chalkupStartApp')
                 var deleteSession = $scope.session.remove();
                 LoadingIndicator.waitFor(deleteSession);
                 deleteSession.then(function () {
+                    $analytics.eventTrack('sessionDeletion');
                     $state.go('stats');
                 });
             }
@@ -35,6 +36,7 @@ angular.module('chalkupStartApp')
                 var update = $scope.session.put();
                 LoadingIndicator.waitFor(update);
                 update.then(function () {
+                    $analytics.eventTrack('sessionUpdate');
                     $state.go('stats');
                 });
             }

@@ -26,6 +26,8 @@ angular.module('chalkupStartApp')
             LoadingIndicator.waitFor(sessionPost);
 
             sessionPost.then(function(sessionPost) {
+                $analytics.eventTrack('sessionCreation');
+
                 $state.go('edit-session', {id: sessionPost.id});
             });
         }

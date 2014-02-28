@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('chalkupStartApp', ['ui.router', 'restangular', 'angularSpinner', 'angularMoment', 'mm.foundation']);
+angular.module('chalkupStartApp', ['ui.router', 'restangular', 'angularSpinner', 'angularMoment', 'mm.foundation', 'angulartics', 'angulartics.google.analytics']);
 
 angular.module('chalkupStartApp')
     .run(function ($window, $rootScope, $state, userService) {
