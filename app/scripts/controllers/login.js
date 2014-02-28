@@ -27,10 +27,10 @@ angular.module('chalkupStartApp')
             var login = userService.login(credentials);
             login.then(function() {
                 if(credentials === demoCredentials) {
-                    $analytics.eventTrack('demoUserLogin');
+                    $analytics.eventTrack('demoUserLogin', {});
                 }
                 else {
-                    $analytics.eventTrack('normalUserLogin');
+                    $analytics.eventTrack('normalUserLogin', {});
                 }
 
                 // TODO: this is ugly

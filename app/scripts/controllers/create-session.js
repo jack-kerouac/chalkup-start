@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('chalkupStartApp')
-    .controller('CreateSessionCtrl', function ($scope, $state, LoadingIndicator, Restangular, navBarService) {
+    .controller('CreateSessionCtrl', function ($scope, $state, $analytics, LoadingIndicator, Restangular, navBarService) {
         navBarService.addButton({
             icon: 'x',
             state: 'stats'
@@ -26,7 +26,7 @@ angular.module('chalkupStartApp')
             LoadingIndicator.waitFor(sessionPost);
 
             sessionPost.then(function(sessionPost) {
-                $analytics.eventTrack('sessionCreation');
+                $analytics.eventTrack('sessionCreation', {});
 
                 $state.go('edit-session', {id: sessionPost.id});
             });

@@ -1,14 +1,14 @@
 'use strict';
 
 angular.module('chalkupStartApp')
-    .controller('EditSessionCtrl', function ($scope, $rootScope, $stateParams, $state, $timeout, Restangular, LoadingIndicator, navBarService, feedbackService) {
+    .controller('EditSessionCtrl', function ($scope, $rootScope, $stateParams, $state, $timeout, $analytics, Restangular, LoadingIndicator, navBarService, feedbackService) {
         navBarService.addMenuItem({
             label: 'Session löschen',
             action: function () {
                 var deleteSession = $scope.session.remove();
                 LoadingIndicator.waitFor(deleteSession);
                 deleteSession.then(function () {
-                    $analytics.eventTrack('sessionDeletion');
+                    $analytics.eventTrack('sessionDeletion', {});
                     $state.go('stats');
                 });
             }
@@ -36,7 +36,7 @@ angular.module('chalkupStartApp')
                 var update = $scope.session.put();
                 LoadingIndicator.waitFor(update);
                 update.then(function () {
-                    $analytics.eventTrack('sessionUpdate');
+                    $analytics.eventTrack('sessionUpdate', {});
                     $state.go('stats');
                 });
             }
