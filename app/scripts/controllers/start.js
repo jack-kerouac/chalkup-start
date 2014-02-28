@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('chalkupStartApp')
-    .controller('StartCtrl', function ($scope, $http, $modal, navBarService, feedbackService) {
+    .controller('StartCtrl', function ($scope, $http, $modal, userService, navBarService, feedbackService) {
         var openLogin = function () {
-            var modalInstance = $modal.open({
+            $modal.open({
                 template: '<div class="column" ng-include="\'/views/login.html\'"></div>' +
                     '<a class="close-reveal-modal" ng-click="$dismiss()">&#215;</a>',
                 windowClass: 'small'
@@ -12,35 +12,57 @@ angular.module('chalkupStartApp')
 
         $scope.openLogin = openLogin;
 
-        // watching the login status is required since upon initializing this controller, the login state is not clear yet.
-        var unregisterLoggedInMenuWatcher = $scope.$watch('user.isLoggedIn()', function(loggedIn) {
+        var setLoggedInMenu = function() {
+            navBarService.addMenuItem({
+                label: 'Statistik',
+                state: 'stats'
+            });
+            navBarService.addMenuItem({
+                label: 'Feedback',
+                action: function() {
+                    feedbackService.openFeedbackPanel();
+                }
+            });
+            navBarService.addMenuItem({
+                label: 'Abmelden',
+                action: function() {
+                    $scope.user.logout();
+                }
+            });
+        };
+
+        var setLoggedOutMenu = function() {
+            navBarService.addMenuItem({
+                label: 'Anmelden',
+                action: function() {
+                    openLogin();
+                }
+            });
+            navBarService.addMenuItem({
+                label: 'Feedback',
+                action: function() {
+                    feedbackService.openFeedbackPanel();
+                }
+            });
+        }
+
+        userService.onLoginStatusChange($scope, function(loggedIn, user) {
+            navBarService.clearNavBar();
             if(loggedIn) {
-                navBarService.addMenuItem({
-                    label: 'Statistik',
-                    state: 'stats'
-                });
-                navBarService.addMenuItem({
-                    label: 'Abmelden',
-                    action: function() {
-                        $scope.user.logout();
-                    }
-                });
+                setLoggedInMenu();
             }
             else {
-                navBarService.addMenuItem({
-                    label: 'Anmelden',
-                    action: function() {
-                        openLogin();
-                    }
-                });
+                setLoggedOutMenu();
             }
         });
-        navBarService.addMenuItem({
-            label: 'Feedback',
-            action: function() {
-                feedbackService.openFeedbackPanel();
-            }
-        });
+
+        if(userService.isLoggedIn()) {
+            setLoggedInMenu();
+        }
+        else {
+            setLoggedOutMenu();
+        }
+
 
         $scope.openFeedbackPanel = feedbackService.openFeedbackPanel;
 

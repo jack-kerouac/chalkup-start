@@ -17,83 +17,104 @@ angular.module('chalkupStartApp')
             loginStatusUrl = url;
         };
 
+        var LOGIN_STATUS_CHANGE = 'loginStatusChange';
+
         this.$get = function ($rootScope, $http, $q, $state, LoadingIndicator, Restangular) {
-            return {
-                current: undefined,
-                isLoggedIn: function() {
-                    return !_.isUndefined(this.current);
-                },
-                login: function (credentials) {
-                    var loggedIn = $q.defer();
-                    var service = this;
-                    var loginPost = $http({
-                        method: 'POST',
-                        url: loginUrl,
-                        data: credentials
-                    }).success(function (data, status) {
-                            if (data.loggedIn) {
-                                var userGet = Restangular.one('users', data.userId).get();
-                                LoadingIndicator.waitFor(userGet);
-                                userGet.then(function (user) {
-                                    service.current = user;
-                                    loggedIn.resolve(user);
-                                }).catch(function () {
-                                        loggedIn.reject('getting logged in user unsuccessful');
-                                    });
-                            } else {
-                                loggedIn.reject('login unsucessful');
-                            }
-                        }).error(function (data, status) {
+            var config = {};
+
+            var updateCurrentUser = function (user) {
+                config.current = user;
+                $rootScope.$broadcast(LOGIN_STATUS_CHANGE, {
+                    loggedIn: !_.isUndefined(user),
+                    currentUser: user
+                });
+            };
+
+            config.current = undefined;
+
+            config.onLoginStatusChange = function ($scope, handler) {
+                $scope.$on(LOGIN_STATUS_CHANGE, function (event, args) {
+                    handler(args.loggedIn, args.currentUser);
+                });
+            };
+
+            config.isLoggedIn = function () {
+                return !_.isUndefined(config.current);
+            };
+
+            config.login = function (credentials) {
+                var loggedIn = $q.defer();
+                var loginPost = $http({
+                    method: 'POST',
+                    url: loginUrl,
+                    data: credentials
+                }).success(function (data, status) {
+                        if (data.loggedIn) {
+                            var userGet = Restangular.one('users', data.userId).get();
+                            LoadingIndicator.waitFor(userGet);
+                            userGet.then(function (user) {
+                                updateCurrentUser(user);
+                                loggedIn.resolve(user);
+                            }).catch(function () {
+                                    loggedIn.reject('getting logged in user unsuccessful');
+                                });
+                        } else {
                             loggedIn.reject('login unsucessful');
-                        });
-                    LoadingIndicator.waitFor(loginPost);
+                        }
+                    }).error(function (data, status) {
+                        loggedIn.reject('login unsucessful');
+                    });
+                LoadingIndicator.waitFor(loginPost);
 
-                    return loggedIn.promise;
-                },
-                logout: function () {
-                    var loggedOut = $q.defer();
-                    var service = this;
+                return loggedIn.promise;
+            };
 
-                    var logoutPost = $http({
-                        method: 'POST',
-                        url: logoutUrl
-                    }).success(function (data, status) {
-                            if (!data.loggedIn) {
-                                service.current = undefined;
-                                loggedOut.resolve('logout successful');
+            config.logout = function () {
+                var loggedOut = $q.defer();
 
-                                $state.go('start', null, {reload: true});
-                            }
-                            else {
-                                loggedOut.reject('login unsucessful');
-                            }
-                        }).error(function (data, status) {
-                            // login was not successful
+                var logoutPost = $http({
+                    method: 'POST',
+                    url: logoutUrl
+                }).success(function (data, status) {
+                        if (!data.loggedIn) {
+                            updateCurrentUser(undefined);
+                            loggedOut.resolve('logout successful');
+
+                            $state.go('start', null, {reload: true});
+                        }
+                        else {
                             loggedOut.reject('login unsucessful');
-                        });
+                        }
+                    }).error(function (data, status) {
+                        // login was not successful
+                        loggedOut.reject('login unsucessful');
+                    });
 
-                    LoadingIndicator.waitFor(logoutPost);
+                LoadingIndicator.waitFor(logoutPost);
 
-                    return loggedOut.promise;
-                },
-                init: function () {
-                    var service = this;
-                    $rootScope.user = service;
+                return loggedOut.promise;
+            };
 
-                    var loginStatusGet = $http({
-                        method: 'GET',
-                        url: loginStatusUrl
-                    }).success(function (data, status) {
-                            if (data.loggedIn) {
-                                var userGet = Restangular.one('users', data.userId).get();
-                                LoadingIndicator.waitFor(userGet);
-                                service.current = userGet.$object;
-                            } else {
-                                service.current = undefined;
-                            }
-                        });
-                    LoadingIndicator.waitFor(loginStatusGet);
-                }
-            }
+            config.init = function () {
+                $rootScope.user = config;
+
+                var loginStatusGet = $http({
+                    method: 'GET',
+                    url: loginStatusUrl
+                }).success(function (data, status) {
+                        if (data.loggedIn) {
+                            var userGet = Restangular.one('users', data.userId).get();
+                            LoadingIndicator.waitFor(userGet);
+                            userGet.then(function (user) {
+                                updateCurrentUser(user);
+                            });
+                        } else {
+                            updateCurrentUser(undefined);
+                        }
+                    });
+                LoadingIndicator.waitFor(loginStatusGet);
+            };
+
+            return config;
         }
     });

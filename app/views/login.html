@@ -1,5 +1,5 @@
 <div id="login" ng-controller="LoginCtrl">
-    <div ng-show="!user.current">
+    <div ng-show="!currentUser">
 
         <h2>Anmelden</h2>
 
@@ -38,10 +38,7 @@
     <div class="alert-box alert" ng-show="error">
         Es ist ein Fehler ({{error.status}}) aufgetreten! Tut uns leid.
     </div>
-    <div ng-show="user.current">
-        <p>Du bist als <strong>{{user.current.username}}</strong> angemeldet.</p>
-
-        <p><a ui-sref="stats">Zur Statistik!</a></p>
-        <button class="postfix" type="submit" ng-click="logout()">Abmelden</button>
+    <div ng-show="currentUser">
+        <p>Du bist als <strong>{{currentUser.username}}</strong> angemeldet.</p>
     </div>
 </div>

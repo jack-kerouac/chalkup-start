@@ -4,6 +4,12 @@ angular.module('chalkupStartApp')
     .controller('LoginCtrl', function ($scope, $state, $timeout, userService) {
         $scope.credentials = {};
 
+        userService.onLoginStatusChange($scope, function(loggedIn, user) {
+            $scope.currentUser = user;
+        });
+
+        $scope.currentUser = userService.current;
+
         $scope.demoLogin = function() {
             $scope.credentials = {
                 email: 'demo@chalkup.de',
@@ -20,7 +26,7 @@ angular.module('chalkupStartApp')
             login.then(function() {
                 // TODO: this is ugly
                 if(!_.isUndefined($scope.$close)) {
-                    $scope.$close();
+                    $timeout($scope.$close, 1000);
                 }
                 $state.go('stats');
             });
@@ -35,6 +41,6 @@ angular.module('chalkupStartApp')
                     $scope.$close();
                 }
             });
-        }
+        };
 
     });
