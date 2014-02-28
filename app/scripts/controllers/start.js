@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('chalkupStartApp')
-    .controller('StartCtrl', function ($scope, $http, $modal, userService, navBarService, feedbackService) {
+    .controller('StartCtrl', function ($scope, $http, $modal, userService, navBarService, feedbackService, CAN_LOGIN) {
         var openLogin = function () {
             $modal.open({
                 template: '<div class="column" ng-include="\'/views/login.html\'"></div>' +
@@ -32,12 +32,14 @@ angular.module('chalkupStartApp')
         };
 
         var setLoggedOutMenu = function() {
-            navBarService.addMenuItem({
-                label: 'Anmelden',
-                action: function() {
-                    openLogin();
-                }
-            });
+            if(CAN_LOGIN) {
+                navBarService.addMenuItem({
+                    label: 'Anmelden',
+                    action: function() {
+                        openLogin();
+                    }
+                });
+            }
             navBarService.addMenuItem({
                 label: 'Feedback',
                 action: function() {

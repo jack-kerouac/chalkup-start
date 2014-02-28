@@ -1,3 +1,7 @@
+'use strict';
+
+angular.module('chalkupStartApp')
+    .constant('CAN_LOGIN', false);
 
 angular.module('chalkupStartApp')
     .config(function ($stateProvider, $urlRouterProvider, $httpProvider, RestangularProvider, userServiceProvider) {
