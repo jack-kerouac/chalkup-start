@@ -47,13 +47,25 @@ body[state='start'] {
 
 
   footer {
+    $footer-font-size: 0.7rem;
+
+    font-size: $footer-font-size;
+    ul {
+      font-size: $footer-font-size;
+    }
+
     @include dark-row;
 
     min-height: 100px;
 
-    p, ul {
-      font-size: 0.6em;
+    ul {
       margin: 0;
+    }
+
+    .column {
+      height: 100%;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
     }
   }
 
