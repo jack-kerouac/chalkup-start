@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('chalkupStartApp')
-    .controller('StatsCtrl', function ($scope, $rootScope, $q, Restangular, LoadingIndicator, navBarService) {
+    .controller('StatsCtrl', function ($scope, $rootScope, $q, Restangular, LoadingIndicator, navBarService, feedbackService) {
         navBarService.addButton({
             icon: 'plus',
             state: 'create-session'
@@ -9,7 +9,7 @@ angular.module('chalkupStartApp')
         navBarService.addMenuItem({
             label: 'Feedback',
             action: function() {
-                UserVoice.push(['show', { mode: 'contact' }]);
+                feedbackService.openFeedbackPanel();
             }
         });
         navBarService.addMenuItem({

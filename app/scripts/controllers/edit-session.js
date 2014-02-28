@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('chalkupStartApp')
-    .controller('EditSessionCtrl', function ($scope, $rootScope, $stateParams, $state, $timeout, Restangular, LoadingIndicator, navBarService) {
+    .controller('EditSessionCtrl', function ($scope, $rootScope, $stateParams, $state, $timeout, Restangular, LoadingIndicator, navBarService, feedbackService) {
         navBarService.addMenuItem({
             label: 'Session löschen',
             action: function () {
@@ -15,7 +15,7 @@ angular.module('chalkupStartApp')
         navBarService.addMenuItem({
             label: 'Feedback',
             action: function() {
-                UserVoice.push(['show', { mode: 'contact' }]);
+                feedbackService.openFeedbackPanel();
             }
         });
         navBarService.addMenuItem({

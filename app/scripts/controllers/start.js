@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('chalkupStartApp')
-    .controller('StartCtrl', function ($scope, $http, $state, $timeout, navBarService) {
+    .controller('StartCtrl', function ($scope, $http, $state, $timeout, navBarService, feedbackService) {
 
         
         // watching the login status is required since upon initializing this controller, the login state is not clear yet.
@@ -22,9 +22,11 @@ angular.module('chalkupStartApp')
         navBarService.addMenuItem({
             label: 'Feedback',
             action: function() {
-                UserVoice.push(['show', { mode: 'contact' }]);
+                feedbackService.openFeedbackPanel();
             }
         });
+
+        $scope.openFeedbackPanel = feedbackService.openFeedbackPanel;
 
         $scope.credentials = {};
 
