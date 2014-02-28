@@ -17,7 +17,7 @@
     "leaflet-dist": "0.7.2",
     "angular-ui-utils": "bower-jq",
     "angular-foundation": "~0.1.0",
-    "angulartics": "~0.8.7"
+    "angulartics": "git://github.com/luisfarzati/angulartics.git#90d0bc1b7ce8513e2b28c960bb63be0a4d5afbbd"
   },
   "devDependencies": {
     "angular-mocks": "1.2.6",
