@@ -1,42 +1,47 @@
-<div ng-show="!user.current">
-    <h2>Anmelden</h2>
+<div id="login" ng-controller="LoginCtrl">
+    <div ng-show="!user.current">
 
-    <p>Gibst du eine E-Mail-Adresse an, die es noch nicht gibt, so wirst du automatisch registriert und eingeloggt.
-        Wenn du chalkUp! nur mal ausprobieren willst, dann logge dich mit dem <a
-                ng-click="demoLogin()">Beispielbenutzer</a> ein.</p>
+        <h2>Anmelden</h2>
 
-    <form name="login" ng-submit="loginAndRedirect(credentials)" novalidate form-autofill-fix>
-        <div class="row">
-            <div class="large-3 column">
-                <label for="email-field">E-Mail</label>
-            </div>
-            <div class="large-9 column">
-                <input name="email" id="email-field" type="email" placeholder="danielwoods@themachine.me"
-                       ng-model="credentials.email" required/>
-            </div>
-        </div>
-        <div class="row">
-            <div class="large-3 column">
-                <label for="password-field">Password <sup>*</sup></label>
-            </div>
-            <div class="large-9 column">
-                <input name="password" id="password-field" type="password" ng-model="credentials.password" required/>
-            </div>
-        </div>
-        <div class="row">
-            <div class="column large-12">
-                <button class="postfix" type="submit" ng-disabled="login.$invalid">Anmelden</button>
-            </div>
-        </div>
-    </form>
+        <p>Gibst du eine E-Mail-Adresse an, die es noch nicht gibt, so wirst du automatisch registriert und eingeloggt.
+            Wenn du chalkUp! nur mal ausprobieren willst, dann logge dich mit dem <a
+                    ng-click="demoLogin()">Beispielbenutzer</a> ein.</p>
 
-    <small><sup>*</sup> Verwende momentan keines deiner guten Passwörter, wir benutzen noch kein HTTPS.</small>
-</div>
-<div class="alert-box alert" ng-show="error">
-    Es ist ein Fehler ({{error.status}}) aufgetreten! Tut uns leid.
-</div>
-<div ng-show="user.current">
-    <p>Du bist als <strong>{{user.current.username}}</strong> angemeldet.</p>
-    <p><a ui-sref="stats">Zur Statistik!</a></p>
-    <button class="postfix" type="submit" ng-click="user.logout()">Abmelden</button>
+        <form name="login" ng-submit="loginAndRedirect(credentials)" novalidate form-autofill-fix>
+            <div class="row">
+                <div class="large-3 column">
+                    <label for="email-field">E-Mail</label>
+                </div>
+                <div class="large-9 column">
+                    <input name="email" id="email-field" type="email" placeholder="danielwoods@themachine.me"
+                           ng-model="credentials.email" required/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="large-3 column">
+                    <label for="password-field">Password <sup>*</sup></label>
+                </div>
+                <div class="large-9 column">
+                    <input name="password" id="password-field" type="password" ng-model="credentials.password"
+                           required/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="column large-12">
+                    <button class="postfix" type="submit" ng-disabled="login.$invalid">Anmelden</button>
+                </div>
+            </div>
+        </form>
+
+        <small><sup>*</sup> Verwende momentan keines deiner guten Passwörter, wir benutzen noch kein HTTPS.</small>
+    </div>
+    <div class="alert-box alert" ng-show="error">
+        Es ist ein Fehler ({{error.status}}) aufgetreten! Tut uns leid.
+    </div>
+    <div ng-show="user.current">
+        <p>Du bist als <strong>{{user.current.username}}</strong> angemeldet.</p>
+
+        <p><a ui-sref="stats">Zur Statistik!</a></p>
+        <button class="postfix" type="submit" ng-click="user.logout()">Abmelden</button>
+    </div>
 </div>

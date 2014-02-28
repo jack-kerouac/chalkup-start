@@ -1,9 +1,8 @@
 'use strict';
 
 angular.module('chalkupStartApp')
-    .controller('StartCtrl', function ($scope, $http, $state, $timeout, navBarService, feedbackService) {
+    .controller('StartCtrl', function ($scope, $http, navBarService, feedbackService) {
 
-        
         // watching the login status is required since upon initializing this controller, the login state is not clear yet.
         var unregisterLoggedInMenuWatcher = $scope.$watch('user.isLoggedIn()', function(loggedIn) {
             if(loggedIn) {
@@ -28,19 +27,6 @@ angular.module('chalkupStartApp')
 
         $scope.openFeedbackPanel = feedbackService.openFeedbackPanel;
 
-        $scope.credentials = {};
-
-        $scope.demoLogin = function() {
-            $scope.credentials = {
-                email: 'demo@chalkup.de',
-                password: 'demo123'
-            };
-            // timeout for the effect
-            $timeout(function() {
-                $scope.loginAndRedirect($scope.credentials);
-            }, 500);
-        };
-
         $('.flexslider').flexslider({
             animation: "slide"
         });
@@ -56,14 +42,6 @@ angular.module('chalkupStartApp')
 
             }).error(function (data, status) {
                 $scope.error = {data: data, status: status };
-            });
-        };
-
-        $scope.loginAndRedirect = function(credentials) {
-            var login = $scope.user.login(credentials);
-            login.then(function() {
-                $state.go('stats');
-                unregisterLoggedInMenuWatcher();
             });
         };
 
