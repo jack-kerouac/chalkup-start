@@ -92,6 +92,27 @@ body[state='start'] {
   #steps {
     background: url(/images/bg/gym_1.jpg) #5e2a19 0 40% no-repeat;
     min-height: 300px;
+
+
+    .step {
+      height: rem-calc(350px);
+
+      position: relative;
+      > div {
+        width: 100%;
+        text-align: center;
+
+        position: absolute;
+        bottom: 0;
+      }
+
+    }
+    img {
+      display: block;
+    }
+    strong {
+      @include label($radius: 100px, $text-size: 1.2em);
+    }
   }
 
   #recommendations {
