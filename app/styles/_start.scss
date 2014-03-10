@@ -94,19 +94,51 @@ body[state='start'] {
     min-height: 300px;
 
 
-    .step {
-      height: rem-calc(350px);
+    ol {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      justify-content: space-around;
+      align-items: stretch;
 
-      position: relative;
-      > div {
-        width: 100%;
-        text-align: center;
+      li {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
 
-        position: absolute;
-        bottom: 0;
+        align-items: center;
+
+        p {
+          margin: 0 1em;
+        }
       }
-
     }
+
+    @media #{$large-up} {
+      ol {
+        flex-direction: row;
+
+        li {
+          flex-direction: column;
+          // items to bottom
+          justify-content: flex-end;
+
+          // image first
+          img {
+            order: 0;
+          }
+          strong {
+            order: 1;
+            margin-top: rem-calc(20);
+          }
+          p {
+            order: 2;
+          }
+        }
+      }
+    }
+
     img {
       display: block;
     }
