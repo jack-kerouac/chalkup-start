@@ -17,7 +17,8 @@
     "leaflet-dist": "0.7.2",
     "angular-ui-utils": "bower-jq",
     "angular-foundation": "~0.1.0",
-    "angulartics": "git://github.com/luisfarzati/angulartics.git#90d0bc1b7ce8513e2b28c960bb63be0a4d5afbbd"
+    "angulartics": "git://github.com/luisfarzati/angulartics.git#90d0bc1b7ce8513e2b28c960bb63be0a4d5afbbd",
+    "flot-fillArea-plugin": "analoureiro99/flot-fillArea-plugin"
   },
   "devDependencies": {
     "angular-mocks": "1.2.6",
