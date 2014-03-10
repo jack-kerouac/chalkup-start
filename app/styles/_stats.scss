@@ -14,18 +14,31 @@ body[state='stats'] {
   #chart {
     height: $chart-height-small;
   }
+
+
+  $bottom-bar-height: rem-calc(50px);
   #session-list {
     position: absolute;
-    bottom: rem-calc(10);
+    bottom: $card-margin * 2 + $bottom-bar-height;
     left: 0;
     right: 0;
-    top: $chart-height-small + $current-grade-height + rem-calc(10);
+    top: $chart-height-small + $current-grade-height + $card-margin;
+    @include card;
 
     ul {
       height: 100%;
       overflow-y: auto;
     }
   }
+  nav.preview {
+    @include card;
+    position: absolute;
+    bottom: $card-margin;
+    left: 0;
+    right: 0;
+    height: $bottom-bar-height;
+  }
+
 
   // REST
 
@@ -42,9 +55,6 @@ body[state='stats'] {
   }
   #chart {
     background: $peter-river;
-  }
-  #session-list {
-    @include card;
   }
 
   ul.sessions {
@@ -79,6 +89,20 @@ body[state='stats'] {
 
     .ascents span {
       @include ascent-count;
+    }
+  }
+
+  nav.preview {
+    a {
+      font-size: 0.75em;
+      @include button($padding: rem-calc(5px));
+      @include icon-label;
+    }
+    ul {
+      margin: 0;
+      list-style: none;
+      display: flex;
+      justify-content: space-around;
     }
   }
 

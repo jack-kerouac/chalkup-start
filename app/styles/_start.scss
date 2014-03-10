@@ -1,12 +1,5 @@
 body[state='start'] {
 
-  .coming-soon {
-    @include label($bg: $nephritis);
-    position: absolute;
-    top: rem-calc(10);
-    right: rem-calc(10);
-  }
-
   section, footer {
     // required for placing the ribbon
     position: relative;
@@ -153,7 +146,7 @@ body[state='start'] {
   }
 
   #compare {
-    > div:nth-child(2) {
+    > div:nth-child(3) {
       background: url(/images/bg/hanging_boulderer.jpg) 0% 30% no-repeat;
       min-height: 300px;
     }

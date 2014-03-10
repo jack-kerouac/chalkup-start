@@ -1,10 +1,10 @@
-<div id="current-grade">
+<section id="current-grade">
     momentaner Grad: <span class="grade">{{user.current.grade.mean.font}}</span>
-</div>
-<div id="chart" grade-chart grade-data="gradeData">
-</div>
+</section>
+<section id="chart" grade-chart grade-data="gradeData">
+</section>
 
-<div id="session-list">
+<section id="session-list">
     <ul ng-show="statistics.length != 0" class="sessions">
         <li ng-repeat="s in statistics | orderBy:'-session.date'" class="row">
             <div class="column medium-1 small-2 trend">
@@ -32,4 +32,11 @@
         <p>Du hast noch keine Sessions eingetragen.</p>
         <a class="button" ui-sref="create-session"><i class="fi-plus"></i> Lege deine Erste an!</a>
     </div>
-</div>
+</section>
+
+<nav class="preview">
+    <ul>
+        <li><a ui-sref="social"><i class="fi-torsos-all"></i> meine Bouldergruppe</a></li>
+        <li><a ui-sref="detailed-stats"><i class="fi-graph-trend"></i> detailierte Statistiken</a></li>
+    </ul>
+</nav>

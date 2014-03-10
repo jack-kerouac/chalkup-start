@@ -15,6 +15,21 @@ $fi-path: "/bower_components/foundation-icon-fonts";
   top: -0.1em;
 }
 
+@mixin icon-label {
+  i[class^="fi-"] {
+    margin-right: 0.5em;
+  }
+}
+
+.coming-soon {
+  @include label($bg: $nephritis);
+//  position: absolute;
+//  top: rem-calc(10);
+//  right: rem-calc(10);
+  float: right;
+}
+
+
 // TABS
 $tabs-height: 45px;
 
@@ -93,11 +108,13 @@ $tabs-height: 45px;
 
 // LIST ITEMS
 
+$card-margin: rem-calc(10);
+
 @mixin card() {
   background-color: white;
   border-bottom: 2px solid darken($clouds, 5%);
 
-  padding: rem-calc(10);
+  padding: $card-margin;
 }
 
 @mixin list-items($height, $linkIcon: false, $clickable: false) {
@@ -236,3 +253,16 @@ input.ng-invalid.ng-dirty {
 @import "stats";
 @import "create-session";
 @import "edit-session";
+
+
+
+// MINOR PAGES
+
+body[state='social'], body[state='detailed-stats'] {
+  @include full-height();
+
+  .wrapper {
+    @include card;
+  }
+
+}

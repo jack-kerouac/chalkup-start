@@ -29,6 +29,14 @@ angular.module('chalkupStartApp')
                 url: "/editSession?id",
                 templateUrl: "views/edit-session.html",
                 controller: 'EditSessionCtrl'
+            })
+            .state('social', {
+                url: "/social",
+                templateUrl: "views/social.html"
+            })
+            .state('detailed-stats', {
+                url: "/detailed-stats",
+                templateUrl: "views/detailed-stats.html"
             });
 
 
