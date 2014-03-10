@@ -16,11 +16,12 @@ angular.module('chalkupStartApp')
             $rootScope.loading = true;
 
             waitQueue.push(promise);
-            promise.then(function (data) {
-                removeFromQueue(promise);
-            }, function (data) {
-                removeFromQueue(promise);
-                alert(data.config.method + " to " + data.config.url + " returned with " + data.status);
-            });
+            promise
+                .catch(function (data) {
+                    alert(data.config.method + " to " + data.config.url + " returned with " + data.status);
+                })
+                .finally(function () {
+                    removeFromQueue(promise);
+                });
         }
     });

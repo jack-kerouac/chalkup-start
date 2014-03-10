@@ -42,6 +42,9 @@ angular.module('chalkupStartApp')
 
         // send Cookie along with the CORS AJAX requests
         $httpProvider.defaults.withCredentials = true;
+        // 10s timeout
+        $httpProvider.defaults.timeout = 10000;
+
 
         var host = 'http://demo.chalkup.de';
 
