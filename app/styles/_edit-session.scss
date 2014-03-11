@@ -182,7 +182,11 @@ body[state='edit-session'] {
       ul {
         $height: 3.5rem;
 
-        @include list-items($height: $height, $linkIcon: true, $clickable: true);
+        @include list-items($height: $height, $clickable: true);
+
+        li > div:last-child {
+          @include link-icon($height: $height);
+        }
 
         .ascent-meta {
           padding-left: 1rem;

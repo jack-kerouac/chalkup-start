@@ -65,6 +65,10 @@ body[state='stats'] {
       margin-top: 0;
     }
 
+    li > div:last-child {
+      @include link-icon($height: $session-height);
+    }
+
     @include list-items($session-height, true);
     .trend {
       font-size: 2em;
