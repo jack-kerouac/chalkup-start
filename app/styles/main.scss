@@ -133,6 +133,9 @@ $card-margin: rem-calc(10);
         background-color: $clouds;
         cursor: pointer;
       }
+      &.selected {
+        background-color: darken($clouds, 5%);
+      }
     }
 
     .title {

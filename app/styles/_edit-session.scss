@@ -72,6 +72,7 @@ body[state='edit-session'] {
         }
       }
     }
+
     > .row:nth-of-type(2) {
       // margin percentages are always multiplied with the width of the containing element
       // this results at the boulder photo not taking up all the vertical space
@@ -91,6 +92,13 @@ body[state='edit-session'] {
           }
         }
       }
+    }
+
+    .usage-hint p {
+      @include card;
+      font-style: italic;
+      margin-top: $card-margin;
+      font-size: 0.8em;
     }
 
     div[cu-color] {

@@ -10,7 +10,7 @@
 <div class="tabs-content">
     <section id="floor-plan-tab" class="active" ng-init="activeTab = 'floor-plan'" ng-class="{active: activeTab == 'floor-plan'}">
         <h2>alle Boulder</h2>
-        <div class="row">
+        <div class="row floor-plan">
             <div class="column large-12">
                 <div class="gym-floor-plan-wrapper">
                     <gym-floor-plan floor-plan="gym.floorPlans[0]" boulders="gym.boulders"
@@ -55,14 +55,19 @@
                 </div>
             </div>
         </div>
-
+        <div class="row usage-hint" ng-show="!currentBoulder">
+            <div class="column small-12">
+                <p>Wähle einen Boulder auf dem Grundriss aus. Du kannst den Grundriss auch vergrößern.</p>
+            </div>
+        </div>
     </section>
 
     <section id="ascents-tab"  ng-class="{active: activeTab == 'ascents'}">
         <div class="ascent-list-wrapper">
-            <h2>Begehungen <span class="ascent-count">{{session.ascents.length}}</span></h2>
+            <h2>Deine Boulder <span class="ascent-count">{{session.ascents.length}}</span></h2>
             <ul>
-                <li ng-repeat="ascent in session.ascents" class="row collapse card" ng-click="select(boulder(ascent.boulder))" >
+                <li ng-repeat="ascent in session.ascents" class="row collapse" ng-click="select(boulder(ascent.boulder))"
+                    ng-class="{ selected: boulder(ascent.boulder) === currentBoulder}">
                     <div class="column small-1" cu-color="boulder(ascent.boulder).color" angle="45"></div>
                     <div class="column small-3 boulder-photo" ng-switch on="boulder(ascent.boulder).photo.url">
                         <img ng-src="{{boulder(ascent.boulder).photo.url}}" scale-to-cover scroll="false"/>
@@ -73,7 +78,7 @@
                     </div>
                     <div class="column small-2">
                         <!-- TODO: remove the ng-show as soon as the boulder is guaranteed to be loaded -->
-                        <a ng-show="boulder(ascent.boulder)"><i class="fi-arrows-out"></i></a>
+                        <a ng-show="boulder(ascent.boulder)" ng-click="removeAscent(ascent)"><i class="fi-trash"></i></a>
                     </div>
                 </li>
             </ul>

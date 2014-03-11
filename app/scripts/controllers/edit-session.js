@@ -87,7 +87,7 @@ angular.module('chalkupStartApp')
 
         // CONFIGURE ASCENT
 
-        $scope.currentAscent = {};
+        $scope.currentAscent = undefined;
 
         function getOrCreate(session, boulder) {
             var ascent = _.find(session.ascents, function (ascent) {
@@ -117,6 +117,12 @@ angular.module('chalkupStartApp')
                 _.pull(session.ascents, ascent);
             }
         }
+
+        $scope.removeAscent = function(ascent) {
+            removeAscent($scope.session, ascent);
+            if($scope.currentAscent === ascent)
+                $scope.currentAscent.style = 'none';
+        };
 
         $scope.$watch('currentAscent.style', function (style) {
             if (_.isUndefined(style))
