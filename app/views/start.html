@@ -3,34 +3,17 @@
         <h1>chalkUp!</h1>
 
         <ul>
-            <li><strong>Auswertungen:</strong> verfolge deinen Fortschritt beim Bouldern</li>
-            <li><strong>Empfehlungen:</strong> finde die besten Boulder für dich</li>
-            <li><strong>Socialize:</strong> teile und vergleiche dich mit deinen Freunden</li>
+            <li><strong>Verfolge</strong> deinen Fortschritt beim Bouldern</li>
+            <li><strong>Finde</strong> die besten Boulder für dich</li>
+            <li><strong>Vergleiche</strong> dich mit deinen Freunden</li>
         </ul>
-    </div>
-</section>
 
-<section id="story">
-    <div class="column">
-        <h2>Die Story</h2>
-
-        <p>Wir sind begeisterte Kletterer aus München. Im Winter halten wir uns in Boulderhallen fit und trainieren auf
-            den Sommer. Wir glauben daran, dass ... und sind fest davon, überzeugt dass auch .
-        </p>
-
-        <p>Da uns eine Möglichkeit zum Verfolgen unseres Training-Levels fehlt, haben wir chalkUp!
-            entwickelt.</p>
-
-        <p>Mit der ersten Version können wir Bouldersessions eintragen und sofort sehen, wie sich unser Level entwickelt
-            hat. <span ng-if="canLogin">Und dir <a ng-click="openLogin()">steht es auch offen</a>.</span> Doch dies ist
-            erst der Anfang! Wir haben noch viele weitere Ideen:</p>
-        <ul>
-            <li>Boulder- und Kletterhallen könnten mit chalkUp! ihre Routendatenbank pflegen</li>
-            <li>Wir könnten spontane Wettkämpfe ausrufen und unsere Freunde dazu einladen</li>
-            <li>Unsere selbst definierten Boulderprobleme könnten über chalkUp! veröffentlicht werden</li>
-        </ul>
-        <p>Was würde dir beim Bouldern noch helfen? <a ng-click="openFeedbackPanel()">Teile deine Idee doch mit uns!</a>
-        </p>
+        <div>
+            <a href="" class="button">erstmal ausprobieren</a>
+        </div>
+        <div>
+            <a href="" class="button">mit E-Mail-Adresse anmelden</a>
+        </div>
     </div>
 </section>
 
@@ -41,82 +24,43 @@
         <ol>
             <li>
                 <strong>1</strong>
-                <p>Bouldern gehen</p>
+                <p>Gehe Bouldern</p>
                 <img src="/images/chalkbag.png" width="200"/>
             </li>
             <li>
                 <strong>2</strong>
-                <p>Bewältigte Boulder eintragen</p>
+                <p>Trage deine Boulder ein</p>
                 <img src="/images/nexus-5-screenshot.png" width="140"/>
             </li>
             <li>
                 <strong>3</strong>
-                <p>Deinen Fortschritt auswerten</p>
+                <p>Werte deinen Fortschritt aus</p>
                 <img src="/images/macbook.png" width="300"/>
             </li>
         </ol>
     </div>
 </section>
 
-<section id="notify">
-    <div class="column medium-6" ng-include="'/views/notify.html'" ng-controller="NotifyCtrl"></div>
-</section>
 
-<section id="stats">
-    <div class="coming-soon">Coming soon!</div>
-    <div class="column medium-6 medium-push-6">
-        <h2><i class="fi-graph-bar"></i> Statistiken</h2>
+<section id="story">
+    <div class="column">
+        <h2>Die Story</h2>
 
-        <p>chalkUp! soll dein Kletter-Level als auch die Schwierigkeit der Boulder lernen. Umso mehr Begehungen
-            eingetragen werden, umso genauer wird die Bewertung. <br/>
-            Wir werden auch einzelne Charakteristiken der Boulder und deine jeweilige Stärke darin erheben:
+        <p>Wir sind begeisterte Kletterer aus München. Im Winter halten wir uns in Boulderhallen fit und trainieren auf
+            den Sommer. Wir glauben daran, dass Fortschritt motiviert und sind fest davon überzeugt, dass es dir genauso
+            geht. Und diesen Fortschritt wollen wir sehen. Deshalb haben wir chalkUp! entwickelt.
         </p>
+
+        <p>Mit der ersten Version können wir Boulder eintragen und sofort sehen, wie sich unser Level entwickelt
+            hat. <span ng-if="canLogin"><a ng-click="openLogin()">Und du kannst das auch</a>.</span> Doch wir haben noch
+            viele weitere Ideen:</p>
         <ul>
-            <li>runde Sloper oder scharfe Leisten?</li>
-            <li>kräftige Überhänge oder balancieren auf Platten?</li>
-            <li>weite Züge oder delikate Fußwechsel?</li>
-            <li>...</li>
+            <li>Boulder- und Kletterhallen könnten mit chalkUp! ihre Routendatenbank pflegen</li>
+            <li>Wir könnten spontane Wettkämpfe ausrufen und unsere Freunde dazu einladen</li>
+            <li>Unsere selbst definierten Boulderprobleme könnten über chalkUp! veröffentlicht werden</li>
         </ul>
-    </div>
-    <div class="column medium-6 medium-pull-6">
-        <p>&lt;Bild zum Lernalgorithmus?&gt;</p>
-    </div>
-</section>
-
-<section id="recommendations">
-    <div class="coming-soon">Coming soon!</div>
-    <div class="column medium-6">
-        <h2><i class="fi-lightbulb"></i> Empfehlungen</h2>
-
-        <p>Basierend auf den von dir gelernten Grad wird dir chalkUp! Boulder empfehlen, mit denen du an deinen
-            Schwächen arbeiten kannst, oder die du</p>
-        <ul>
-            <li>zum <strong>Aufwärmen</strong> machen kannst</li>
-            <li>längere Zeit <strong>projektieren</strong> musst</li>
-            <li>in die du einen <strong>Flash-Versuch</strong> investieren solltest</li>
-        </ul>
-    </div>
-</section>
-
-
-<section id="compare">
-    <div class="coming-soon">Coming soon!</div>
-
-    <div class="column medium-6 medium-push-6">
-        <h2><i class="fi-share"></i> Vergleiche dich und teile</h2>
-
-        <p>Uns erfüllt es sehr, gemeinsam an einem Boulderproblem zu arbeiten und Erfolge und Rückschläge zu teilen.
-            Diese Aspekte sollten sich auch in chalkUp! wiederfinden.</p>
-
-        <p>Du solltest also Bouldergruppen definieren und deine Sessions mit deren Mitgliedern teilen können. Finde
-            andere, die ähnliche Boulder wie du machen und tausche dich mit ihnen aus. Organisiere
-            spontane Competitions und messe dich!</p>
-
-        <p>Und all das sollte sich in einer Art und Weise mit deinen Profilen in sozialen Netzwerken integrieren, die
-            für dich durchschaubar ist. chalkUp! wird nicht zufällige Dinge auf deiner Pinnwand posten.</p>
-    </div>
-
-    <div class="column medium-6 medium-pull-6">
+        <p>Was könntest du dir noch vorstellen? <a ng-click="openFeedbackPanel()">Teile deine Idee doch mit uns!</a>
+        </p>
     </div>
 </section>
 
@@ -133,6 +77,66 @@
         <p>Tony</p>
     </div>
 </section>
+
+<!--<section id="notify">
+    <div class="column medium-6" ng-include="'/views/notify.html'" ng-controller="NotifyCtrl"></div>
+</section>-->
+
+<section id="stats">
+    <div class="coming-soon">Coming soon!</div>
+    <div class="column medium-6 medium-push-6">
+        <h2><i class="fi-graph-bar"></i> Statistiken</h2>
+
+        <p>chalkUp! soll dein Kletter-Level lernen und die Schwierigkeit der Boulder einstufen. Je mehr Boulder
+            eingetragen werden, umso genauer wird die Bewertung. <br/>
+            Wie gut liegen dir...
+        </p>
+        <ul>
+            <li>...runde Sloper oder scharfe Leisten?</li>
+            <li>...kräftige Überhänge oder balancieren auf Platten?</li>
+            <li>...weite Züge oder delikate Fußwechsel?</li>
+        </ul>
+        <p>Auch das wird chalkUp! erfassen.</p>
+    </div>
+    <div class="column medium-6 medium-pull-6">
+        <p>&lt;Bild zum Lernalgorithmus?&gt;</p>
+    </div>
+</section>
+
+<section id="recommendations">
+    <div class="coming-soon">Coming soon!</div>
+    <div class="column medium-6">
+        <h2><i class="fi-lightbulb"></i> Empfehlungen</h2>
+
+        <p>chalkUp! wird dir Boulder empfehlen, mit denen du an deinen Schwächen arbeiten kannst. Oder </p>
+        <ul>
+            <li>die du zum <strong>Aufwärmen</strong> machen kannst</li>
+            <li>mit denen du längere Zeit <strong>kämpfen</strong> musst</li>
+            <li>in die du einen <strong>Flash-Versuch</strong> investieren solltest</li>
+        </ul>
+    </div>
+</section>
+
+
+<section id="compare">
+    <div class="coming-soon">Coming soon!</div>
+
+    <div class="column medium-6 medium-push-6">
+        <h2><i class="fi-share"></i> Vergleiche dich</h2>
+
+        <p>Am liebsten beißen wir uns gemeinsam in die Boulderprobleme. Wir teilen Erfolge und motivieren uns, wenn
+            es mal nicht so klappt. Diese Aspekte sollten sich auch in chalkUp! wiederfinden.</p>
+
+        <p>Zusammen mit deinen Boulderfreunden kannst du also eine Gruppe eröffnen. Hier kannst du deine Sessions teilen.
+            Finde andere, die ähnliche Boulder wie du machen und tausche dich mit ihnen aus. Organisiere
+            spontane Wettkämpfe und messe dich! <br/>
+            Und wenn du möchtest, teile deinen Fortschritt auch auf Facebook, Google+ und Co.</p>
+    </div>
+
+    <div class="column medium-6 medium-pull-6">
+    </div>
+</section>
+
 
 <footer>
     <div class="column medium-7">
