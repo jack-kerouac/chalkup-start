@@ -112,17 +112,9 @@ body[state='edit-session'] {
       @include card;
     }
 
+
     .boulder-meta-wrapper {
       @include card;
-    }
-
-    .boulder-meta {
-      height: 3em;
-      line-height: 3em;
-      vertical-align: middle;
-      text-align: center;
-
-      font-weight: 600;
     }
 
     .ascent-style-control {
@@ -132,7 +124,8 @@ body[state='edit-session'] {
       }
 
       label {
-        @include button($padding:$button-med, $bg: $wet-asphalt, $radius: false, $full-width: true);
+        @include button($padding:$button-sml, $bg: $wet-asphalt, $radius: false, $full-width: true);
+        font-size: $button-font-med;
         margin: 0;
       }
 
@@ -143,6 +136,23 @@ body[state='edit-session'] {
 
       input:checked + label {
         background-color: $pumpkin;
+      }
+    }
+
+    .boulder-meta {
+      height: 2.5em;
+      line-height: 2.5em;
+      vertical-align: middle;
+      text-align: center;
+
+      font-weight: 600;
+    }
+
+    .characteristics {
+      position: relative;
+      text-align: center;
+      img {
+        margin-top: rem-calc(10px);
       }
     }
 
