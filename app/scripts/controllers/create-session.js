@@ -32,7 +32,7 @@ angular.module('chalkupStartApp')
             sessionPost.then(function(sessionPost) {
                 $analytics.eventTrack('sessionCreation', {});
 
-                $state.go('edit-session', {id: sessionPost.id});
+                $state.go('recommendations', {id: sessionPost.id});
             });
         }
     });

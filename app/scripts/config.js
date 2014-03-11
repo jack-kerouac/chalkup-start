@@ -30,6 +30,10 @@ angular.module('chalkupStartApp')
                 templateUrl: "views/edit-session.html",
                 controller: 'EditSessionCtrl'
             })
+            .state('recommendations', {
+                url: "/recommendations?id",
+                templateUrl: "views/recommendations.html"
+            })
             .state('social', {
                 url: "/social",
                 templateUrl: "views/social.html"

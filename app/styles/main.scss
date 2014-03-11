@@ -258,7 +258,7 @@ input.ng-invalid.ng-dirty {
 
 // MINOR PAGES
 
-body[state='social'], body[state='detailed-stats'] {
+body[state='social'], body[state='detailed-stats'], body[state='recommendations'] {
   @include full-height();
 
   .wrapper {
