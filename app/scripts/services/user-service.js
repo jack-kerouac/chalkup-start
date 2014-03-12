@@ -17,9 +17,14 @@ angular.module('chalkupStartApp')
             loginStatusUrl = url;
         };
 
+        var demoLoginCredentials;
+        this.setDemoLogin = function (credentials) {
+            demoLoginCredentials = credentials;
+        }
+
         var LOGIN_STATUS_CHANGE = 'loginStatusChange';
 
-        this.$get = function ($rootScope, $http, $q, $state, LoadingIndicator, Restangular) {
+        this.$get = function ($rootScope, $http, $q, $state, $analytics, LoadingIndicator, Restangular) {
             var config = {};
 
             var updateCurrentUser = function (user) {
@@ -42,7 +47,7 @@ angular.module('chalkupStartApp')
                 return !_.isUndefined(config.current);
             };
 
-            config.login = function (credentials) {
+            var login = function (credentials) {
                 var loggedIn = $q.defer();
                 var loginPost = $http({
                     method: 'POST',
@@ -67,6 +72,18 @@ angular.module('chalkupStartApp')
                 LoadingIndicator.waitFor(loginPost);
 
                 return loggedIn.promise;
+            };
+
+            config.login = function (credentials) {
+                return login(credentials).then(function () {
+                    $analytics.eventTrack('normalUserLogin', {});
+                });
+            };
+
+            config.demoLogin = function () {
+                return login(demoLoginCredentials).then(function() {
+                    $analytics.eventTrack('demoUserLogin', {});
+                });
             };
 
             config.logout = function () {

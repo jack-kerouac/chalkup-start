@@ -57,4 +57,9 @@ angular.module('chalkupStartApp')
         userServiceProvider.setLoginUrl(host + '/loginOrRegister');
         userServiceProvider.setLogoutUrl(host + '/j_spring_security_logout');
         userServiceProvider.setLoginStatusUrl(host + '/loginStatus');
+        var demoCredentials = {
+            email: 'demo@chalkup.de',
+            password: 'demo123'
+        };
+        userServiceProvider.setDemoLogin(demoCredentials);
     });
