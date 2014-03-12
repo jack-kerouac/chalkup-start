@@ -6,11 +6,9 @@
 
 <section id="session-list">
     <ul ng-show="statistics.length != 0" class="sessions">
-        <li ng-repeat="s in statistics | orderBy:'-session.date'" class="row">
-            <div class="column medium-1 small-2 trend">
-                <i ng-show="s.gradeDiff > 0" class="fi-arrow-up"></i>
-                <i ng-show="s.gradeDiff < 0" class="fi-arrow-down"></i>
-                <i ng-show="s.gradeDiff == 0" class="fi-arrow-right"></i>
+        <li ng-repeat="s in statistics | orderBy:'-session.date'" class="row collapse">
+            <div class="column medium-1 small-2 ascents">
+                <span>{{s.session.ascents.length}}</span>
             </div>
             <div class="column medium-9 small-6">
                 <div class="title">
@@ -20,8 +18,10 @@
                     {{s.session.gym.name}}
                 </div>
             </div>
-            <div class="column medium-1 small-2 ascents">
-                <span>{{s.session.ascents.length}}</span>
+            <div class="column medium-1 small-2 trend">
+                <i ng-show="s.gradeDiff > 0" class="fi-arrow-up"></i>
+                <i ng-show="s.gradeDiff < 0" class="fi-arrow-down"></i>
+                <i ng-show="s.gradeDiff == 0" class="fi-arrow-right"></i>
             </div>
             <div class="column medium-1 small-2 session-edit">
                 <a ui-sref="edit-session({id: {{s.session.id}} })"><i class="fi-pencil"></i></a>

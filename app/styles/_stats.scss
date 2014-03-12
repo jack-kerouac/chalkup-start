@@ -65,11 +65,11 @@ body[state='stats'] {
       margin-top: 0;
     }
 
-    li > div:last-child {
+    .session-edit {
       @include link-icon($height: $session-height);
     }
 
-    @include list-items($session-height, true);
+    @include list-items($session-height, false);
     .trend {
       font-size: 2em;
 
