@@ -10,11 +10,6 @@ body[state='start'] {
     background-color: #222;
 
     color: lighten($body-font-color, 95%);
-
-    a {
-      color: lighten($primary-color, 50%);
-      text-decoration: underline;
-    }
   }
 
   @mixin light-row() {
