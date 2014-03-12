@@ -135,20 +135,4 @@ body[state='start'] {
     }
   }
 
-  #recommendations {
-//    background: url(/images/bg/recommendations.jpg) #020b12 no-repeat;
-    min-height: 300px;
-  }
-
-  #compare {
-    > div:nth-child(3) {
-      background: url(/images/bg/hanging_boulderer.jpg) 0% 30% no-repeat;
-      min-height: 300px;
-    }
-  }
-
-  #about-us {
-    background: url(/images/bg/crowd.jpg) no-repeat;
-  }
-
 }
