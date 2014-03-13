@@ -10,12 +10,6 @@ $navbar-bg-color: $midnight-blue;
 
 nav.bar {
 
-  .beta {
-    @include label($padding: 3px, $text-size: 0.5em, $bg: $pomegranate, $radius: 10px);
-    margin-left: 0.5em;
-    vertical-align: super;
-  }
-
   .username {
     float: right;
     padding: 0 0.5em;

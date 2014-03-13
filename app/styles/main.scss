@@ -29,6 +29,12 @@ $fi-path: "/bower_components/foundation-icon-fonts";
   float: right;
 }
 
+.beta {
+  @include label($padding: 0.3em, $text-size: 0.5em, $bg: $pomegranate, $radius: 1em);
+  margin-left: 0.5em;
+  vertical-align: super;
+}
+
 
 // TABS
 $tabs-height: 45px;

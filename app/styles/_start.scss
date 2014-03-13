@@ -72,7 +72,7 @@ body[state='start'] {
 
     @media #{$medium-up} {
       > div {
-        height: 300px;
+        min-height: 300px;
       }
     }
   }

@@ -1,6 +1,6 @@
 <section id="title">
     <div class="column">
-        <h1>chalkUp!</h1>
+        <h1>chalkUp!<span class="beta">Alpha</span></h1>
 
         <ul>
             <li><strong>Verfolge</strong> deinen Fortschritt beim Bouldern</li>
@@ -14,6 +14,7 @@
         <div>
             <a class="button" ng-click="openLogin()">mit E-Mail-Adresse anmelden</a>
         </div>
+        <div ng-include="'/views/notify.html'" ng-controller="NotifyCtrl"></div>
     </div>
 </section>
 
