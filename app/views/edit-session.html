@@ -3,7 +3,7 @@
         <a ng-click="activeTab = 'floor-plan'">alle Boulder</a>
     </dd>
     <dd class="column small-6" ng-class="{active: activeTab == 'ascents'}">
-        <a ng-click="activeTab = 'ascents'">Begehungen <span class="ascent-count">{{session.ascents.length}}</span></a>
+        <a ng-click="activeTab = 'ascents'">Deine Boulder <span class="ascent-count">{{session.ascents.length}}</span></a>
     </dd>
 </dl>
 
@@ -49,7 +49,7 @@
                         <span>{{currentBoulder.initialGrade.readable}}</span>
                     </div>
                     <div cu-color="currentBoulder.color" angle="45"></div>
-                    <div class="characteristics">
+                    <div class="characteristics hide-for-small-only">
                         <img src="/images/boulder-characteristics.png"/>
                     </div>
                 </div>

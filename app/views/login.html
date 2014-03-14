@@ -1,9 +1,9 @@
 <div id="login" ng-controller="LoginCtrl">
     <div ng-show="!currentUser">
-
-        <h2>Anmelden</h2>
-
-        <p>Gibst du eine E-Mail-Adresse an, die es noch nicht gibt, so wirst du automatisch registriert und eingeloggt.</p>
+        <p class="show-for-medium-up">Gibst du eine E-Mail-Adresse an, die es noch nicht gibt, so wirst du automatisch registriert und eingeloggt.</p>
+        <div class="show-for-small-only">
+            <small>Gibst du eine E-Mail-Adresse an, die es noch nicht gibt, so wirst du automatisch registriert und eingeloggt.</small>
+        </div>
 
         <form name="login" ng-submit="loginAndRedirect(credentials)" novalidate form-autofill-fix>
             <div class="row">

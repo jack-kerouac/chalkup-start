@@ -69,11 +69,32 @@ body[state='start'] {
 
   #title {
     background: url(/images/bg/chalked_hands_1.jpg) #000 no-repeat;
+    background-position: right top;
 
-    @media #{$medium-up} {
-      > div {
-        min-height: 300px;
+    .buttons {
+      a {
+        @include button($full-width: true, $padding: 0);
+        height: 2.3125rem;
+        line-height: 2.3125rem;
       }
+    }
+
+    .catch-lines {
+      margin-top: 1em;
+      list-style: none;
+
+      strong {
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  form[name="notify"] {
+    .description {
+      margin-bottom: 0.3em;
+    }
+    button {
+      padding: 0;
     }
   }
 
@@ -83,6 +104,8 @@ body[state='start'] {
 
 
     ol {
+      margin-left: 0;
+
       display: flex;
       flex-direction: column;
       flex-wrap: nowrap;
@@ -97,14 +120,26 @@ body[state='start'] {
 
         align-items: center;
 
+        div {
+          flex-grow: 1;
+          text-align: center;
+        }
+        strong {
+          flex-shrink: 0;
+        }
         p {
           margin: 0 1em;
         }
       }
     }
 
-    @media #{$large-up} {
+    img {
+      max-height: 10em;
+    }
+
+    @media #{$medium-up} {
       ol {
+
         flex-direction: row;
 
         li {
@@ -113,7 +148,7 @@ body[state='start'] {
           justify-content: flex-end;
 
           // image first
-          img {
+          div {
             order: 0;
           }
           strong {
@@ -122,14 +157,12 @@ body[state='start'] {
           }
           p {
             order: 2;
+            text-align: center;
           }
         }
       }
     }
 
-    img {
-      display: block;
-    }
     strong {
       @include label($radius: 100px, $text-size: 1.2em);
     }

@@ -1,45 +1,59 @@
 <section id="title">
-    <div class="column">
-        <h1>chalkUp!<span class="beta">Alpha</span></h1>
-
-        <ul>
+    <div class="column large-12">
+        <ul class="catch-lines">
             <li><strong>Verfolge</strong> deinen Fortschritt beim Bouldern</li>
             <li><strong>Finde</strong> die besten Boulder für dich</li>
             <li><strong>Vergleiche</strong> dich mit deinen Freunden</li>
         </ul>
 
-        <div>
-            <a class="button" ng-click="demoLogin()">erstmal ausprobieren</a>
+        <div class="row buttons">
+            <div class="column small-6"><a ng-click="openLogin()">Anmelden</a></div>
+            <div class="column small-6"><a ng-click="demoLogin()">Demo</a></div>
         </div>
-        <div>
-            <a class="button" ng-click="openLogin()">mit E-Mail-Adresse anmelden</a>
+        <div ng-controller="NotifyCtrl">
+            <div ng-show="!registered">
+                <form name="notify" class="row collapse" ng-submit="registerNotification(email)" novalidate>
+                    <div class="description">Über neue Versionen benachrichtigen:</div>
+                    <div class="small-7 column">
+                        <input type="email" placeholder="danielwoods@themachine.me" ng-model="email" required/>
+                    </div>
+                    <div class="small-5 column">
+                        <button class="postfix" type="submit" ng-disabled="notify.$invalid">Benachrichten*</button>
+                    </div>
+                </form>
+            </div>
+            <div class="alert-box success" ng-show="registered">
+                Wir schreiben dir an <i>{{email}}</i> sobald eine neue Version für dich benutzbar ist!
+            </div>
+            <div class="alert-box alert" ng-show="error">
+                Es ist ein Fehler ({{error.status}}) aufgetreten! Tut uns leid.
+            </div>
         </div>
-        <div ng-include="'/views/notify.html'" ng-controller="NotifyCtrl"></div>
     </div>
 </section>
 
 <section id="steps">
     <div class="column large-12">
-        <h2>So funktioniert's</h2>
+        <h1>So funktioniert's</h1>
 
         <ol>
             <li>
                 <strong>1</strong>
 
                 <p>Gehe Bouldern</p>
-                <img src="/images/chalkbag.png" width="200"/>
+                <div><img src="/images/chalkbag.png"/></div>
             </li>
             <li>
                 <strong>2</strong>
 
                 <p>Trage deine Boulder ein</p>
-                <img src="/images/nexus-5-screenshot.png" width="140"/>
+                <div><img src="/images/nexus-5-screenshot.png"/></div>
             </li>
             <li>
                 <strong>3</strong>
 
                 <p>Werte deinen Fortschritt aus</p>
-                <img src="/images/macbook.png" width="300"/>
+                <div><img src="/images/macbook.png"/></div>
             </li>
         </ol>
     </div>
@@ -48,7 +62,7 @@
 
 <section id="story">
     <div class="column">
-        <h2>Die Story</h2>
+        <h1>Die Story</h1>
 
         <p>Wir sind begeisterte Kletterer aus München. Im Winter halten wir uns in Boulderhallen fit und trainieren auf
             den Sommer. Wir glauben daran, dass Fortschritt motiviert und sind fest davon überzeugt, dass es dir genauso
@@ -70,7 +84,7 @@
 
 <section id="about-us">
     <div class="column large-12">
-        <h2>Über uns</h2>
+        <h1>Über uns</h1>
 
         <div class="row">
 
@@ -107,11 +121,11 @@
 
 <section class="">
     <div class="column large-12">
-        <h2>Coming soon</h2>
+        <h1>Coming soon</h1>
 
         <div class="row">
             <div class="column large-4">
-                <h3><i class="fi-graph-bar"></i> Statistiken</h3>
+                <h2><i class="fi-graph-bar"></i> Statistiken</h2>
 
                 <p>chalkUp! soll dein Kletter-Level lernen und die Schwierigkeit der Boulder einstufen. Je mehr Boulder
                     eingetragen werden, umso genauer wird die Bewertung. <br/>
@@ -125,7 +139,7 @@
                 <p>Auch das wird chalkUp! erfassen.</p>
             </div>
             <div class="column large-4">
-                <h3><i class="fi-like"></i> Empfehlungen</h3>
+                <h2><i class="fi-like"></i> Empfehlungen</h2>
 
                 <p>chalkUp! wird dir Boulder empfehlen, mit denen du an deinen Schwächen arbeiten kannst. Oder </p>
                 <ul>
@@ -135,7 +149,7 @@
                 </ul>
             </div>
             <div class="column large-4">
-                <h3><i class="fi-share"></i> Vergleiche dich</h3>
+                <h2><i class="fi-share"></i> Vergleiche dich</h2>
 
                 <p>Am liebsten beißen wir uns gemeinsam in die Boulderprobleme. Wir teilen Erfolge und motivieren uns,
                     wenn
@@ -154,6 +168,7 @@
 <footer>
     <div class="column medium-7">
         <div>München, 2014 | Kontakt: <a href="mailto:info@chalkup.de">info@chalkup.de</a></div>
+        <p><small>* Deine E-Mail-Adresse verwenden wir nur um dich zu benachrichtigen.</small></p>
     </div>
     <div class="column medium-1">
         Images

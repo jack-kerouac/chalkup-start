@@ -6,7 +6,7 @@ angular.module('chalkupStartApp')
             $modal.open({
                 template: '<div class="column" ng-include="\'/views/login.html\'"></div>' +
                     '<a class="close-reveal-modal" ng-click="$dismiss()">&#215;</a>',
-                windowClass: 'small'
+                windowClass: 'large'
             });
         };
 
