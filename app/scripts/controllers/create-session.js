@@ -17,10 +17,6 @@ angular.module('chalkupStartApp')
         LoadingIndicator.waitFor(gyms);
 
         gyms.then(function (gyms) {
-            // TODO: remove the next line, which removes Boulderwelt for now
-            _.remove(gyms, function (gym) {
-                return gym.id === 1
-            });
             $scope.gyms = gyms;
             $scope.session.gym = gyms[0];
         });
