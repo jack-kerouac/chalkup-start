@@ -44,8 +44,6 @@ body[state='start'] {
 
     @include dark-row;
 
-    min-height: 100px;
-
     ul {
       margin: 0;
     }
@@ -165,6 +163,15 @@ body[state='start'] {
 
     strong {
       @include label($radius: 100px, $text-size: 1.2em);
+    }
+  }
+
+  #about-us {
+    .profile {
+      text-align: center;
+      p {
+        margin-top: 1em;
+      }
     }
   }
 

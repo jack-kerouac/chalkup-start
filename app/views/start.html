@@ -14,11 +14,11 @@
             <div ng-show="!registered">
                 <form name="notify" class="row collapse" ng-submit="registerNotification(email)" novalidate>
                     <div class="description">Über neue Versionen benachrichtigen:</div>
-                    <div class="small-7 column">
+                    <div class="small-7 medium-4 column">
                         <input type="email" placeholder="danielwoods@themachine.me" ng-model="email" required/>
                     </div>
-                    <div class="small-5 column">
-                        <button class="postfix" type="submit" ng-disabled="notify.$invalid">Benachrichten*</button>
+                    <div class="small-5 medium-2 end column">
+                        <button class="postfix" type="submit" ng-disabled="notify.$invalid">Benachrichtigen*</button>
                     </div>
                 </form>
             </div>
@@ -88,15 +88,15 @@
 
         <div class="row">
 
-            <div class="column medium-4">
-                <img src="http://www.gravatar.com/avatar/aebf5244b0847a65c5f818f26e6ea7b4.png"/>
+            <div class="column medium-4 profile">
+                <img src="/images/flo.jpg"/>
 
                 <p><strong>Florian</strong> orientiert seine Urlaubsziele vor allem an der Nähe der nächsten Felsen.
                     Nach einem halben Jahr auf Kletter-Camping-Roadtrip durch Nordamerika schätzt er aber auch
                     Warmwasser und Steckdosen wieder. Kann sich tausend Features in einer Stunde ausdenken.</p>
             </div>
-            <div class="column medium-4">
-                <img src="http://www.gravatar.com/avatar/aebf5244b0847a65c5f818f26e6ea7b4.png"/>
+            <div class="column medium-4 profile">
+                <img src="/images/thomas.jpg"/>
 
                 <p><strong>Thomas</strong> kennt Boulderhallen nicht mehr als muffige, dunkle Staubhöhlen. Dafür findet
                     er momentan trotz Nachwuchs, Job und chalkUp! noch genug Zeit für die Berge.
@@ -104,8 +104,8 @@
                     Lösung parat.
                 </p>
             </div>
-            <div class="column medium-4">
-                <img src="http://www.gravatar.com/avatar/aebf5244b0847a65c5f818f26e6ea7b4.png"/>
+            <div class="column medium-4 profile">
+                <img src="/images/tony.jpg"/>
 
                 <p><strong>Tony</strong>, gestählter, dauer-optimistischer Boulder-Veteran aus den USA, programmiert in
                     seiner Freizeit Apps, lötet Platinen, und druckt inzwischen in 3D. Hat mehr Auge für Design als die
@@ -171,21 +171,12 @@
         <p><small>* Deine E-Mail-Adresse verwenden wir nur um dich zu benachrichtigen.</small></p>
     </div>
     <div class="column medium-1">
-        Images
+        Bilder
     </div>
     <div class="column medium-4">
         <ul>
-            <li><a href="http://flic.kr/p/aCv6jx">Unnamed</a> by nordique (<a
-                    href="http://creativecommons.org/licenses/by-sa/2.0/">CC BY-SA</a>)
-            </li>
-            <li><a href="http://flic.kr/p/7NTqEq">Rock Climbing</a> by gregoryniss (<a
-                    href="http://creativecommons.org/licenses/by-nc-nd/2.0/">CC BY-NC-ND</a>)
-            </li>
             <li><a href="http://flic.kr/p/7NTr99">Chalk 1</a> by gregoryniss (<a
                     href="http://creativecommons.org/licenses/by-nc-nd/2.0/">CC BY-NC-ND</a>)
-            </li>
-            <li><a href="http://flic.kr/p/7QE7X9">Out From Under</a> by lytfyre (<a
-                    href="http://creativecommons.org/licenses/by-sa/2.0/">CC BY-SA</a>)
             </li>
         </ul>
     </div>
